@@ -91,17 +91,26 @@
   - styles.xml(以 Theme 命名结尾)
     - 前缀名称说明
       ```
-      <style name="xxxTheme" parent="xxx">
-          .....
+      Widget.xxx.控件名称  // 控件样式
+      <style name="Widget.xxx.控件名称" parent="xxx">
+        .....
       </style>
       ```
     
   - themes.xml(以 Style 命名结尾)
     - 前缀名称说明
       ```
-      <style name="xxxStyle" parent="xxx">
-        .....
+      Theme.xxx.Base        // 基础主题
+      ThemeOverlay.xxx.Base // 覆盖主题
+      
+      <style name="Theme.xxx.Base" parent="xxx">
+          .....
       </style>
+
+      <style name="ThemeOverlay.xxx.Base" parent="xxx">
+          .....
+      </style>
+
       ```
       
   - 动画
