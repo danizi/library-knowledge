@@ -7,3 +7,4 @@ TextView&EditText参考
 - https://blog.csdn.net/Jason_HD/article/details/126787634
 - https://zhuanlan.zhihu.com/p/37118013
 - https://stackoverflow.com/search?q=TextView&s=6002e47f-abfc-486f-bdd0-f2a23ec92729
+- https://androidperformance.com/2014/06/03/android-edittext-do-not-auto-get-focus/
