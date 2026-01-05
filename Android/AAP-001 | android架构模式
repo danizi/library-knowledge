@@ -1,1 +1,9 @@
+常见的架构原则
+分离关注点、妥善处理配置变更、数据模型驱动界面、单一可信来源（SSOT）、单向数据流（UDF）。
+
+推荐的应用架构
+界面层（Activity/Fragment）、数据层（Repository）、网域层（ViewModel）。
+
+架构模式
+mvc mvp mvvm 。
 
