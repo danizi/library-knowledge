@@ -66,11 +66,11 @@
 </details>
 
 <details>
-  <summary>修改方法二:带命令快捷键操作</summary>
+  <summary>修改方法二:带命令快捷键操作-待完善</summary>
 </details>
 
 <details>
-  <summary>修改方法三:VSCode / 其他编辑器修改</summary>
+  <summary>修改方法三:VSCode / 其他编辑器修改-待完善</summary>
 </details>
 
 
