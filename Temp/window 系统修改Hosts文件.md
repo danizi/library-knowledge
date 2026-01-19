@@ -3,9 +3,11 @@
   
   1. **hosts文件路径**<br>
      C:\Windows\System32\drivers\etc\hosts
-  2. **必须使用【管理权限】修改**<br>
+     
+  3. **必须使用【管理权限】修改**<br>
      Windows 对hosts文件做了系统级保护，普通用户权限打开，只能看不能改 / 不能保存，必须用「管理员身份」打开编辑器才能修改。
-  3. **文件的书写格式**<br>
+     
+  4. **文件的书写格式**<br>
      IP 和域名之间，用空格 / 制表符 (Tab) 隔开，都行；<br>
      一行写一条规则，多行写多条；<br>
      开头加 # 代表「注释」，不会生效，可用来备注；<br>
@@ -20,7 +22,17 @@
       # 测试环境 - 绑定接口域名到测试服务器IP
       192.168.1.100   api.xxx.com
       ```
-  4. **常见问题排查**<br>
+      
+  5. **刷新DNS缓存**<br>
+     Windows 会缓存 DNS 解析记录，修改完 hosts 不刷新缓存，你的配置大概率不生效，浏览器访问域名还是走旧的 IP，这是修改 hosts 最容易踩的坑！<br>
+     刷新 DNS 缓存的方法<br>
+     方法1：cmd命令刷新<br>
+     步骤一：管理员身份运行cmd<br>
+     步骤二：cmd框中输入ipconfig /flushdns回车刷新，提示`已刷新DNS解析缓存`则为成功<br>
+     方法2：懒人刷新<br>
+     关闭所有浏览器、断开网络再重新连接<br>
+     
+  7. **常见问题排查**<br>
     ❌ **问题 1：保存时提示「拒绝访问 / 权限不足」**<br>
     ✅ 解决方案：一定是没开管理员权限，关闭当前记事本，重新「右键→以管理员身份运行」再打开修改即可。<br>
     ❌ **问题 2：修改保存成功了，但是访问域名还是原来的 IP，配置不生效**<br>
@@ -49,7 +61,8 @@
     <img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/bcee37ec-af83-48e3-9502-b3f45245471e" /><br>
   - 步骤三：编辑hosts文件+保存<br>
     <img width="500" height="300" alt="image" src="https://github.com/user-attachments/assets/813b6684-1443-4786-9f58-e03c46081291" />
-  
+  - 步骤四：刷新DNS缓存让配置立即生效,详细步骤请查看`前置知识说明第5点`
+    
 </details>
 
 <details>
@@ -59,3 +72,5 @@
 <details>
   <summary>修改方法三:VSCode / 其他编辑器修改</summary>
 </details>
+
+
