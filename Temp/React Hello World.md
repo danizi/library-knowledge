@@ -15,9 +15,9 @@ React支持`JavaScript（JS）`和`TypeScript（TS）`两种主流开发方式�
     - TypeScript React code snippets（TS 版本需安装）：TS + React 代码片段。
 
 <details>
-  <summary>搭建方式一:Vite+React(javaScript版本，推荐)</summary>
+  <summary> 搭建方式一:Vite+React(javaScript版本，推荐)</summary>
   
-  - **步骤1**：创建 Vite + React 项目
+  - **步骤1：创建 Vite + React 项目**
     - (1) 打开VS Code终端，进入项目目录，例如桌面
       ```bash
       cd Desktop
@@ -31,7 +31,7 @@ React支持`JavaScript（JS）`和`TypeScript（TS）`两种主流开发方式�
       cd react-hello-world-js
       npm install
       ```
-  - **步骤2**：打开项目并编写react代码
+  - **步骤2：打开项目并编写react代码**
     - (1) 在VS Code中打开create react-hello-world-js
       ```bash
       点击VsCode -> 文件-> 打开文件夹 -> 选择create react-hello-world-js
@@ -49,8 +49,11 @@ React支持`JavaScript（JS）`和`TypeScript（TS）`两种主流开发方式�
       }
       export default App;
       ```
-  - **步骤3**：运行项目，**注意**：若报错请定位到+的下拉图标找到Command Prompt，依次按照上面步骤执行
-    - (1) 在VS Code终端执行
+  - **步骤3：运行项目**<br>
+    > **注意**：
+    > 1 cd到工程目录
+    > 2 vscode 右边若报错请定位到+的下拉图标找到Command Prompt，依次按照上面步骤执行。
+    - (1) 在VS Code终端执行，点击`Local` 地址，跳转到浏览器。
       ```bash
       npm run dev
   
@@ -68,7 +71,7 @@ React支持`JavaScript（JS）`和`TypeScript（TS）`两种主流开发方式�
 </details>
 
 <details>
-  <summary>搭建方式二:Vite+React(TypeScript版本，工业级别推荐)，后续补充)，summary>
+  <summary>搭建方式二:Vite+React(TypeScript版本，工业级别推荐)，后续补充)</summary>
 
 </details>
 
