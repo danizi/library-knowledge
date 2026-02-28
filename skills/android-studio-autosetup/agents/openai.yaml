@@ -1,0 +1,4 @@
+interface:
+  display_name: "开发环境自动配置"
+  short_description: "一键指导 JDK/SDK/Android Studio/Gradle/Node 等环境的检查、安装、环境变量追加与验证（优先 choco）"
+  default_prompt: "请按照 ENV_LANG_TOOLS.md 的顺序，带用户完成开发环境的“检查→安装/下载→环境变量追加（不覆盖 Path，给出用户级/系统级命令）→验证→备份/清理”，优先使用 choco，强调先备份 Path，必要时提供示例命令。"
