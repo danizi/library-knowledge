@@ -99,3 +99,20 @@ git stash / git stash pop
   - Source Control 面板 `Cmd/Ctrl+Shift+G`  
   - 内置终端 `Ctrl+``  
 - 推荐插件：GitLens（历史/作者/对比）、Git Graph（分支图）、GitHub Pull Requests and Issues（管理 PR/Issue）。
+
+
+问题
+国内访问github速度很慢处理
+```
+git config --global http.proxy http://127.0.0.1:7890
+git config --global https.proxy http://127.0.0.1:7890
+
+检查是否生效：
+git config --global --get http.proxy
+git config --global --get https.proxy
+git ls-remote https://github.com  # 能列出 refs 说明已通
+
+# 取消时：
+git config --global --unset http.proxy
+git config --global --unset https.proxy
+```
