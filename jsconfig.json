@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "allowJs": true,
+    "checkJs": true,
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "strict": false
+  },
+  "include": ["JavascriptDemo/**/*.js", "JavascriptDemo/**/*.html"]
+}

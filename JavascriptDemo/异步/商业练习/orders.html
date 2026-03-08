@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>订单列表</title>
+  <style>
+    body { font-family: sans-serif; padding: 16px; }
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 8px; }
+    .status { color: #666; margin-bottom: 8px; min-height: 20px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    th { background: #f5f5f5; }
+  </style>
+</head>
+<body>
+  <section data-app="orders">
+    <h1>订单列表</h1>
+    <div class="controls">
+      <select data-ord-sort>
+        <option value="none">默认顺序</option>
+        <option value="asc">金额升序</option>
+        <option value="desc">金额降序</option>
+      </select>
+      <button data-ord-apply>排序</button>
+    </div>
+    <div class="status" data-ord-status>准备加载...</div>
+    <table>
+      <thead>
+        <tr>
+          <th>订单ID</th>
+          <th>商品数量</th>
+          <th>总数量</th>
+          <th>总价</th>
+          <th>折后价</th>
+          <th>状态</th>
+        </tr>
+      </thead>
+      <tbody data-ord-rows></tbody>
+    </table>
+  </section>
+
+  <script src="./shared/apps.js"></script>
+  <script>
+    window.BusinessApps.mountOrders(document.querySelector('[data-app="orders"]'));
+  </script>
+</body>
+</html>

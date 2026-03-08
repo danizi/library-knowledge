@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>商业练习整合页（复用版）</title>
+  <style>
+    :root {
+      --bg: #f3f5f9;
+      --card: #ffffff;
+      --line: #dde3ec;
+      --text: #1b2430;
+      --muted: #4b5563;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 16px;
+      background: linear-gradient(180deg, #eef2f7 0%, #f8fafc 100%);
+      color: var(--text);
+      font-family: "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    h1 { margin: 0; font-size: 24px; }
+    nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 6px 10px;
+      background: var(--card);
+    }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--card);
+      padding: 14px;
+      margin-bottom: 12px;
+    }
+    .panel h2 { margin: 0 0 10px; font-size: 19px; }
+    .controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+    .status { min-height: 20px; color: var(--muted); margin-bottom: 8px; }
+    input, select, button {
+      height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 0 10px;
+      background: #fff;
+      color: var(--text);
+    }
+    button { cursor: pointer; font-weight: 600; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 8px;
+      text-align: left;
+      font-size: 14px;
+    }
+    th { background: #f8fafc; }
+    .low { color: #c62828; font-weight: 600; }
+    .high { color: #2e7d32; font-weight: 700; }
+    @media (max-width: 768px) {
+      body { padding: 12px; }
+      th, td { font-size: 13px; padding: 6px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>商业练习整合页（复用版）</h1>
+    <nav>
+      <a href="#inventory">库存</a>
+      <a href="#orders">订单</a>
+      <a href="#transactions">流水</a>
+    </nav>
+  </header>
+
+  <section id="inventory" class="panel" data-app="inventory">
+    <h2>库存表</h2>
+    <div class="controls">
+      <input data-inv-keyword placeholder="搜索商品名" />
+      <select data-inv-range>
+        <option value="all">全部库存</option>
+        <option value="low">低库存（<20）</option>
+        <option value="mid">中库存（20-50）</option>
+        <option value="high">高库存（>50）</option>
+      </select>
+      <button data-inv-apply>筛选</button>
+    </div>
+    <div class="status" data-inv-status>准备加载...</div>
+    <table>
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>价格</th>
+          <th>库存</th>
+          <th>分类</th>
+        </tr>
+      </thead>
+      <tbody data-inv-rows></tbody>
+    </table>
+  </section>
+
+  <section id="orders" class="panel" data-app="orders">
+    <h2>订单列表</h2>
+    <div class="controls">
+      <select data-ord-sort>
+        <option value="none">默认顺序</option>
+        <option value="asc">金额升序</option>
+        <option value="desc">金额降序</option>
+      </select>
+      <button data-ord-apply>排序</button>
+    </div>
+    <div class="status" data-ord-status>准备加载...</div>
+    <table>
+      <thead>
+        <tr>
+          <th>订单ID</th>
+          <th>商品数量</th>
+          <th>总数量</th>
+          <th>总价</th>
+          <th>折后价</th>
+          <th>状态</th>
+        </tr>
+      </thead>
+      <tbody data-ord-rows></tbody>
+    </table>
+  </section>
+
+  <section id="transactions" class="panel" data-app="transactions">
+    <h2>付款流水</h2>
+    <div class="controls">
+      <select data-tx-type>
+        <option value="all">全部</option>
+        <option value="income">收入</option>
+        <option value="expense">支出</option>
+      </select>
+      <button data-tx-apply>筛选</button>
+      <span data-tx-summary></span>
+    </div>
+    <div class="status" data-tx-status>准备加载...</div>
+    <table>
+      <thead>
+        <tr>
+          <th>流水ID</th>
+          <th>类型</th>
+          <th>金额</th>
+          <th>时间</th>
+          <th>备注</th>
+        </tr>
+      </thead>
+      <tbody data-tx-rows></tbody>
+    </table>
+  </section>
+
+  <script src="./shared/apps.js"></script>
+  <script>
+    window.BusinessApps.mountInventory(document.querySelector('[data-app="inventory"]'));
+    window.BusinessApps.mountOrders(document.querySelector('[data-app="orders"]'));
+    window.BusinessApps.mountTransactions(document.querySelector('[data-app="transactions"]'));
+  </script>
+</body>
+</html>

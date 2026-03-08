@@ -1,0 +1,43 @@
+<html lang="zh-CN">
+    <head>
+        <title>事件练习</title>
+        <meta charset="utf-8">
+        <style></style>
+    </head>
+
+    <body>
+        <h1>事件练习</h1>
+        <section>
+            <h2>(1) 点击计数</h2>
+            <button id="btn-count">点击增加</button>
+            <span id="count-text">0次</span>
+        </section>
+
+        <section>
+            <h2>(2) 输入字符数</h2>
+            <input id="input-text" placeholder="请输入">
+            <span id="input-len">0 字符</span>
+        </section>
+
+        <section>
+            <h2>(3) 表单提交校验</h2>
+            <form id="login-form">
+                <input name="user" placeholder="用户名"/>
+                <input name="pwd" type="password" placeholder="密码"/>
+                <button type="submit">提交</button>
+            </form>
+            <div id="form-msg" class="error"></div>
+        </section>
+
+        <section>
+            <h2>(4) 事件委托</h2>
+            <ul class="list" id="list">
+                <li>苹果</li>
+                <li>香蕉</li>
+                <li>橙子</li>
+            </ul>
+        </section>
+
+        <script src="./day2.js"></script>
+    </body>
+</html>
