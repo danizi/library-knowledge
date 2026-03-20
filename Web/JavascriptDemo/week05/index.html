@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css">
+    <title>Todo MVP</title>
+</head>
+
+<body>
+    <h1>Todo MVP</h1>
+    <form id="todo-form">
+        <input minlength="2" id="todo-input" type="text" placeholder="输入待办" />
+        <button type="submit">添加</button>
+    </form>
+    <div class="stats">
+        <span id="stat-total">0</span>
+        <span id="stat-active">0</span>
+        <span id="stat-complete">0</span>
+    </div>
+    <ul id="todo-list">
+    </ul>
+
+    <p id="form-error" class="error"></p>
+    <script src="app.js"></script>
+</body>
+
+</html>
