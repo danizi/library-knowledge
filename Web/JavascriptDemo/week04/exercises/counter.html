@@ -1,0 +1,26 @@
+<!-- 点击计数页面例子 -->
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>counter</title>
+</head>
+
+<body>
+    <h1>计数器，点击按钮添加</h1>
+    <p id="count">0</p>
+    <button id="btn">点击</button>
+    <p id="tip"></p>
+
+    <script>
+        const btnEl = document.querySelector('#btn');
+        const countEl = document.querySelector('#count')
+        let count = 0;
+        btnEl.addEventListener('click', () => {
+            count += 1
+            countEl.textContent = count;
+        })
+    </script>
+</body>
+
+</html>

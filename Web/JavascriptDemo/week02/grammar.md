@@ -1,4 +1,37 @@
 # 语法速查
+## Array.map知识点
+用来遍历数组，在不影响原数组的情况下，生成一个新的数组。如果返回值使用return 需要在在{}内。
+### 语法
+```
+```
+### 使用案例
+- 声明学生数组分别输出名称-分数/分数/新建一个数组对象附加pass字段
+```javascript
+// 声明一个数组
+var students = [
+    {
+        studenName: "张三",
+        score: 10,
+        classId: "三年二班"
+    },
+    {
+        studenName: "李四",
+        score: 20,
+        classId: "三年二班"
+    }
+];
+// 返回字符串数组
+const babels = students.map( s => `${s.studenName} - ${s.score}`);
+// 返回数字数组
+const scores = students.map( s => s.score);
+// 返回带新字段对象的数组，注意对象是要加{}的
+const pass = students.map( s => {...s,pass:s.score>=60})
+```
+- 链式组合
+```
+
+```
+
 ## 解构知识点
 获取对象中的值的一种语法，可以解构对象和数组。对象解构通过键名匹配，数组按位置匹配，未匹配得到undefined，如下是基本使用的说明
 ### 语法

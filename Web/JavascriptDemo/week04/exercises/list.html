@@ -1,0 +1,49 @@
+<!-- 列表高亮（事件委托）例子 -->
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>城市列表</title>
+    <style>
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        /* 设置了内边距和鼠标手型 */
+        .item {
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        /* 定义选中时的背景色，依赖 JS 给 li 加上 active 类才会生效。 */
+        .active {
+            background: #eef;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>城市列表</h1>
+    <ul id="city-list">
+        <li class="item" tabindex="0">北京</li>
+        <li class="item" tabindex="0">上海</li>
+        <li class="item" tabindex="0">广州</li>
+        <li class="item" tabindex="0">深圳</li>
+    </ul>
+
+    <script>
+        const list = document.querySelector("#city-list");
+        list.addEventListener("click", (e) => {
+            // 从实际点击的节点往上找最近的 .item，确保点到 li 或其内部时都能命中。
+            const item = e.target.closest('.item');
+            if (item == null) return
+            // 先清空所有旧的选中状态
+            list.querySelectorAll('.item').forEach(el => el.classList.remove('active'));
+            // 当前点击的 li 加上选中类
+            item.classList.add('active');
+        })
+    </script>
+</body>
+
+</html>
