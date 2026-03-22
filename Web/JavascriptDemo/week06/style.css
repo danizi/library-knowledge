@@ -1,0 +1,11 @@
+.stats{
+    display: flex; gap: 20px;
+}
+#form-error{
+    color: red;
+    min-height: 1em;
+    margin-top: 8px;
+}
+
+.done { text-decoration: line-through; color: #888; }
+
