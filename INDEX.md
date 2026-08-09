@@ -1,7 +1,7 @@
 # 卡片索引
 
 按领域浏览；新建或移动卡片后请同步更新本页。  
-空白模板（编排层）：[`.cursor/templates/`](.cursor/templates/README.md) · 截图放各领域 `assets/<编码>/`。
+模板：`.cursor/templates/` · 截图：按需 `领域/assets/<编码>/` · 编排：[`.cursor/README.md`](.cursor/README.md)
 
 ---
 
@@ -76,15 +76,11 @@
 
 ---
 
-## memory · 未审核（`.cursor/memory`）
+## memory · 未审核
 
-- [react语法学习](.cursor/memory/notes/react语法学习.md) → 计划拆入 `R-001` 系列（喊「整理 memory」晋升）
+- [react语法学习](.cursor/memory/react语法学习.md) → 拆入 `R-001`（喊「整理 memory」）
 
-编排与角色：[`.cursor/README.md`](.cursor/README.md) · [`AGENTS.md`](AGENTS.md)
-
----
-
-## skills（均在 `.cursor/skills/`）
+## skills
 
 - [android-studio-autosetup](.cursor/skills/android-studio-autosetup/SKILL.md)
-- 知识库角色：`kb-card-review` / `kb-code-review` / `kb-coach` / `kb-promote` / `kb-verify` / `kb-tutor`
+- `kb-card-review` / `kb-code-review` / `kb-coach` / `kb-promote` / `kb-verify` / `kb-tutor`

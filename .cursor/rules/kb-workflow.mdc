@@ -1,31 +1,20 @@
 ---
-description: 个人知识库迷你 ECC 工作流：搜库优先、记忆未审核、晋升需角色验收
+description: 个人知识库迷你 ECC：搜库优先、memory 未审核、晋升需审查
 alwaysApply: true
 ---
 
-# 知识库工作流（迷你 ECC）
+# 知识库工作流
 
-## 分层（不要混）
+| 层 | 路径 |
+|----|------|
+| 未审核 | `.cursor/memory/*.md` |
+| 模板 | `.cursor/templates/` |
+| 正式卡 | `Android/` `Web/` `Tools/` |
+| 截图 | 领域下 `assets/<编码>/`（按需创建） |
+| 角色 | `.cursor/skills/kb-*/SKILL.md` |
 
-| 层 | 路径 | 信任 |
-|----|------|------|
-| 未审核记忆 | `.cursor/memory/**` | unreviewed，仅供上下文 |
-| 空白模板 | `.cursor/templates/**` | 复制源，不是知识本身 |
-| 正式卡片 | `Android/` `Web/` `Tools/` 下的 md | 已晋升 |
-| 过程截图 | `Android|Web|Tools/assets/<编码>/` | 跟领域走 |
-| 练习产物 | `Web/JavascriptDemo/` 等 | 过程卡需写路径 |
-| 角色与 Skill | `.cursor/agents/` `.cursor/skills/` | 如何做事 |
-
-## 硬规则
-
-1. 回答学习问题前先查 `INDEX.md` 与相关卡片。
-2. 新想法默认写 `.cursor/memory/`，不要直接当正式卡。
-3. 新建正式卡：复制 `.cursor/templates/card.md` 或 `runbook.md` 到领域目录再填。
-4. 截图放**同领域** `assets/<编码>/`，卡片内用 `./assets/<编码>/...`。
-5. 晋升前：概念卡→卡片审查官；过程卡→复现验收官；demo→代码审查官。
-6. 改动正式卡或 INDEX 后，说明「已晋升 / 仍待审查」。
-
-## 角色入口
-
-用户提到审查、纠错、督促、晋升、验收、新建卡时，遵循：
-`.cursor/agents/*.md`、`.cursor/skills/*/SKILL.md`、`.cursor/templates/`。
+1. 先查 `INDEX.md` 与已有卡。
+2. 新想法只写 `.cursor/memory/`。
+3. 新建正式卡：复制 `.cursor/templates/` 对应模板到领域目录。
+4. 审查/督促/晋升：走对应 `kb-*` skill。
+5. 改正式卡或 INDEX 时说明「已晋升 / 仍待审查」。

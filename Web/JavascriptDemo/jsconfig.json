@@ -8,5 +8,5 @@
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "strict": false
   },
-  "include": ["JavascriptDemo/**/*.js", "JavascriptDemo/**/*.html"]
+  "include": ["./**/*.js", "./**/*.html"]
 }

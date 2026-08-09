@@ -1,21 +1,16 @@
-# Agent 入口（个人知识库）
+# Agent 入口
 
-本仓库是 **卡片知识库 + Cursor 迷你 ECC**。
+编排说明：[`.cursor/README.md`](.cursor/README.md)  
+规则：[`.cursor/rules/kb-workflow.mdc`](.cursor/rules/kb-workflow.mdc)  
+索引：[`INDEX.md`](INDEX.md)
 
-- 编排层（规则 / 角色 / Skill / memory / **templates**）：[`.cursor/README.md`](.cursor/README.md)
-- 正式知识：`Android/` `Web/` `Tools/`（含各领域 `assets/`）+ [`INDEX.md`](INDEX.md)
-- 新建卡：复制 [`.cursor/templates/`](.cursor/templates/README.md)
-- 始终遵守：[`.cursor/rules/kb-workflow.mdc`](.cursor/rules/kb-workflow.mdc)
+| 说法 | Skill |
+|------|--------|
+| 审卡 | `kb-card-review` |
+| 审 demo | `kb-code-review` |
+| 督促我 | `kb-coach` |
+| 整理 memory | `kb-promote` |
+| 验收过程卡 | `kb-verify` |
+| 教我 | `kb-tutor` |
 
-## 角色速查
-
-| 角色 | 说明书 | 用户可以怎么说 |
-|------|--------|----------------|
-| 卡片审查官 | `.cursor/agents/card-reviewer.md` | 审卡 / 卡片纠错 |
-| 代码审查官 | `.cursor/agents/code-reviewer.md` | 审 demo / 代码审查 |
-| 督学教练 | `.cursor/agents/coach.md` | 督促我 / 周检 |
-| 图书管理员 | `.cursor/agents/librarian.md` | 整理 memory / 晋升 |
-| 复现验收官 | `.cursor/agents/verifier.md` | 验收过程卡 |
-| 讲解导师 | `.cursor/agents/tutor.md` | 教我 / 讲清楚 |
-
-未审核内容只写 `.cursor/memory/`；晋升后才进领域目录。
+未审核只写 `.cursor/memory/`；正式卡在 `Android/` `Web/` `Tools/`。
