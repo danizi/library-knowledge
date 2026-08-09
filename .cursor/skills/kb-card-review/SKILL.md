@@ -9,6 +9,6 @@ description: >-
 
 1. 读取并完全遵循 [`.cursor/agents/card-reviewer.md`](../../agents/card-reviewer.md)
 2. 打开用户指定卡片；未指定则根据对话中的路径，或最近编辑的卡片
-3. 对照 `templates/card.md` / `templates/runbook.md`
+3. 对照 `.cursor/templates/card.md` / `runbook.md`
 4. 按角色要求的格式输出结论、问题列表、最小补丁
 5. 用户要求「按建议改」时再改文件；默认只审查

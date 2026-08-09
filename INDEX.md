@@ -1,6 +1,7 @@
 # 卡片索引
 
-按领域浏览；新建或移动卡片后请同步更新本页。模板见 [`templates/card.md`](templates/card.md)。
+按领域浏览；新建或移动卡片后请同步更新本页。  
+空白模板（编排层）：[`.cursor/templates/`](.cursor/templates/README.md) · 截图放各领域 `assets/<编码>/`。
 
 ---
 

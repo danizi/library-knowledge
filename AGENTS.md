@@ -2,8 +2,9 @@
 
 本仓库是 **卡片知识库 + Cursor 迷你 ECC**。
 
-- 编排层（规则 / 多角色 / Skill / 未审核记忆）：[`.cursor/README.md`](.cursor/README.md)
-- 正式知识：`Android/` `Web/` `Tools/` + [`INDEX.md`](INDEX.md)
+- 编排层（规则 / 角色 / Skill / memory / **templates**）：[`.cursor/README.md`](.cursor/README.md)
+- 正式知识：`Android/` `Web/` `Tools/`（含各领域 `assets/`）+ [`INDEX.md`](INDEX.md)
+- 新建卡：复制 [`.cursor/templates/`](.cursor/templates/README.md)
 - 始终遵守：[`.cursor/rules/kb-workflow.mdc`](.cursor/rules/kb-workflow.mdc)
 
 ## 角色速查
