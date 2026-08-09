@@ -42,7 +42,7 @@
     ↓ 审查角色纠错
 概念卡 / 过程卡           （Android|Web|Tools）
     ↓ 复跑成功 ≥2 次（可选）
-skills/                   （可复用工作流）
+.cursor/skills/           （可复用工作流，含领域 skill）
 ```
 
 正式卡模板：[`templates/card.md`](templates/card.md) · [`templates/runbook.md`](templates/runbook.md)

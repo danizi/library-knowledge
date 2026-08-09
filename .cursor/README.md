@@ -48,7 +48,7 @@
 Android|Web|Tools/   概念卡 / 过程卡（已晋升）
         │ 同一流程成功 ≥2 次
         ▼
-skills/ 或 .cursor/skills/   可复用工作流
+.cursor/skills/          可复用工作流（含 android-studio-autosetup 等）
 ```
 
 **禁止**：Agent 自动把 memory 写成正式卡并当作真理。必须经「卡片审查官 / 复现验收官」或你本人勾选。

@@ -83,10 +83,7 @@
 
 ---
 
-## skills · 领域技能包
+## skills（均在 `.cursor/skills/`）
 
-- [android-studio-autosetup](skills/android-studio-autosetup/SKILL.md)
-
-## skills · 知识库角色（Cursor）
-
-见 `.cursor/skills/`：`kb-card-review` / `kb-code-review` / `kb-coach` / `kb-promote` / `kb-verify` / `kb-tutor`
+- [android-studio-autosetup](.cursor/skills/android-studio-autosetup/SKILL.md)
+- 知识库角色：`kb-card-review` / `kb-code-review` / `kb-coach` / `kb-promote` / `kb-verify` / `kb-tutor`
