@@ -1,26 +1,26 @@
-<details open>
-  <summary>卡片内容</summary>
-  
-  - 核心问题<br>
-    1 Android中的资源文件定义是？<br>
-    2 系统默认创建了资源文件，由于android设备碎片化严重那么系统又是怎么来做适配的？
-    
-  - 问题回答<br>
-    定义是res/目录下的文件或目录，在res/目录下支持的文件和子目录请查看[官方文档-表 1. 项目 res/ 目录中支持的资源目录。](https://developer.android.com/guide/topics/resources/providing-resources?hl=zh-cn)。<br>
-    碎片化严重系统通过文件限定符，然后根据情况选中对应的资源，若不存在则使用默认资源。[官方文档- 表 2. 配置限定符名称。](https://developer.android.com/guide/topics/resources/providing-resources?hl=zh-cn)
-   
-</details>
+# res 资源文件夹
 
-<details>
-  <summary>关联卡片</summary>
-</details>
+**问：**
+Android 的资源文件指什么？设备那么碎，系统怎么挑对资源？
 
-<details>
-  <summary>参考文件</summary>
+**答：**
+`res/` 下的目录和文件就是资源（layout、drawable、values…）。  
+系统靠**目录名限定符**（如 `-hdpi`、`-zh`、`-night`）匹配当前设备配置；没有匹配就回落到默认目录。
 
-  [官方文档 - App resources](https://developer.android.com/guide/topics/resources/providing-resources?hl=zh-cn)
-</details>
+一句话：资源放 res，靠文件夹后缀（限定符）自动适配。
 
+**例 / 类比：**
+- 例子：`drawable-hdpi/icon.png` 与 `drawable/icon.png`——高分屏优先 hdpi。
+- 类比：衣柜按季节分区，今天冬天就拿冬天那格，没有再拿「常服」。
 
+**易错：**
+- 默认目录不能省——那是兜底。
+- 拼错限定符名等于资源失踪。
 
+**相关：**
+- [PD-001,1,a | drawable目录](./PD-001,1,a%20%7C%20drawable目录.md)
+- [PD-001,1,b | values目录](./PD-001,1,b%20%7C%20values目录.md)
+- [PD-001,2 | res资源文件夹下命名规范](./PD-001,2%20%7C%20res资源文件夹下命名规范.md)
 
+**参考：**
+- [提供资源](https://developer.android.com/guide/topics/resources/providing-resources?hl=zh-cn)

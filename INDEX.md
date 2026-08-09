@@ -1,9 +1,10 @@
 # 卡片索引
 
 按领域浏览；新建或移动卡片后请同步更新本页。  
-知识根目录：`knowledge/` · 概念卡模板（费曼：问/答/例/易错）：[`.cursor/templates/card.md`](.cursor/templates/card.md) · 编排：[`.cursor/README.md`](.cursor/README.md)
+知识根目录：`knowledge/` · 概念卡模板（费曼：问/答/一句话/例或类比/易错）：[`.cursor/templates/card.md`](.cursor/templates/card.md) · 编排：[`.cursor/README.md`](.cursor/README.md)
 
-> Android `V-*` 已按费曼格式重写；`FG-001` / `KT-001` / `AAP-001` 已同步。其余 Android 卡（空壳、PD/KT 长文）待改。
+> `knowledge/Android|Web|Tools` 下正式卡均已统一为费曼格式（问/答/一句话/例或类比/易错）。  
+> `JavascriptDemo/` 仍是练习场，不成概念卡。
 
 ---
 
@@ -11,13 +12,13 @@
 
 ### FG · Fragment
 - [FG-001 | Fragment](knowledge/Android/FG-001%20%7C%20Fragment.md)
-  - [FG-001,1 | Fragment生命周期](knowledge/Android/FG-001,1%20%7C%20Fragment生命周期.md)（骨架，待填答）
+  - [FG-001,1 | Fragment生命周期](knowledge/Android/FG-001,1%20%7C%20Fragment生命周期.md)
   - FG-001,2 DialogFragment（待建）
   - FG-001,3 回退栈（待建）
-  - [FG-001,4 | Fragment通信](knowledge/Android/FG-001,4%20%7C%20Fragment通信.md)（骨架，待填答）
+  - [FG-001,4 | Fragment通信](knowledge/Android/FG-001,4%20%7C%20Fragment通信.md)
   - FG-001,5 Fragment 与 Activity 关联（待建）
 
-### V · View / UI / Compose（费曼样板）
+### V · View / UI / Compose
 - [V-001 | View的定义](knowledge/Android/V-001%20%7C%20View的定义.md)
 - [V-002 | 盒子模型](knowledge/Android/V-002%20%7C%20盒子模型.md)
 - [V-003 | 坐标系](knowledge/Android/V-003%20%7C%20坐标系.md)
