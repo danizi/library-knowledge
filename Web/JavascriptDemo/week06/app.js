@@ -8,7 +8,7 @@ const statTotalEl = document.querySelector("#stat-total");
 const statActiveEl = document.querySelector("#stat-active");
 const statCompleteEl = document.querySelector("#stat-complete");
 const formErrorEl = document.querySelector("#form-error");
-
+const emptyTipEl = document.querySelector("#empty-tip");
 function updateStats() {
     const total = todos.length;
     const complete = todos.filter(t => t.done).length;
@@ -20,7 +20,15 @@ function updateStats() {
 
 function render() {
     todoListEl.innerHTML = '';
-    todos.forEach(todo => {
+    const visibleTodos = getVisibleTodos(todos);
+    if (todos.length === 0) {
+        emptyTipEl.textContent = '还没有任务，先添加一条';
+    } else if (visibleTodos.length === 0) {
+        emptyTipEl.textContent = '当前筛选下没有任务';
+    } else {
+        emptyTipEl.textContent = '';
+    }
+    visibleTodos.forEach(todo => {
         const li = document.createElement('li');
         const text = document.createElement('span');
         text.textContent = todo.text;
@@ -62,7 +70,7 @@ function loadTodos() {
         if (!raw) return [];
         const parsed = JSON.parse(raw);
         if (!Array.isArray(parsed)) throw new Error("not array");
-        return raw;
+        return parsed;
     } catch (error) {
         localStorage.setItem(STORAGE_KEY, '[]');
         return [];
@@ -75,6 +83,15 @@ function saveTodos(list) {
     } catch (error) {
 
     }
+}
+
+// 过滤函数
+let currentFilter = 'all';
+function getVisibleTodos(list) {
+    if (currentFilter === 'active') return list.filter(t => !t.done)
+    if (currentFilter === 'completed') return list.filter(t => t.done)
+
+    return list;
 }
 
 todos = loadTodos();
@@ -117,3 +134,11 @@ todoFormEl.addEventListener("submit", e => {
     updateStats();
 
 })
+
+// 给过滤按钮绑定点击事件
+document.querySelectorAll('#filters button').forEach(btn => {
+    btn.addEventListener('click', () => {
+        currentFilter = btn.dataset.filter;
+        render();
+    });
+});

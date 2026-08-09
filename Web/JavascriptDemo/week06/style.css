@@ -9,3 +9,8 @@
 
 .done { text-decoration: line-through; color: #888; }
 
+#empty-tip {
+  color: #666;
+  margin: 8px 0;
+}
+
