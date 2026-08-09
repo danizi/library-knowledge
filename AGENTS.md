@@ -13,4 +13,4 @@
 | 验收过程卡 | `kb-verify` |
 | 教我 | `kb-tutor` |
 
-未审核只写 `.cursor/memory/`；正式卡在 `Android/` `Web/` `Tools/`。
+未审核只写 `.cursor/memory/`；正式卡在 `knowledge/Android|Web|Tools/`。

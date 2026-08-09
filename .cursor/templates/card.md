@@ -1,7 +1,7 @@
 # 标题（与文件名标题一致）
 
 > 类型：概念卡 · 目标：忘掉后仍能用「问题 → 答案」快速召回  
-> 用法：复制本文件到 `Android|Web|Tools/`，改名 `前缀-序号 | 标题.md`
+> 用法：复制到 `knowledge/Android|Web|Tools/`，改名 `前缀-序号 | 标题.md`
 
 <details open>
   <summary>卡片内容</summary>

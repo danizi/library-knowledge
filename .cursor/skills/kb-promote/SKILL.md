@@ -9,7 +9,7 @@ description: >-
 
 1. 扫描 `.cursor/memory/*.md`
 2. 每条：丢弃 / 留 memory / 升概念卡 / 升过程卡
-3. 拟定编码；从 `.cursor/templates/` 复制模板；截图用领域 `assets/<编码>/`
+3. 拟定编码；从 `.cursor/templates/` 复制到 `knowledge/<领域>/`；截图用 `assets/<编码>/`
 4. 提醒先过审卡 / 验收 / 审码
 5. 用户确认后再落盘并更新 `INDEX.md`
 

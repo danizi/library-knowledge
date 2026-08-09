@@ -1,7 +1,7 @@
 ---
 name: kb-code-review
 description: >-
-  代码审查官：审查 JavascriptDemo 等练习的可运行性、bug、与卡片一致性。
+  代码审查官：审查 knowledge/Web/JavascriptDemo 等练习的可运行性、bug、与卡片一致性。
   用户说代码审查、demo 纠错时使用。
 ---
 

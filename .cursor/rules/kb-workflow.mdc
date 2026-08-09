@@ -9,12 +9,13 @@ alwaysApply: true
 |----|------|
 | 未审核 | `.cursor/memory/*.md` |
 | 模板 | `.cursor/templates/` |
-| 正式卡 | `Android/` `Web/` `Tools/` |
-| 截图 | 领域下 `assets/<编码>/`（按需创建） |
+| 正式卡 | `knowledge/Android|Web|Tools/` |
+| 练习 | `knowledge/Web/JavascriptDemo/` |
+| 截图 | `knowledge/<领域>/assets/<编码>/`（按需） |
 | 角色 | `.cursor/skills/kb-*/SKILL.md` |
 
-1. 先查 `INDEX.md` 与已有卡。
+1. 先查 `INDEX.md` 与 `knowledge/` 下已有卡。
 2. 新想法只写 `.cursor/memory/`。
-3. 新建正式卡：复制 `.cursor/templates/` 对应模板到领域目录。
+3. 新建正式卡：复制 `.cursor/templates/` 到 `knowledge/<领域>/`。
 4. 审查/督促/晋升：走对应 `kb-*` skill。
 5. 改正式卡或 INDEX 时说明「已晋升 / 仍待审查」。

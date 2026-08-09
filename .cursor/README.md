@@ -1,6 +1,6 @@
 # 迷你 ECC（Cursor）
 
-知识在 `Android/` `Web/` `Tools/`；编排在本目录。
+知识在 `knowledge/`；编排在本目录。
 
 ## 喊角色
 
@@ -17,15 +17,20 @@
 
 ```text
 .cursor/
-├── rules/          # 始终生效规则
-├── skills/         # 角色 + 领域 skill（唯一入口）
-├── templates/      # 复制用：card / runbook / memory
-└── memory/         # 未审核 md（扁平放置）
+├── rules/
+├── skills/
+├── templates/      # card / runbook / memory
+└── memory/
+
+knowledge/
+├── Android/
+├── Web/            # 含 JavascriptDemo 练习
+└── Tools/
 ```
 
 ## 用法摘要
 
-- 闪念 → `.cursor/memory/*.md`（可复制 `templates/memory.md`）
-- 正式卡 → 复制 `templates/card.md` 或 `runbook.md` 到领域目录
-- 截图 → 需要时再建 `Android|Web|Tools/assets/<编码>/`，卡片用 `./assets/...`
-- 晋升：`memory` → 角色审查 → 领域正式卡 → 更新 `INDEX.md`
+- 闪念 → `.cursor/memory/*.md`
+- 正式卡 → 复制 `templates/*` 到 `knowledge/<领域>/`
+- 截图 → 按需 `knowledge/<领域>/assets/<编码>/`
+- 晋升后更新根目录 `INDEX.md`

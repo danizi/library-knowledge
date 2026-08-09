@@ -7,7 +7,7 @@
     React 学习从哪里开始，本系列覆盖什么？
 
   - **标准答案**
-    本卡是 React 入口。路径：环境搭建 → 基本语法 → 项目结构与调试。练习代码可参考 `Web/JavascriptDemo/`。
+    本卡是 React 入口。路径：环境搭建 → 基本语法 → 项目结构与调试。练习代码可参考 `knowledge/Web/JavascriptDemo/`。
 
 </details>
 

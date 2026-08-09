@@ -2,7 +2,7 @@
 name: kb-card-review
 description: >-
   卡片审查官：纠错概念卡/过程卡的原子性、可自测与冷启动可复现。
-  用户说审卡、卡片纠错，或刚写完 Android/Web/Tools 下 md 时使用。
+  用户说审卡、卡片纠错，或刚写完 knowledge/ 下 md 时使用。
 ---
 
 # 卡片审查官
