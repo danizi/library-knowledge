@@ -1,29 +1,21 @@
 # React
 
-<details open>
-  <summary>卡片内容</summary>
+**问：** 学 React 从哪几步走？这套卡怎么拆？
 
-  - **核心问题**
-    React 学习从哪里开始，本系列覆盖什么？
+**答：**  
+本卡是入口。顺序：环境搭起来 → 基本语法 → 项目结构与调试。练习代码在 `knowledge/Web/JavascriptDemo/`；草稿见 `.cursor/memory/`。
 
-  - **标准答案**
-    本卡是 React 入口。路径：环境搭建 → 基本语法 → 项目结构与调试。练习代码可参考 `knowledge/Web/JavascriptDemo/`。
+**例：** 先用 Vite 跑出 Hello World，再回头啃组件和 hooks。
 
-</details>
+**易错：**
+- 环境卡和语法卡别混成一篇长文。
+- `R-001,b` 仍很空，优先补费曼短卡而不是继续堆链接。
 
-<details>
-  <summary>关联卡片</summary>
+**相关：**
+- [R-001,a | 环境搭建](./R-001,a%20%7C%20环境搭建.md) — 先能跑
+- [R-001,b | 基本语法](./R-001,b%20%7C%20基本语法.md) — 语法原子卡（待充实）
+- [R-001,c | 项目使用及说明](./R-001,c%20%7C%20项目使用及说明.md) — 目录与插件
+- [memory · react语法学习](../../.cursor/memory/react语法学习.md) — 待拆草稿
 
-  - [R-001,a | 环境搭建](./R-001,a%20%7C%20环境搭建.md) — Vite / CRA 与 VS Code 准备
-  - [R-001,b | 基本语法](./R-001,b%20%7C%20基本语法.md) — 语法原子卡（待充实）
-  - [R-001,c | 项目使用及说明](./R-001,c%20%7C%20项目使用及说明.md) — 目录结构与插件
-  - [inbox · react语法学习](../inbox/react语法学习.md) — 待拆分的草稿笔记
-
-</details>
-
-<details>
-  <summary>参考文献</summary>
-
-  - [React 官方文档](https://react.dev/)
-
-</details>
+**参考：**
+- [React 官方文档](https://react.dev/)

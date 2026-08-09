@@ -31,6 +31,6 @@ knowledge/
 ## 用法摘要
 
 - 闪念 → `.cursor/memory/*.md`
-- 正式卡 → 复制 `templates/*` 到 `knowledge/<领域>/`
+- 概念卡 → 复制 `templates/card.md`（费曼：问/答/例/易错）到 `knowledge/<领域>/`
 - 截图 → 按需 `knowledge/<领域>/assets/<编码>/`
 - 晋升后更新根目录 `INDEX.md`

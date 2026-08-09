@@ -1,42 +1,24 @@
 # Fragment
 
-<details open>
-  <summary>卡片内容</summary>
+**问：** Fragment 是啥？为啥要用、啥时候用？
 
-  - **核心问题**
-    Fragment 是什么？为什么、何时、如何使用？
+**答：**  
+Fragment 是可塞进 Activity 的一块「子界面」：有自己的布局和生命周期，能在 Activity 还活着时被加进来或换掉。  
+**为啥用：** 把又肥又长的 Activity 拆开，界面好复用、好适配（平板/底部导航/多 Tab）。  
+**啥时候用：** 需要在同一个 Activity 里灵活切换页面时。  
+**限制：** 不能单独活着，必须挂在 Activity（或已挂上的 Fragment）上。创建容器优先 `FragmentContainerView`。
 
-  - **标准答案**
-    - **what**：可嵌入 Activity 的 UI 组件，有独立布局与生命周期，可在宿主 Activity 运行期间添加/删除。
-    - **why**：拆解臃肿 Activity，提升界面复用与多屏适配，便于模块化维护。
-    - **who**：系统提供，供开发者做平板布局、底部菜单、多标签等模块化 UI。
-    - **when**：需要灵活切换页面时（横竖屏、底部导航、多 Tab）。
-    - **where**：必须依托 Activity，或已绑定到 Activity 的 Fragment，不能单独存在。
-    - **how**：从创建、生命周期、FragmentManager、事务、回退栈、通信、状态保存、动画逐项掌握。创建时优先使用 `FragmentContainerView`。
+**例：** 底部三个 Tab，每个 Tab 一个 Fragment，宿主只有一个 Activity。
 
-  - **易错点**
-    - 容器应使用 `FragmentContainerView`，不要随意用普通 `FrameLayout` 代替。
+**易错：**
+- 容器别随便用普通 `FrameLayout` 代替 `FragmentContainerView`。
+- 生命周期、通信、回退栈要分开记（见子卡）。
 
-</details>
+**相关：**
+- [FG-001,1 | Fragment生命周期](./FG-001,1%20%7C%20Fragment生命周期.md) — 比 Activity 多出来的节点（待充实）
+- [FG-001,4 | Fragment通信](./FG-001,4%20%7C%20Fragment通信.md) — 怎么跟别人说话（待充实）
+- [ERR-001 | 开发踩坑记录](./ERR-001%20%7C%20开发踩坑记录.md) — 配置变更时刷新等坑
+- [V-001 | View的定义](./V-001%20%7C%20View的定义.md) — Fragment 里仍是 View 树
 
-<details>
-  <summary>关联卡片</summary>
-
-  - [FG-001,1 | Fragment生命周期](./FG-001,1%20%7C%20Fragment生命周期.md) — 比 Activity 多出的生命周期节点
-  - [FG-001,4 | Fragment通信](./FG-001,4%20%7C%20Fragment通信.md) — 接口 / 共享 ViewModel 等通信方式
-  - [ERR-001 | 开发踩坑记录](./ERR-001%20%7C%20开发踩坑记录.md) — 含配置变更时 Fragment 刷新等坑
-
-  待建卡（占位）：
-  - FG-001,2 DialogFragment
-  - FG-001,3 回退栈
-  - FG-001,5 Fragment 与 Activity 关联
-
-</details>
-
-<details>
-  <summary>参考文献</summary>
-
-  - [官方 Fragments 指南](https://developer.android.com/guide/fragments?hl=zh-cn)
-  - [菜鸟教程 Fragment](https://www.runoob.com/w3cnote/android-tutorial-fragment-base.html)
-
-</details>
+**参考：**
+- [官方 Fragments 指南](https://developer.android.com/guide/fragments?hl=zh-cn)

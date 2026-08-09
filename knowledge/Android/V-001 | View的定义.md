@@ -1,29 +1,22 @@
 # View 的定义
 
-<details open>
-  <summary>卡片内容</summary>
+**问：** 界面上看得见、点得着的东西，到底是谁构成的？View 和 ViewGroup 啥关系？
 
-  - **核心问题**
-    Android 中用户可见界面由什么构成？View 与 ViewGroup 的关系是什么？
+**答：**  
+能看见、能交互的控件，基本都从 `View` 长出来。  
+`ViewGroup` 多半自己不画内容，是装一堆子 View 的盒子（容器）。界面就是「盒子套盒子 + 叶子控件」。
 
-  - **标准答案**
-    用户可见并可交互的界面都由 `View` 与 `ViewGroup` 派生而来。`View` 负责绘制与交互；`ViewGroup` 本身通常不可见，是存放子 View 的容器。
+**例：** `TextView`、`Button` 是 View；`LinearLayout`、`RecyclerView` 是 ViewGroup。
 
-</details>
+**易错：**
+- 别以为 ViewGroup「看不见」就不重要——量尺寸、摆子 View、分发触摸都靠它。
+- Compose 里没有这套继承树，对照见 V-005。
 
-<details>
-  <summary>关联卡片</summary>
+**相关：**
+- [V-002 | 盒子模型](./V-002%20%7C%20盒子模型.md) — 宽高、padding、margin 怎么占地方
+- [V-003 | 坐标系](./V-003%20%7C%20坐标系.md) — 屏幕坐标 vs 视图坐标
+- [V-004 | Widget](./V-004%20%7C%20Widget.md) — 常用系统控件先认谁
+- [V-005 | Jetpack Compose](./V-005%20%7C%20Jetpack%20Compose.md) — 声明式 UI 另一条路
 
-  - [V-002 | 盒子模型](./V-002%20%7C%20盒子模型.md) — View 的尺寸与内外边距
-  - [V-003 | 坐标系](./V-003%20%7C%20坐标系.md) — 屏幕坐标与视图坐标
-  - [V-004 | Widget](./V-004%20%7C%20Widget.md) — 常用系统控件
-  - [V-005 | Jetpack Compose](./V-005%20%7C%20Jetpack%20Compose.md) — 声明式 UI 对照
-
-</details>
-
-<details>
-  <summary>参考文献</summary>
-
-  - [官方文档 View](https://developer.android.com/reference/android/view/View)
-
-</details>
+**参考：**
+- [View 官方文档](https://developer.android.com/reference/android/view/View)
