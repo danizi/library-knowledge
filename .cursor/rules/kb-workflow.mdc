@@ -1,0 +1,30 @@
+---
+description: 个人知识库迷你 ECC 工作流：搜库优先、记忆未审核、晋升需角色验收
+alwaysApply: true
+---
+
+# 知识库工作流（迷你 ECC）
+
+## 分层（不要混）
+
+| 层 | 路径 | 信任 |
+|----|------|------|
+| 未审核记忆 | `.cursor/memory/**` | unreviewed，仅供上下文 |
+| 正式卡片 | `Android/` `Web/` `Tools/` | 已晋升，可复习/复跑 |
+| 练习产物 | `Web/JavascriptDemo/` 等 | 证据，过程卡需写路径 |
+| 截图 | `assets/<编码>/` | 过程证据 |
+| 角色与 Skill | `.cursor/agents/` `.cursor/skills/` | 如何做事，不是领域知识 |
+
+## 硬规则
+
+1. 回答学习/Android/Web/工具问题前，先查 `INDEX.md` 与相关卡片；有卡则基于卡补充，勿凭空另起炉灶。
+2. 新想法默认写入 `.cursor/memory/`（notes/lessons/handoffs/facts），**不要**直接当正式卡。
+3. 晋升正式卡前：概念卡走卡片审查官；过程卡走复现验收官；demo 走代码审查官。
+4. 过程卡必须冷启动可复现：结果定义、环境、步骤、预期、图或代码路径、故障表。
+5. 模板：`templates/card.md`、`templates/runbook.md`、`.cursor/memory/README.md` 内记忆模板。
+6. 改动正式卡或 INDEX 后，在回复里说明「已晋升 / 仍待审查」。
+
+## 角色入口
+
+用户提到审查、纠错、督促、晋升、验收时，读取并遵循对应：
+`.cursor/agents/*.md` 与 `.cursor/skills/*/SKILL.md`。

@@ -1,57 +1,68 @@
-# 个人知识库 · 卢曼卡片盒（Zettelkasten）
+# 个人知识库 · 迷你 ECC（Cursor）
 
-用卡片学习法沉淀可复用的原子知识。一条卡片只回答一个问题；知识网络靠链接生长，而不是靠目录堆叠。
+用卢曼卡片沉淀可复用知识；用 **`.cursor/` 里的多角色 Agent** 做纠错、审查与督促。  
+灵感来自 [ECC](https://github.com/affaan-m/ECC) 的分层思想，但只保留个人学习需要的薄层。
 
-参考：[卢曼卡片学习法介绍](https://zettelkasten.de/introduction/)
-
----
-
-## 目录职责
-
-| 目录 | 用途 |
-|------|------|
-| `Android/` `Web/` `Tools/` | 正式卡片（已原子化、有编码） |
-| `inbox/` | 闪念 / 草稿，尚未成卡 |
-| `Web/JavascriptDemo/` | 练习场，不等于卡片 |
-| `skills/` | 可复用操作技能包 |
-| `templates/` | 卡片模板 |
+> Optimize the context window. Persist everything else.
 
 ---
 
-## 编号规则
+## 两层结构
 
-格式：`前缀-序号 | 标题.md`，子卡用逗号展开：`前缀-序号,分支 | 标题.md`
+| 层 | 在哪 | 干什么 |
+|----|------|--------|
+| **编排层** | [`.cursor/`](.cursor/README.md) | 规则、角色、Skill、未审核 memory |
+| **知识层** | `Android/` `Web/` `Tools/` `assets/` | 已晋升概念卡 / 过程卡 / 截图 / 练习 |
 
-| 前缀 | 领域 |
-|------|------|
-| `FG` | Fragment |
-| `V` | View / UI / Compose |
-| `PD` | 工程目录与资源 |
-| `KT` | Kotlin |
-| `AAP` | Android 架构 |
-| `DP` | 设计模式 |
-| `ERR` | 踩坑与排错经验 |
-| `R` | React |
-| `TL` | 工具与环境 |
-
-示例：`V-005` → Compose 总卡；`V-005,4,a` → Modifier 子卡。
+当前使用 Cursor → 编排放 `.cursor/`。若换 IDE，可把同结构迁到对应目录（思路不变）。
 
 ---
 
-## 卡片要求
+## 多角色（补上「学完没人纠错」）
 
-1. **原子化**：一张卡只讲一个概念或一个问题。
-2. **唯一编码**：文件名带前缀编号，索引中可检索。
-3. **可链接**：关联卡片写清「为什么链过去」，不要裸链。
-4. **可复习**：优先写成「核心问题 → 标准答案」，便于自测。
+| 角色 | 职责 | 你怎么喊 |
+|------|------|----------|
+| **卡片审查官** | 卡写得对不对、能不能复习/复现 | 「审卡」 |
+| **代码审查官** | demo 有没有 bug、和卡是否一致 | 「审 demo」 |
+| **复现验收官** | 只按过程卡能否做完 | 「验收过程卡」 |
+| **督学教练** | 周检、≤3 项任务、抽查默答 | 「督促我」 |
+| **图书管理员** | memory 晋升、改 INDEX | 「整理 memory」 |
+| **讲解导师** | 讲清楚 + 逼你落盘一项 | 「教我」 |
 
-新建卡片请复制 [`templates/card.md`](templates/card.md)。
+角色说明书：`.cursor/agents/` · Skill：`.cursor/skills/` · 总入口：[`AGENTS.md`](AGENTS.md)
 
 ---
 
-## 工作流
+## 晋升闭环
 
-1. 想法先丢进 `inbox/`
-2. 整理时拆成原子卡，放入对应领域目录并编号
-3. 补上关联链接与参考文献
-4. 更新 [`INDEX.md`](INDEX.md)
+```text
+学 / 做 / 踩坑
+    ↓
+.cursor/memory/*          （未审核，2 分钟一条）
+    ↓ 审查角色纠错
+概念卡 / 过程卡           （Android|Web|Tools）
+    ↓ 复跑成功 ≥2 次（可选）
+skills/                   （可复用工作流）
+```
+
+正式卡模板：[`templates/card.md`](templates/card.md) · [`templates/runbook.md`](templates/runbook.md)
+
+---
+
+## 知识层约定（摘要）
+
+- 编号：`前缀-序号 | 标题.md`（FG/V/PD/KT/R/TL/ERR…）
+- 过程卡必须冷启动可复现；图在 `assets/<编码>/`
+- 练习代码在 `Web/JavascriptDemo/` 等，过程卡写清路径
+- 索引：[`INDEX.md`](INDEX.md)
+
+前缀表与维护细则见历史卡片规范；**角色怎么协作以 `.cursor/README.md` 为准**。
+
+---
+
+## 建议你怎么用
+
+1. 打开本仓库（或把 Agent 根目录指到这里），确保加载 `.cursor/rules`
+2. 学完先丢 `.cursor/memory/notes/`，再喊「审卡」或「审 demo」
+3. 每周五说一次「督促我」
+4. 过程卡写完说「验收过程卡」——过了再信任它能救忘记的自己

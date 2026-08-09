@@ -75,12 +75,18 @@
 
 ---
 
-## inbox · 待整理
+## memory · 未审核（`.cursor/memory`）
 
-- [react语法学习](inbox/react语法学习.md) → 计划拆入 `R-001` 系列
+- [react语法学习](.cursor/memory/notes/react语法学习.md) → 计划拆入 `R-001` 系列（喊「整理 memory」晋升）
+
+编排与角色：[`.cursor/README.md`](.cursor/README.md) · [`AGENTS.md`](AGENTS.md)
 
 ---
 
-## skills
+## skills · 领域技能包
 
 - [android-studio-autosetup](skills/android-studio-autosetup/SKILL.md)
+
+## skills · 知识库角色（Cursor）
+
+见 `.cursor/skills/`：`kb-card-review` / `kb-code-review` / `kb-coach` / `kb-promote` / `kb-verify` / `kb-tutor`
