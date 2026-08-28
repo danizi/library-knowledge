@@ -18,8 +18,9 @@
 - 什么都用全局单例「图省事」。
 
 **相关：**
-- [FG-001 | Fragment](./FG-001%20%7C%20Fragment.md)
-- [AAP-001 | Android 架构模式](./AAP-001%20%7C%20Android%20架构模式.md)
+- [FG-001 | Fragment](<./FG-001 | Fragment.md>)
+- [FG-001,5 | Fragment与Activity关联](<./FG-001,5 | Fragment与Activity关联.md>) — 信箱挂在宿主上，不是 Fragment 互相塞
+- [AAP-001 | Android 架构模式](<./AAP-001 | Android 架构模式.md>)
 
 **参考：**
 - [Fragment 通信](https://developer.android.com/guide/fragments/communicate?hl=zh-cn)

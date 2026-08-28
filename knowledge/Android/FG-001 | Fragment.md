@@ -18,10 +18,11 @@ Fragment 是可塞进 Activity 的一块「子界面」：有自己的布局和�
 - 生命周期、通信、回退栈要分开记。
 
 **相关：**
-- [FG-001,1 | Fragment生命周期](./FG-001,1%20%7C%20Fragment生命周期.md)
-- [FG-001,4 | Fragment通信](./FG-001,4%20%7C%20Fragment通信.md)
-- [ERR-001 | 开发踩坑记录](./ERR-001%20%7C%20开发踩坑记录.md)
-- [V-001 | View的定义](./V-001%20%7C%20View的定义.md)
+- [FG-001,1 | Fragment生命周期](<./FG-001,1 | Fragment生命周期.md>)
+- [FG-001,4 | Fragment通信](<./FG-001,4 | Fragment通信.md>)
+- [FG-001,5 | Fragment与Activity关联](<./FG-001,5 | Fragment与Activity关联.md>) — 宿主管什么、为啥单 Activity
+- [ERR-001 | 开发踩坑记录](<./ERR-001 | 开发踩坑记录.md>)
+- [V-001 | View的定义](<./V-001 | View的定义.md>)
 
 **参考：**
 - [Fragments 指南](https://developer.android.com/guide/fragments?hl=zh-cn)
