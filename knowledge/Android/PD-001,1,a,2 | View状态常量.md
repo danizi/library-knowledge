@@ -18,7 +18,7 @@
 - XML 里写 `false` 与代码里负号属性，写法不一样。
 
 **相关：**
-- [PD-001,1,a,1 | 状态列表的使用](./PD-001,1,a,1%20%7C%20状态列表的使用.md)
+- [PD-001,1,a,1 | 状态列表的使用](<./PD-001,1,a,1 | 状态列表的使用.md>)
 
 **参考：**
 - [StateList 文档](https://developer.android.com/guide/topics/resources/drawable-resource?hl=zh-cn#StateList)

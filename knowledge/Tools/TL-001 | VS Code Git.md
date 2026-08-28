@@ -20,7 +20,7 @@
 - 冲突没解决就狂点同步。
 
 **相关：**
-- [TL-001,1 | git pull 分叉速查](./TL-001,1%20%7C%20git%20pull%20分叉速查.md)
+- [TL-001,1 | git pull 分叉速查](<./TL-001,1 | git pull 分叉速查.md>)
 
 **参考：**
 - [VS Code Git 文档](https://code.visualstudio.com/docs/sourcecontrol/overview)

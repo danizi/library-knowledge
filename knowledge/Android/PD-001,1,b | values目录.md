@@ -18,8 +18,8 @@
 - styles（控件样式）和 themes（窗口/主题）职责搅混。
 
 **相关：**
-- [PD-001,1,b,1 | 记一次主题样式重构](./PD-001,1,b,1%20%7C%20记一次主题样式重构.md)
-- [PD-001,1 | res资源文件夹](./PD-001,1%20%7C%20res资源文件夹.md)
+- [PD-001,1,b,1 | 记一次主题样式重构](<./PD-001,1,b,1 | 记一次主题样式重构.md>)
+- [PD-001,1 | res资源文件夹](<./PD-001,1 | res资源文件夹.md>)
 
 **参考：**
 - [资源类型概览](https://developer.android.com/guide/topics/resources/available-resources)

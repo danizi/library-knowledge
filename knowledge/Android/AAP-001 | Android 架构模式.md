@@ -19,9 +19,9 @@ MVC/MVP/MVVM 是常见分工名；现代文档更强调原则+分层。
 - 多处各改各的数据副本，没有 SSOT。
 
 **相关：**
-- [FG-001 | Fragment](./FG-001%20%7C%20Fragment.md)
-- [DP-001 | 设计模式](./DP-001%20%7C%20设计模式.md)
-- [V-005,2 | 声明式与命令式对比](./V-005,2%20%7C%20声明式与命令式对比.md)
+- [FG-001 | Fragment](<./FG-001 | Fragment.md>)
+- [DP-001 | 设计模式](<./DP-001 | 设计模式.md>)
+- [ACT-001,3 | 配置变更与状态](<./ACT-001,3 | 配置变更与状态.md>) — 状态为什么不该堆在 Activity
 
 **参考：**
 - [应用架构指南](https://developer.android.com/topic/architecture?hl=zh-cn)

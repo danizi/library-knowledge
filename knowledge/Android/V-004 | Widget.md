@@ -18,8 +18,8 @@
 - 长列表别堆控件，用 RecyclerView（另卡）。
 
 **相关：**
-- [V-001 | View的定义](./V-001%20%7C%20View的定义.md)
-- [V-005 | Jetpack Compose](./V-005%20%7C%20Jetpack%20Compose.md)
+- [V-001 | View的定义](<./V-001 | View的定义.md>)
+- [V-005 | Jetpack Compose](<./V-005 | Jetpack Compose.md>)
 
 **参考：**
 - [TextView](https://developer.android.com/reference/android/widget/TextView)

@@ -18,9 +18,9 @@ Android 的资源文件指什么？设备那么碎，系统怎么挑对资源？
 - 拼错限定符名等于资源失踪。
 
 **相关：**
-- [PD-001,1,a | drawable目录](./PD-001,1,a%20%7C%20drawable目录.md)
-- [PD-001,1,b | values目录](./PD-001,1,b%20%7C%20values目录.md)
-- [PD-001,2 | res资源文件夹下命名规范](./PD-001,2%20%7C%20res资源文件夹下命名规范.md)
+- [PD-001,1,a | drawable目录](<./PD-001,1,a | drawable目录.md>)
+- [PD-001,1,b | values目录](<./PD-001,1,b | values目录.md>)
+- [PD-001,2 | res资源文件夹下命名规范](<./PD-001,2 | res资源文件夹下命名规范.md>)
 
 **参考：**
 - [提供资源](https://developer.android.com/guide/topics/resources/providing-resources?hl=zh-cn)

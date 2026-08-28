@@ -18,8 +18,8 @@ Compose API 那么多，怎么先分桶，免得记成一锅粥？
 - 别把 Modifier 糊进「组件」桶里了事。
 
 **相关：**
-- [V-005 | Jetpack Compose](./V-005%20%7C%20Jetpack%20Compose.md)
-- [V-005,4,a | Modifier](./V-005,4,a%20%7C%20Modifier.md)
+- [V-005 | Jetpack Compose](<./V-005 | Jetpack Compose.md>)
+- [V-005,4,a | Modifier](<./V-005,4,a | Modifier.md>)
 
 **参考：**
 - [Compose 总览](https://developer.android.com/develop/ui/compose?hl=zh-cn)

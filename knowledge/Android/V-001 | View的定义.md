@@ -19,10 +19,10 @@
 - Compose 不是这套继承树，对照见 V-005。
 
 **相关：**
-- [V-002 | 盒子模型](./V-002%20%7C%20盒子模型.md) — 单个 View 怎么占地方
-- [V-003 | 坐标系](./V-003%20%7C%20坐标系.md) — 点落在屏幕还是控件里
-- [V-004 | Widget](./V-004%20%7C%20Widget.md) — 常用叶子控件先认谁
-- [V-005 | Jetpack Compose](./V-005%20%7C%20Jetpack%20Compose.md) — 声明式 UI 另一条路
+- [V-002 | 盒子模型](<./V-002 | 盒子模型.md>) — 单个 View 怎么占地方
+- [V-003 | 坐标系](<./V-003 | 坐标系.md>) — 点落在屏幕还是控件里
+- [V-004 | Widget](<./V-004 | Widget.md>) — 常用叶子控件先认谁
+- [V-005 | Jetpack Compose](<./V-005 | Jetpack Compose.md>) — 声明式 UI 另一条路
 
 **参考：**
 - [View 官方文档](https://developer.android.com/reference/android/view/View)

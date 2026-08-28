@@ -26,8 +26,8 @@ lifecycleScope.launch {
 - 把 Flow 当「一调用就跑」的热流（那是另一类，如 SharedFlow/StateFlow 场景）。
 
 **相关：**
-- [KT-001,1 | 基本概念](./KT-001,1%20%7C%20基本概念.md)
-- [KT-001 | Kotlin](./KT-001%20%7C%20Kotlin.md)
+- [KT-001,1 | 基本概念](<./KT-001,1 | 基本概念.md>)
+- [KT-001 | Kotlin](<./KT-001 | Kotlin.md>)
 
 **参考：**
 - [Flow 官方文档](https://kotlinlang.org/docs/flow.html)

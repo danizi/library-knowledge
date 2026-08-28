@@ -18,11 +18,11 @@ Compose 是 Android 的**声明式 UI**工具包：你描述「界面现在应�
 - 可与 XML View 共存，但先把声明式心态立住。
 
 **相关：**
-- [V-005,1 | Preview注解](./V-005,1%20%7C%20Preview注解.md)
-- [V-005,2 | 声明式与命令式对比](./V-005,2%20%7C%20声明式与命令式对比.md)
-- [V-005,4 | Compose 核心 API 分类](./V-005,4%20%7C%20Compose%20核心%20API%20分类.md)
-- [V-005,4,a | Modifier](./V-005,4,a%20%7C%20Modifier.md)
-- [V-001 | View的定义](./V-001%20%7C%20View的定义.md)
+- [V-005,1 | Preview注解](<./V-005,1 | Preview注解.md>)
+- [V-005,2 | 声明式与命令式对比](<./V-005,2 | 声明式与命令式对比.md>)
+- [V-005,4 | Compose 核心 API 分类](<./V-005,4 | Compose 核心 API 分类.md>)
+- [V-005,4,a | Modifier](<./V-005,4,a | Modifier.md>)
+- [V-001 | View的定义](<./V-001 | View的定义.md>)
 
 **参考：**
 - [Compose 组件](https://developer.android.com/develop/ui/compose/components?hl=zh-cn)

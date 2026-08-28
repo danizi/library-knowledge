@@ -22,8 +22,8 @@ fun LoginPreview() { LoginScreen() }
 - Preview 别依赖只有真 Activity 才有的东西。
 
 **相关：**
-- [V-005 | Jetpack Compose](./V-005%20%7C%20Jetpack%20Compose.md)
-- [V-005,2 | 声明式与命令式对比](./V-005,2%20%7C%20声明式与命令式对比.md)
+- [V-005 | Jetpack Compose](<./V-005 | Jetpack Compose.md>)
+- [V-005,2 | 声明式与命令式对比](<./V-005,2 | 声明式与命令式对比.md>)
 
 **参考：**
 - [预览界面](https://developer.android.com/develop/ui/compose/tooling/previews?hl=zh-cn#ui-mode)

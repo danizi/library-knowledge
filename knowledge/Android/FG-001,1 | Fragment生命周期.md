@@ -18,8 +18,8 @@ Fragment 除了熟悉的创建/启动/暂停/停止/销毁，还多了和「被�
 - view 已销毁后还碰 view 会崩。
 
 **相关：**
-- [FG-001 | Fragment](./FG-001%20%7C%20Fragment.md)
-- [ERR-001 | 开发踩坑记录](./ERR-001%20%7C%20开发踩坑记录.md)
+- [FG-001 | Fragment](<./FG-001 | Fragment.md>)
+- [ERR-001 | 开发踩坑记录](<./ERR-001 | 开发踩坑记录.md>)
 
 **参考：**
 - [Fragment 生命周期](https://developer.android.com/guide/fragments/lifecycle?hl=zh-cn)

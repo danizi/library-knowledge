@@ -22,7 +22,7 @@ git pull --rebase                 # 或 --no-rebase
 - rebase 到一半冲突慌着 `rebase --abort` 却不知道自己想要啥。
 
 **相关：**
-- [TL-001 | VS Code Git](./TL-001%20%7C%20VS%20Code%20Git.md)
+- [TL-001 | VS Code Git](<./TL-001 | VS Code Git.md>)
 
 **参考：**
 - [git pull 文档](https://git-scm.com/docs/git-pull)

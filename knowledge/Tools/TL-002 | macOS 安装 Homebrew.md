@@ -24,7 +24,7 @@ brew -v && brew update
 - 浅克隆不当导致以后 `brew update` 怪问题。
 
 **相关：**
-- [TL-001 | VS Code Git](./TL-001%20%7C%20VS%20Code%20Git.md) — 装完常用 brew 装 git/node
+- [TL-001 | VS Code Git](<./TL-001 | VS Code Git.md>) — 装完常用 brew 装 git/node
 
 **参考：**
 - [Homebrew](https://brew.sh)

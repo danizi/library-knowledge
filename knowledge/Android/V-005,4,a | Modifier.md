@@ -20,8 +20,8 @@ Text("Hello", modifier = Modifier.padding(8.dp).clickable { })
 - 改视觉时别忘了点击热区。
 
 **相关：**
-- [V-005,4 | Compose 核心 API 分类](./V-005,4%20%7C%20Compose%20核心%20API%20分类.md)
-- [V-005 | Jetpack Compose](./V-005%20%7C%20Jetpack%20Compose.md)
+- [V-005,4 | Compose 核心 API 分类](<./V-005,4 | Compose 核心 API 分类.md>)
+- [V-005 | Jetpack Compose](<./V-005 | Jetpack Compose.md>)
 
 **参考：**
 - [修饰符列表](https://developer.android.com/develop/ui/compose/modifiers-list?hl=zh-cn)

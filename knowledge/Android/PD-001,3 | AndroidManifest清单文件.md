@@ -18,7 +18,7 @@
 - 导出组件（`exported`）乱开有安全风险。
 
 **相关：**
-- [PD-001 | 工程文件目录](./PD-001%20%7C%20工程文件目录.md)
+- [PD-001 | 工程文件目录](<./PD-001 | 工程文件目录.md>)
 
 **参考：**
 - [应用清单概览](https://developer.android.com/guide/topics/manifest/manifest-intro?hl=zh-cn)
