@@ -1,0 +1,31 @@
+# Applies to all Activity demo stages under this folder.
+# Keep source (src/, res/, Manifest, Gradle wrapper). Drop IDE/build/secrets.
+
+.gradle/
+.kotlin/
+build/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+bin/
+gen/
+out/
+release/
+
+*.apk
+*.aab
+*.ap_
+*.aar
+*.dex
+*.class
+output-metadata.json
+*.hprof
+*.log
+*.iml
+.idea/
+
+*.jks
+*.keystore
+keystore.properties
+google-services.json
