@@ -1,5 +1,6 @@
-# macOS generated files
+# macOS / Windows
 .DS_Store
+Thumbs.db
 
 # VS Code workspace settings
 .vscode/
@@ -8,3 +9,39 @@
 node_modules/
 dist/
 build/
+
+# Logs
+*.log
+
+# Android / Gradle generated
+.gradle/
+.kotlin/
+local.properties
+captures/
+.externalNativeBuild/
+.cxx/
+bin/
+gen/
+out/
+release/
+*.apk
+*.aab
+*.ap_
+*.aar
+*.dex
+*.class
+output-metadata.json
+*.hprof
+*.iml
+.idea/
+
+# Signing / secrets — never commit
+*.jks
+*.keystore
+keystore.properties
+google-services.json
+
+# Android Studio leftover XML (also covered by .idea/, keep for copies outside .idea)
+misc.xml
+deploymentTargetDropDown.xml
+render.experimental.xml
