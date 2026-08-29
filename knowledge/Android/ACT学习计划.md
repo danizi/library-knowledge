@@ -3,7 +3,7 @@
 目标：**7 天内**能讲清 Activity 高频面试题，并有 Demo 可举证。  
 原则：每块时间 **到点停**；Demo 不过不写卡；卡写完必须 **15 分钟默答**。
 
-配套：[ACT面试题库](ACT面试题库.md)（按天刷题）  
+配套：[ACT面试题库](ACT面试题库.md)（按天刷题）· [ACT错题库](ACT错题库.md)（只记你答歪的）  
 环境：Android Studio + Kotlin Empty Activity  
 Demo 目录：`knowledge/Android/demos/activity/`
 
@@ -153,7 +153,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 
 **5 天突击可砍**：Demo 只做 30 min 切换一个 Fragment；FG-001,5 仍写卡，Demo 面试前口述即可。
 
-**D5 验收**：`[ ]` 能讲清宿主职责 / 默答 A9 `[x]` FG-001,5 落盘（2026-08-28）
+**D5 验收**：`[x]` 能讲清宿主职责 / 默答 A9 `[x]` FG-001,5 落盘（2026-08-28）
 
 ---
 
@@ -181,6 +181,9 @@ Demo 目录：`knowledge/Android/demos/activity/`
 7. 单 Activity 架构
 8. Manifest exported
 
+
+**D6 验收**：`[x]` A1–A10 开口 `[ ]` 模拟面 8+2 答完（做到第 5 题，2026-08-29）`[ ]` 三则踩坑故事
+
 ---
 
 
@@ -190,7 +193,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 
 | 选项      | 任务                                                                                         |
 | ------- | ------------------------------------------------------------------------------------------ |
-| **有弱项** | 复跑 stage2 或 stage4 Demo（1 h）+ B 档选 2 题（B1 taskAffinity、B5 业务别堆 Activity）（1 h）+ 全卡遮答默背（1 h） |
+| **有弱项** | 复跑 stage2 或 stage4 Demo（1 h）+ B 档选 2 题（B1 taskAffinity、B5 业务别堆 Activity）（1 h）+ 刷 [错题库](ACT错题库.md) 默背（1 h） |
 | **已稳**  | 只保留 1 h 默答 + 投简历 / 面经；Demo 工程打包备查                                                          |
 
 
@@ -271,6 +274,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 | 「输出 ACT-001,1」  | 写卡时段       |
 | 「督促我」           | D6 或任意晚默答前 |
 | 「模拟面 Activity」  | D6 整段      |
+| 「记错题」           | 默答/模拟面栽了，写入 [错题库](ACT错题库.md) |
 
 
 **今天若从零开始**：先完成 **D0（2 h）**，明天按 **D1 日程表** 9:00 起（或你自定起点，但块时长不变）。
