@@ -12,7 +12,7 @@ Activity 是系统认的一扇「窗口 / 入口」：负责被启动、进返�
 
 **例 / 类比：**
 
-- 例子：`stage1-two-screens` 里 Main 点按钮 `startActivity` 打开 Second；返回键把 Second 弹出栈，回到 Main。
+- 例子：`act-d1-two-screens` 里 Main 点按钮 `startActivity` 打开 Second；返回键把 Second 弹出栈，回到 Main。
 - 类比：Activity 是一栋楼的大门和楼层；View 是屋里家具；Fragment 是可拆的隔断墙——隔断不能当整栋楼用。
 
 **易错：**

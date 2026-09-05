@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/home_bg"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="父隔断 · ParentFragment"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="内部用 childFragmentManager，不是 supportFragmentManager"
+        android:textSize="12sp" />
+
+    <Button
+        android:id="@+id/btn_push_child_b"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="子栈推进 ChildB" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/child_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1" />
+</LinearLayout>

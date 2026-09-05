@@ -11,7 +11,7 @@ Home 只停到 `onStop`，人还在，一般不 Destroy；旋转则会 Destroy �
 一句话：先丢焦点（Pause）再看不见（Stop）；Start 可见、Resume 可点。
 
 **例 / 类比：**
-- 例子（`stage2-lifecycle-log`，tag `LIFE`）：
+- 例子（`act-d2-lifecycle-log`，tag `LIFE`）：
   - 冷启动：Main `Create → Start → Resume`
   - A 开 B：A `Pause` → B `Create → Start → Resume` → A `Stop`
   - B 返回：B `Pause` → A `Restart → Start → Resume` → B `Stop → Destroy`

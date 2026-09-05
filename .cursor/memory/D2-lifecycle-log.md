@@ -1,5 +1,7 @@
 # D2 Logcat · LIFE · 2026-08-27
 
+工程：`knowledge/Android/demos/activity/act-d2-lifecycle-log/`
+
 Filter：`tag:LIFE`（Studio Logcat 搜 `LIFE`）
 
 ## 1 冷启动 Main

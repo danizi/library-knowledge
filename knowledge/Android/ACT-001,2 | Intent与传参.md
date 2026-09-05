@@ -11,7 +11,7 @@ Extra 走 Binder，别塞大图、整表、大对象——会撑爆或变慢；�
 一句话：小数据走 Extra；回传走 Result API；大数据不进 Intent。
 
 **例 / 类比：**
-- 例子（`stage3-intent-extra`）：Main 带 `name=xiaomin` 打开 Second；点「回传并关闭」后第一屏变成 `收到了 xiaomin`。
+- 例子（`act-d3-intent-extra`）：Main 带 `name=xiaomin` 打开 Second；点「回传并关闭」后第一屏变成 `收到了 xiaomin`。
 - 类比：信封只装便条和门牌号，家具用货车另送。
 
 **易错：**

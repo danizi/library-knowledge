@@ -11,19 +11,20 @@ Activity 是宿主：Manifest 必须登记，管窗口、任务栈、`FragmentMa
 一句话：Activity 管楼和大门，Fragment 只换隔断；单 Activity 是为了导航和状态收拢，不是消灭 Activity。
 
 **例 / 类比：**
-- 例子（`stage5-host-fragment`）：切 Home ↔ Detail，顶栏 hash 不变；Logcat `HOST` 只有 Fragment 的 create/destroy，没有 `MainActivity onDestroy`。Detail 往公共信箱写一句，靠的是同一个宿主 ViewModel。
+- 例子（`act-d5-host-fragment`）：切 Home ↔ Detail，顶栏 hash 不变；Logcat `HOST` 只有 Fragment 的 create/destroy，没有 `MainActivity onDestroy`。Detail 往公共信箱写一句，靠的是同一个宿主 ViewModel。
 - 类比：一栋楼（宿主）里拆隔断换房间；不要每换一间就盖一栋新楼（再 `startActivity`）。
 
 **易错：**
 - 把 Fragment 写进 Manifest——系统不认它当窗口。
 - 容器用普通 `FrameLayout` 凑，不用 `FragmentContainerView`。
 - 以为切 Fragment 等于 Activity 重建（D2 那套生命周期会误套上来）。
-- 本 Demo 没 `addToBackStack`，系统返回会退出；面试说「返回栈统一」时要补：真项目用 Navigation 或把事务入栈。
-- 宿主和 Fragment 改同一份 ViewModel 会互相覆盖（stage5 切页会把「写过」改成「已切 N 次」）——不是 ViewModel 丢了。
+- act-d5 没 `addToBackStack`，系统返回会退出；订正在 [FG-001,3](<./FG-001,3 | Fragment回退栈.md>) / fg-d1。
+- 宿主和 Fragment 改同一份 ViewModel 会互相覆盖（act-d5 切页会把「写过」改成「已切 N 次」）——不是 ViewModel 丢了。
 
 **相关：**
 - [ACT-001 | Activity](<./ACT-001 | Activity.md>) — 宿主是系统窗口，隔断不是另一栋楼
 - [FG-001 | Fragment](<./FG-001 | Fragment.md>) — 隔断是什么
+- [FG-001,3 | Fragment回退栈](<./FG-001,3 | Fragment回退栈.md>) — 返回先弹隔断，才拆楼
 - [FG-001,4 | Fragment通信](<./FG-001,4 | Fragment通信.md>) — 公共信箱用共享 ViewModel
 - [ACT-001,4 | 启动模式与任务栈](<./ACT-001,4 | 启动模式与任务栈.md>) — 多 Activity 才跟系统任务栈较劲
 - [ACT面试题库](./ACT面试题库.md) — A9

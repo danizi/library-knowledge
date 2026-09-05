@@ -1,5 +1,7 @@
 # D4 Demo · 2026-08-27
 
+工程：`knowledge/Android/demos/activity/act-d4-survive-rotate/`
+
 两计数都点到 3，旋转后：
 
 - `ViewModel count = 3`（还在）

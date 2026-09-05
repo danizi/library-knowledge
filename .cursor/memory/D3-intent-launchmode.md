@@ -1,5 +1,7 @@
 # D3 Demo · 2026-08-27
 
+工程：`knowledge/Android/demos/activity/act-d3-intent-extra/`
+
 Logcat 搜 `INTENT`。
 
 - 正向 Extra：第二屏 `Extra = xiaomin`

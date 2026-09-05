@@ -1,5 +1,7 @@
 # D5 Demo · 2026-08-28
 
+工程：`knowledge/Android/demos/activity/act-d5-host-fragment/`
+
 切页时宿主 hash 不变（`MainActivity #249279740`），Logcat `HOST`：
 
 - 切 Detail：`DetailFragment onCreate` → `HomeFragment onDestroy`（没有 `MainActivity onDestroy`）

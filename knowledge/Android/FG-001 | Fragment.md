@@ -19,6 +19,10 @@ Fragment 是可塞进 Activity 的一块「子界面」：有自己的布局和�
 
 **相关：**
 - [FG-001,1 | Fragment生命周期](<./FG-001,1 | Fragment生命周期.md>)
+- [FG-001,7 | viewLifecycleOwner](<./FG-001,7 | viewLifecycleOwner.md>) — 观察绑 view，别 forever 乱碰
+- [FG-001,2 | DialogFragment](<./FG-001,2 | DialogFragment.md>) — 对话框也走 FragmentManager，别用裸 Dialog
+- [FG-001,3 | Fragment回退栈](<./FG-001,3 | Fragment回退栈.md>) — 系统返回先弹隔断
+- [FG-001,6 | Fragment事务](<./FG-001,6 | Fragment事务.md>) — add / replace / hide；commit 异步
 - [FG-001,4 | Fragment通信](<./FG-001,4 | Fragment通信.md>)
 - [FG-001,5 | Fragment与Activity关联](<./FG-001,5 | Fragment与Activity关联.md>) — 宿主管什么、为啥单 Activity
 - [ERR-001 | 开发踩坑记录](<./ERR-001 | 开发踩坑记录.md>)

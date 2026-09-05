@@ -4,7 +4,7 @@
 > 原则：**场景题 > 背回调名**；**状态怎么活 > 四大组件百科**。  
 > 采集来源（2024–2026 面经/专题常见）：掘金启动模式专题、腾讯云四大组件高频、Medium 情景题（lifecycle / singleTop vs singleTask）、InterviewPrep Activity 题单、2026 Android 面试综述（Compose + ViewModel 仍绑 Activity 生命周期）。
 
-和本库学习闭环配合：[ACT学习计划](ACT学习计划.md) — **按天日程表** Demo → 卡片 → 默答（7 天速通 / 5 天突击）。  
+和本库学习闭环配合：[ACT学习计划](ACT学习计划.md) — **7 天稳妥** Demo → 卡片 → 默答。  
 自己栽过的题进 [ACT错题库](ACT错题库.md)，复习先刷那一页，不要指望对话还记得。
 
 ### 按天刷题（7 天稳妥版）
@@ -79,7 +79,7 @@
 |---|----------|------------------|
 | D1 | 状态：`remember` / `rememberSaveable` / ViewModel / 磁盘各扛啥 | 按「活过多久」分层讲，不混为一谈 |
 | D2 | 深链/通知点进 App：任务栈与 launchMode 怎么配 | 结合防多重实例、清栈、回到已有任务 |
-| D3 | 如何用 Demo 证明你懂，而不是背题 | 拿出你 stage2 Logcat / stage4 旋转 Demo（本计划要求的产物） |
+| D3 | 如何用 Demo 证明你懂，而不是背题 | 拿出你 act-d2 Logcat / act-d4 旋转 Demo（本计划要求的产物） |
 | D4 | AI 能生成 Activity 模板，你还学它干嘛？ | 生成管「写法」；你管「系统约束、边界、线上坑」——这是 AI 不替你背锅的部分 |
 
 ---

@@ -1,39 +1,26 @@
-# Activity 学习计划 · 面试速通版
+# Activity 学习计划 · 7 天稳妥
 
-目标：**7 天内**能讲清 Activity 高频面试题，并有 Demo 可举证。  
-原则：每块时间 **到点停**；Demo 不过不写卡；卡写完必须 **15 分钟默答**。
+目标：**7 天内**能讲清 Activity 高频面试题，并有 Demo 可举证。每天约 **3 h**，到点停。  
+原则：Demo 不过不写卡；卡写完必须 **15 分钟默答**。
 
 配套：[ACT面试题库](ACT面试题库.md)（按天刷题）· [ACT错题库](ACT错题库.md)（只记你答歪的）  
 环境：Android Studio + Kotlin Empty Activity  
-Demo 目录：`knowledge/Android/demos/activity/`
+Demo 目录：`knowledge/Android/demos/activity/`  
+命名：`act-d{日程天}-{主题}`（如 `act-d2-lifecycle-log`）。与 FG 的 `fg-d*` 各算各的，不共用全局序号。
 
 ---
 
-## 选路径（开始前定死，中途不换）
-
-
-| 路径              | 总时长   | 每天投入     | 适合                |
-| --------------- | ----- | -------- | ----------------- |
-| **🔥 5 天突击**    | ~20 h | 4 h × 5  | 面试在一周内，已有 AS 基础   |
-| **✅ 7 天稳妥（推荐）** | ~21 h | 3 h × 7  | 要 Demo + 卡片 + 模拟面 |
-| **🌙 10 天在职**   | ~20 h | 2 h × 10 | 只能晚上学             |
-
-
-下面 **日程表按 7 天稳妥版** 写；5 天版见文末「压缩对照」。
-
----
-
-## 7 天总览（严格排期）
+## 7 天总览
 
 
 | 天   | 主题                       | 产出                                 | 面试覆盖         |
 | --- | ------------------------ | ---------------------------------- | ------------ |
-| D0  | 工程跑通                     | stage0                             | —            |
-| D1  | Activity 是什么 + 双屏跳转      | `ACT-001` + stage1                 | A10、A2 入门    |
-| D2  | 生命周期 + Logcat            | `ACT-001,1` + stage2               | A1 A2 A3     |
-| D3  | Intent + launchMode      | `ACT-001,2` + `ACT-001,4` + stage3 | A4 A5 A6     |
-| D4  | 旋转 + ViewModel 保状态       | `ACT-001,3` + stage4               | A7 A8 **必考** |
-| D5  | 单 Activity + Fragment 宿主 | `FG-001,5` + stage5（可简化）           | A9           |
+| D0  | 工程跑通                     | act-d0                             | —            |
+| D1  | Activity 是什么 + 双屏跳转      | `ACT-001` + act-d1                 | A10、A2 入门    |
+| D2  | 生命周期 + Logcat            | `ACT-001,1` + act-d2               | A1 A2 A3     |
+| D3  | Intent + launchMode      | `ACT-001,2` + `ACT-001,4` + act-d3 | A4 A5 A6     |
+| D4  | 旋转 + ViewModel 保状态       | `ACT-001,3` + act-d4               | A7 A8 **必考** |
+| D5  | 单 Activity + Fragment 宿主 | `FG-001,5` + act-d5（可简化）           | A9           |
 | D6  | 题库冲刺 + 模拟面               | 默答 A 档全过                           | 全真 30 min    |
 | D7  | 缓冲 / 弱项复跑                | 复跑 1 个 Demo + 1 轮追问                | B 档选 2 题     |
 
@@ -42,7 +29,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 
 
 
-## 每日日程（7 天 · 每段到点停）
+## 每日日程（每段到点停）
 
 > 格式：`输入 → Demo → 输出卡 → 默答`。  
 > 计时器建议：手机倒计时，响铃即停，未完成记入 `.cursor/memory/` 当晚补。
@@ -55,7 +42,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 | 时段        | 时长     | 任务                                                                         | 完成标准                    |
 | --------- | ------ | -------------------------------------------------------------------------- | ----------------------- |
 | 0:00–0:40 | 40 min | AS 新建 Empty Activity；扫 [PD-001,3](PD-001,3%20%7C%20AndroidManifest清单文件.md) | 知道 Manifest 声明 Activity |
-| 0:40–1:20 | 40 min | `stage0-hello/` Run 到模拟器/真机                                                | Hello 屏出现               |
+| 0:40–1:20 | 40 min | `act-d0-hello/` Run 到模拟器/真机                                                | Hello 屏出现               |
 | 1:20–1:50 | 30 min | 旋转一次、Home 再回来                                                              | 不闪退                     |
 | 1:50–2:00 | 10 min | memory 记卡点（若有）                                                             | ≤5 行                    |
 
@@ -72,10 +59,10 @@ Demo 目录：`knowledge/Android/demos/activity/`
 | 时段        | 时长     | 任务                                                                                                                                       | 完成标准                              |
 | --------- | ------ | ---------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------- |
 | 0:00–0:25 | 25 min | 读官方 Activity 简介 + 本库 [FG-001](FG-001%20%7C%20Fragment.md)、[V-001](V-001%20%7C%20View的定义.md)、[AAP-001](AAP-001%20%7C%20Android%20架构模式.md) | 能说出 Activity / View / Fragment 分工 |
-| 0:25–1:35 | 70 min | Demo `stage1-two-screens/`：Main → Second → 返回                                                                                            | 跳转 + 返回栈 OK                       |
+| 0:25–1:35 | 70 min | Demo `act-d1-two-screens/`：Main → Second → 返回                                                                                            | 跳转 + 返回栈 OK                       |
 | 1:35–2:05 | 30 min | 写 **费曼卡** `ACT-001 | Activity.md`                                                                                                        | 问/答/一句话/例/易错齐                     |
 | 2:05–2:25 | 20 min | **默答** 题库 A10 + 「Activity 是啥」                                                                                                            | 不看卡能说 1 分钟                        |
-| 2:25–3:00 | 35 min | 喊「审 demo stage1」或自审：Manifest 双 Activity                                                                                                  | 验收清单全勾                            |
+| 2:25–3:00 | 35 min | 喊「审 demo act-d1」或自审：Manifest 双 Activity                                                                                                  | 验收清单全勾                            |
 
 
 **D1 验收**：`[x]` 双屏跳转 `[x]` ACT-001 落盘 `[x]` 默答通过（2026-08-27）
@@ -90,7 +77,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 | 时段        | 时长     | 任务                                               | 完成标准                 |
 | --------- | ------ | ------------------------------------------------ | -------------------- |
 | 0:00–0:20 | 20 min | 画生命周期图（纸/白板）                                     | 主路径 6 回调             |
-| 0:20–1:40 | 80 min | Demo `stage2-lifecycle-log/`：进页/Home/回 App/旋转/返回 | Logcat 截图或保存 filter  |
+| 0:20–1:40 | 80 min | Demo `act-d2-lifecycle-log/`：进页/Home/回 App/旋转/返回 | Logcat 截图或保存 filter  |
 | 1:40–2:10 | 30 min | 写 `ACT-001,1 | Activity生命周期.md`                  | 含 A 开 B、返回、Home 三种序列 |
 | 2:10–2:40 | 30 min | **默答** A1 A2；加分：透明 Activity 只 onPause（A3）        | 流畅无卡壳                |
 | 2:40–3:00 | 20 min | 用 30 秒讲「来电先 onPause 为啥」                          | 录音自听一遍               |
@@ -108,7 +95,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 | 时段        | 时长     | 任务                                                    | 完成标准           |
 | --------- | ------ | ----------------------------------------------------- | -------------- |
 | 0:00–0:15 | 15 min | Explicit Intent、`putExtra`、Activity Result API 速览     | 知道 Extra 别传大数据 |
-| 0:15–1:00 | 45 min | Demo `stage3-intent-extra/`：A→B 传参 + 回传               | 正向 + 回传 OK     |
+| 0:15–1:00 | 45 min | Demo `act-d3-intent-extra/`：A→B 传参 + 回传               | 正向 + 回传 OK     |
 | 1:00–1:45 | 45 min | Demo 加餐：同一 Activity 设 `singleTop`，连点两次看 `onNewIntent` | 见过 onNewIntent |
 | 1:45–2:15 | 30 min | 写 `ACT-001,2 | Intent与传参.md`                          |                |
 | 2:15–2:45 | 30 min | 写 `ACT-001,4 | 启动模式与任务栈.md`（四种 + 场景）                  | 链题库 A4–A6      |
@@ -127,7 +114,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 | 时段        | 时长     | 任务                                                                   | 完成标准                           |
 | --------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
 | 0:00–0:20 | 20 min | 读 ViewModel 官方简介 + [AAP-001](AAP-001%20%7C%20Android%20架构模式.md)      | 分清 Activity 重建 vs ViewModel 存活 |
-| 0:20–1:30 | 70 min | Demo `stage4-survive-rotate/`：计数器 + ViewModel（或 rememberSaveable 对照） | 旋转数字还在                         |
+| 0:20–1:30 | 70 min | Demo `act-d4-survive-rotate/`：计数器 + ViewModel（或 rememberSaveable 对照） | 旋转数字还在                         |
 | 1:30–2:00 | 30 min | 写 `ACT-001,3 | 配置变更与状态.md`                                           | 必须写清 A7 A8 两问                  |
 | 2:00–2:30 | 30 min | **默答**：旋转谁死谁活；进程被杀怎么办                                                | 不看卡                            |
 | 2:30–3:00 | 30 min | 口述模板练 3 遍：「结论→机制→场景→易错」                                              | 每遍 ≤90 秒                       |
@@ -139,19 +126,17 @@ Demo 目录：`knowledge/Android/demos/activity/`
 
 
 
-### D5 · 单 Activity + Fragment（3 h，可压缩）
+### D5 · 单 Activity + Fragment（3 h）
 
 
 | 时段        | 时长     | 任务                                                                                | 完成标准                  |
 | --------- | ------ | --------------------------------------------------------------------------------- | --------------------- |
 | 0:00–0:25 | 25 min | 读 [FG-001](FG-001%20%7C%20Fragment.md)、[FG-001,4](FG-001,4%20%7C%20Fragment通信.md) | 理解宿主关系                |
-| 0:25–1:35 | 70 min | Demo `stage5-host-fragment/`：单 Activity + 2 Fragment 切换                           | FragmentContainerView |
+| 0:25–1:35 | 70 min | Demo `act-d5-host-fragment/`：单 Activity + 2 Fragment 切换                           | FragmentContainerView |
 | 1:35–2:05 | 30 min | 写 `FG-001,5 | Fragment与Activity关联.md`                                             |                       |
 | 2:05–2:35 | 30 min | **默答** A9：为啥 single Activity                                                      |                       |
 | 2:35–3:00 | 25 min | 更新 INDEX；链 ACT-001 ↔ FG-001,5                                                     |                       |
 
-
-**5 天突击可砍**：Demo 只做 30 min 切换一个 Fragment；FG-001,5 仍写卡，Demo 面试前口述即可。
 
 **D5 验收**：`[x]` 能讲清宿主职责 / 默答 A9 `[x]` FG-001,5 落盘（2026-08-28）
 
@@ -193,7 +178,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 
 | 选项      | 任务                                                                                         |
 | ------- | ------------------------------------------------------------------------------------------ |
-| **有弱项** | 复跑 stage2 或 stage4 Demo（1 h）+ B 档选 2 题（B1 taskAffinity、B5 业务别堆 Activity）（1 h）+ 刷 [错题库](ACT错题库.md) 默背（1 h） |
+| **有弱项** | 复跑 act-d2 或 act-d4 Demo（1 h）+ B 档选 2 题（B1 taskAffinity、B5 业务别堆 Activity）（1 h）+ 刷 [错题库](ACT错题库.md) 默背（1 h） |
 | **已稳**  | 只保留 1 h 默答 + 投简历 / 面经；Demo 工程打包备查                                                          |
 
 
@@ -201,53 +186,13 @@ Demo 目录：`knowledge/Android/demos/activity/`
 
 
 
-## 5 天突击 · 压缩对照
-
-
-| 原 7 天 | 合并到                                     |
-| ----- | --------------------------------------- |
-| D0    | 第 1 天上午 2 h                             |
-| D1    | 第 1 天下午 3 h                             |
-| D2    | 第 2 天全天 4 h                             |
-| D3    | 第 3 天全天 4 h                             |
-| D4    | 第 4 天全天 4 h                             |
-| D5    | 第 4 天晚 1 h 只写 FG-001,5 + 默答 A9（Demo 可选） |
-| D6    | 第 5 天全天 4 h 模拟面                         |
-| D7    | 取消，弱项挤进第 5 天晚                           |
-
-
----
-
-
-
-## 10 天在职 · 排法
-
-
-| 工作日 evening | 2 h 内容      |
-| ----------- | ----------- |
-| 第 1 晚       | D0          |
-| 第 2 晚       | D1          |
-| 第 3 晚       | D2 前半（Demo） |
-| 第 4 晚       | D2 后半（卡+默答） |
-| 第 5 晚       | D3          |
-| 第 6 晚       | D4          |
-| 第 7 晚       | D5          |
-| 第 8 晚       | 题库 A 档 1–5  |
-| 第 9 晚       | 题库 A 档 6–10 |
-| 第 10 晚      | D6 模拟面      |
-
-
----
-
-
-
-## 硬规则（速通专用）
+## 硬规则
 
 1. **到点停**：Demo 做不完先记 blocker，不无限拖；当晚 memory 补 15 min 上限。
 2. **卡不超过 30 min/张**：费曼格式，禁止粘贴官方长文。
 3. **每天必须默答 ≥15 min**：没默答 = 当天不算完成。
 4. **不碰 C 档**：AMS 源码、singleInstance 深挖——知道即可，不占日程。
-5. **面试前 24 h**：只默答 + 复跑 stage2/stage4，不开新坑。
+5. **面试前 24 h**：只默答 + 复跑 act-d2/act-d4，不开新坑。
 
 ---
 
@@ -256,7 +201,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 ## 里程碑（面试 D-1 必须全勾）
 
 - [ ] `ACT-001`～`ACT-001,4` + `FG-001,5` 在 INDEX，遮「答」能默念  
-- [ ] stage1 / stage2 / stage4 至少 3 个 Demo 冷启动可跑  
+- [ ] act-d1 / act-d2 / act-d4 至少 3 个 Demo 冷启动可跑  
 - [ ] 题库 A 档 10 题口述 ≥8/10 流畅  
 - [ ] 能 90 秒内讲完：生命周期 + launchMode + 旋转保状态（三连鞭）  
 
@@ -270,7 +215,7 @@ Demo 目录：`knowledge/Android/demos/activity/`
 | 你说              | 何时         |
 | --------------- | ---------- |
 | 「教我 D2」         | 当天输入阶段     |
-| 「审 demo stage2」 | Demo 时段结束后 |
+| 「审 demo act-d2」 | Demo 时段结束后 |
 | 「输出 ACT-001,1」  | 写卡时段       |
 | 「督促我」           | D6 或任意晚默答前 |
 | 「模拟面 Activity」  | D6 整段      |

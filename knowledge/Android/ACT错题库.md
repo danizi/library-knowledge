@@ -20,12 +20,12 @@
 
 | 题 | 我当时的坑 | 要说的那句 | 相关 | 记于 |
 |----|------------|------------|------|------|
-| **A2** 返回顺序 | 模拟面先把 B `Stop/Destroy` 完再唤醒 A；练习时返回只说到 `onRestart` | 回：B Pause → A Restart/Start/Resume → **然后** B Stop/Destroy。开 B 还要在 B 亮完后 **A Stop** | [ACT-001,1](<./ACT-001,1 | Activity生命周期.md>) · stage2 `LIFE` | D6 模拟面 |
+| **A2** 返回顺序 | 模拟面先把 B `Stop/Destroy` 完再唤醒 A；练习时返回只说到 `onRestart` | 回：B Pause → A Restart/Start/Resume → **然后** B Stop/Destroy。开 B 还要在 B 亮完后 **A Stop** | [ACT-001,1](<./ACT-001,1 | Activity生命周期.md>) · act-d2 `LIFE` | D6 模拟面 |
 | **A4** 四种 mode | 数成「五种」；场景没举 | 就四种：`standard` 每次新建 / `singleTop` 栈顶复用（通知防叠）/ `singleTask` 栈内复用并清上面（回首页）/ `singleInstance` 独占一栈，几乎不用 | [ACT-001,4](<./ACT-001,4 | 启动模式与任务栈.md>) | D6 |
-| **A5** singleTask 场景 | 只会说 singleTop 防重叠，说不清栈内复用 | `首页→列表→详情`，点回首页用 singleTask，上面两层清掉 | 同上 · stage3 是 singleTop 不是 Task | D6 |
-| **A7** Bundle | 把 Bundle 说成「进程挂了存磁盘」 | Bundle / Saveable 扛**轻量 UI**（旋转也能活）；磁盘才是 DataStore/DB；ViewModel 不抗杀进程 | [ACT-001,3](<./ACT-001,3 | 配置变更与状态.md>) · stage4 | D6 |
+| **A5** singleTask 场景 | 只会说 singleTop 防重叠，说不清栈内复用 | `首页→列表→详情`，点回首页用 singleTask，上面两层清掉 | 同上 · act-d3 是 singleTop 不是 Task | D6 |
+| **A7** Bundle | 把 Bundle 说成「进程挂了存磁盘」 | Bundle / Saveable 扛**轻量 UI**（旋转也能活）；磁盘才是 DataStore/DB；ViewModel 不抗杀进程 | [ACT-001,3](<./ACT-001,3 | 配置变更与状态.md>) · act-d4 | D6 |
 | **A9** 仍要多 Activity | 只说泄漏、复用、好管；门外入口不会讲 | 里面换页单 Activity。分享 / 复杂外链 / 支付相机是系统砸大门，大门只能是 Activity | [FG-001,5](<./FG-001,5 | Fragment与Activity关联.md>) | D5–D6 |
-| **A10** Manifest | 只谈 `exported` 开关 | 先登记 `<activity>`，忘了 → `ActivityNotFoundException`。桌面：MAIN+LAUNCHER 且 `exported=true`。第二扇窗不要 LAUNCHER，通常 `exported=false` | [PD-001,3](<./PD-001,3 | AndroidManifest清单文件.md>) · stage1 | D6 |
+| **A10** Manifest | 只谈 `exported` 开关 | 先登记 `<activity>`，忘了 → `ActivityNotFoundException`。桌面：MAIN+LAUNCHER 且 `exported=true`。第二扇窗不要 LAUNCHER，通常 `exported=false` | [PD-001,3](<./PD-001,3 | AndroidManifest清单文件.md>) · act-d1 | D6 |
 | **B2**（未答，D7 要补） | 还没开口 | `singleTask` **不一定**新栈，`taskAffinity` 不同才常新栈 | [ACT-001,4](<./ACT-001,4 | 启动模式与任务栈.md>) | D7 预告 |
 
 ---
