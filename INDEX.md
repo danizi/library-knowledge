@@ -17,7 +17,7 @@
 - [ACT 学习计划 · 7 天稳妥](knowledge/Android/ACT学习计划.md)
 - [ACT 面试题库](knowledge/Android/ACT面试题库.md)
 - [ACT 错题库](knowledge/Android/ACT错题库.md) — 只记你答歪过的，复习优先于题库全表
-- Demo（命名：`act-d{天}-主题` / `fg-d{天}-主题`，两线各算各的）
+- Demo（命名：`act-d{天}-主题`；与 `fg-d*` / `svc-d*` / `br-d*` / `cp-d*` 各算各的）
   - [act-d0-hello](knowledge/Android/demos/activity/act-d0-hello/)（D0）
   - [act-d1-two-screens](knowledge/Android/demos/activity/act-d1-two-screens/)（D1）
   - [act-d2-lifecycle-log](knowledge/Android/demos/activity/act-d2-lifecycle-log/)（D2）
@@ -60,6 +60,51 @@
   - [FG-001,9 | Fragment传参与状态](<knowledge/Android/FG-001,9 | Fragment传参与状态.md>)
   - [FG-001,10 | Navigation与Fragment](<knowledge/Android/FG-001,10 | Navigation与Fragment.md>)
   - [FG-001,11 | ViewPager2与Fragment](<knowledge/Android/FG-001,11 | ViewPager2与Fragment.md>)
+
+
+
+### SVC · Service
+
+- [SVC 学习计划 · 8 天稳妥](knowledge/Android/SVC学习计划.md)
+- [SVC 面试题库](knowledge/Android/SVC面试题库.md)
+- [SVC 错题库](knowledge/Android/SVC错题库.md)
+- Demo（命名：`svc-d{天}-主题`，目录 `demos/service/`；待建）
+  - svc-d0-hello … svc-d5-workmanager-boundary（按计划待建）
+- 卡片（待建）
+  - SVC-001 Service
+  - SVC-001,1 生命周期
+  - SVC-001,2 绑定与 Binder
+  - SVC-001,3 前台 Service
+  - SVC-001,4 后台限制与 WorkManager
+
+
+
+### BR · BroadcastReceiver
+
+- [BR 学习计划 · 6 天稳妥](knowledge/Android/BR学习计划.md)
+- [BR 面试题库](knowledge/Android/BR面试题库.md)
+- [BR 错题库](knowledge/Android/BR错题库.md) — 题号 **BR1–**，勿与 ACT「B 档」混淆
+- Demo（命名：`br-d{天}-主题`，目录 `demos/broadcast/`；待建）
+  - br-d0-hello … br-d4-local-vs-system（按计划待建）
+- 卡片（待建）
+  - BR-001 BroadcastReceiver
+  - BR-001,1 动态注册
+  - BR-001,2 有序与权限
+  - BR-001,3 本地广播与替代
+
+
+
+### CP · ContentProvider
+
+- [CP 学习计划 · 5 天稳妥](knowledge/Android/CP学习计划.md)
+- [CP 面试题库](knowledge/Android/CP面试题库.md)
+- [CP 错题库](knowledge/Android/CP错题库.md)
+- Demo（命名：`cp-d{天}-主题`，目录 `demos/contentprovider/`；待建）
+  - cp-d0-hello … cp-d3-permission（按计划待建）
+- 卡片（待建）
+  - CP-001 ContentProvider
+  - CP-001,1 CRUD 与 Cursor
+  - CP-001,2 权限与导出
 
 
 
