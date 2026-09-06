@@ -29,6 +29,7 @@
 - [FG-001,2 | DialogFragment](<./FG-001,2 | DialogFragment.md>) — 对话框默认也占一层返回
 - [FG-001,6 | Fragment事务](<./FG-001,6 | Fragment事务.md>) — 三种切法；`runOnCommit` 不能配回退栈
 - [FG-001,8 | 嵌套Fragment](<./FG-001,8 | 嵌套Fragment.md>) — 子栈 + primaryNavigation，返回先弹子层
+- [FG-001,10 | Navigation与Fragment](<./FG-001,10 | Navigation与Fragment.md>) — 换 Nav 管账，规则仍是先弹隔断
 - [FG面试题库](./FG面试题库.md) — F6
 - [FG错题库](./FG错题库.md) — F6
 

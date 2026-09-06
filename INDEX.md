@@ -46,6 +46,8 @@
   - [fg-d5-fragment-result](knowledge/Android/demos/fragment/fg-d5-fragment-result/)（D5）
   - [fg-d6-nested-fragment](knowledge/Android/demos/fragment/fg-d6-nested-fragment/)（D6）
   - [fg-d7-fragment-args](knowledge/Android/demos/fragment/fg-d7-fragment-args/)（D7）
+  - [fg-d8-navigation](knowledge/Android/demos/fragment/fg-d8-navigation/)（D8）
+  - [fg-d9-viewpager2](knowledge/Android/demos/fragment/fg-d9-viewpager2/)（D9）
 - [FG-001 | Fragment](<knowledge/Android/FG-001 | Fragment.md>)
   - [FG-001,1 | Fragment生命周期](<knowledge/Android/FG-001,1 | Fragment生命周期.md>)
   - [FG-001,2 | DialogFragment](<knowledge/Android/FG-001,2 | DialogFragment.md>)
@@ -56,8 +58,8 @@
   - [FG-001,7 | viewLifecycleOwner](<knowledge/Android/FG-001,7 | viewLifecycleOwner.md>)
   - [FG-001,8 | 嵌套Fragment](<knowledge/Android/FG-001,8 | 嵌套Fragment.md>)
   - [FG-001,9 | Fragment传参与状态](<knowledge/Android/FG-001,9 | Fragment传参与状态.md>)
-  - FG-001,10 Navigation（待建）
-  - FG-001,11 ViewPager2（待建）
+  - [FG-001,10 | Navigation与Fragment](<knowledge/Android/FG-001,10 | Navigation与Fragment.md>)
+  - [FG-001,11 | ViewPager2与Fragment](<knowledge/Android/FG-001,11 | ViewPager2与Fragment.md>)
 
 
 
@@ -162,6 +164,8 @@
 - [D5-fragment-result](.cursor/memory/D5-fragment-result.md) → D5：Result API 一次性回传，不互握 Fragment
 - [D6-nested-fragment](.cursor/memory/D6-nested-fragment.md) → D6：嵌套用 childFM；primaryNavigation 让系统返回先弹子栈
 - [D7-fragment-args](.cursor/memory/D7-fragment-args.md) → D7：空构造 + arguments；旋转实例换了 id 还在
+- [D8-navigation](.cursor/memory/D8-navigation.md) → D8：NavHost + graph；navigate 前进，系统返回 NavController pop
+- [D9-viewpager2](.cursor/memory/D9-viewpager2.md) → D9：FragmentStateAdapter；离屏拆 view，滑回可新实例 restored
 
 
 

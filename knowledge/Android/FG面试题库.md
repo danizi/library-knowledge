@@ -52,8 +52,8 @@
 | F10 | `getActivity()` / `view` 为啥会空？观察绑谁？ | 没 attach 或 view 已销毁；LiveData/Flow 观察用 `viewLifecycleOwner` | `FG-001,7` · fg-d4 |
 | F11 | `childFragmentManager` vs `parentFragmentManager` | 嵌套用 child；和宿主同级用 parent / support | `FG-001,8` · fg-d6 |
 | F12 | 给 Fragment 传参为啥不用带参构造器？ | 系统恢复要空构造 + `arguments`；旋转靠 Bundle | `FG-001,9` · fg-d7 |
-| F13 | Navigation 和手写 `FragmentManager` 怎么选？ | 现代项目多用 Nav graph；手写要能讲清入栈/弹出 | `FG-001,10`（待建） |
-| F14 | ViewPager2 为啥用 `FragmentStateAdapter`？ | 离屏页会拆 view 省内存；别自己 replace 一堆 Tab 硬撑 | `FG-001,11`（待建） |
+| F13 | Navigation 和手写 `FragmentManager` 怎么选？ | 现代项目多用 Nav graph；手写要能讲清入栈/弹出 | `FG-001,10` · fg-d8 |
+| F14 | ViewPager2 为啥用 `FragmentStateAdapter`？ | 离屏页会拆 view 省内存；别自己 replace 一堆 Tab 硬撑 | `FG-001,11` · fg-d9 |
 
 ### G. 加深度（收口选做，不单开卡）
 

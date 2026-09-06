@@ -27,6 +27,7 @@ Fragment 除了熟悉的创建/启动/暂停/停止/销毁，还多了和「装�
 - [FG-001,3 | Fragment回退栈](<./FG-001,3 | Fragment回退栈.md>) — 弹出 Detail 时走销毁
 - [FG-001,6 | Fragment事务](<./FG-001,6 | Fragment事务.md>) — replace 拆 view；hide 只关灯
 - [FG-001,7 | viewLifecycleOwner](<./FG-001,7 | viewLifecycleOwner.md>) — 观察绑谁、view 何时空
+- [FG-001,11 | ViewPager2与Fragment](<./FG-001,11 | ViewPager2与Fragment.md>) — 离屏拆 view 的滑动多页
 - [ERR-001 | 开发踩坑记录](<./ERR-001 | 开发踩坑记录.md>)
 - [FG面试题库](./FG面试题库.md) — F2
 
