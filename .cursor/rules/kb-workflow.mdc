@@ -7,7 +7,8 @@ alwaysApply: true
 
 | 层 | 路径 |
 |----|------|
-| 未审核 | `.cursor/memory/*.md` |
+| 未审核 | `.cursor/memory/*.md`（不含 `absorbed/`） |
+| 已吸收 | `.cursor/memory/absorbed/` |
 | 模板 | `.cursor/templates/` |
 | 正式卡 | `knowledge/Android|Web|Tools/` |
 | 练习 | `knowledge/Web/JavascriptDemo/` |

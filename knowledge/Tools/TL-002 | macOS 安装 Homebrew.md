@@ -1,29 +1,27 @@
 # macOS 安装 Homebrew
 
+> 状态：步骤已拆到过程卡 · **本卡仍待审卡**
+
 **问：**
-国内网络下，Mac 上怎么把 Homebrew 装到能用？（Apple Silicon / Intel）
+国内 Mac 上，Homebrew 为啥往往不走官方安装脚本？装完的目录为啥还分两种？
 
 **答：**
-Homebrew 是 macOS 包管理器。国内直连 GitHub 常超时，可用清华等镜像**手动克隆** brew 仓到：  
-Apple Silicon → `/opt/homebrew`；Intel → `/usr/local`。  
-装完把对应 `bin` 写进 PATH，用 `brew -v` / `brew update` 验证。
+Homebrew 是 macOS 的包管理器。官方安装脚本从 GitHub 拉安装器，国内网络经常超时。镜像改的是「安装器从哪下载」，装完仍落在官方约定的位置：Apple Silicon 是 `/opt/homebrew`，Intel 是 `/usr/local`。  
+PATH 若指到另一套目录，终端里就找不到 `brew`，等于没装上。
 
-一句话：镜像克隆到官方路径 + 配 PATH，比死磕官方安装脚本稳。
+一句话：镜像只换下载地址；装到哪、PATH 指哪，仍按 CPU 架构走官方路径。
 
 **例 / 类比：**
-```bash
-uname -m   # arm64 → /opt/homebrew；x86_64 → /usr/local
-# 赋权后 git clone 镜像 brew.git 到上述路径，再配置 shell PATH
-brew -v && brew update
-```
-（具体镜像 URL 以当前可用源为准，见当时笔记/镜像站说明。）
-- 类比：不从总仓排队进口，改走本地保税仓提货。
+- 例子：`uname -m` 打出 `arm64` 就该落到 `/opt/homebrew`；打出 `x86_64` 就该落到 `/usr/local`。命令见过程卡。
+- 类比：不从总仓排队进口，改走保税仓提货；货架位置还是店里原来那两排。
 
 **易错：**
-- Silicon 机器却装到 `/usr/local` 或 PATH 指错。
-- 浅克隆不当导致以后 `brew update` 怪问题。
+- Silicon 机器却装到 `/usr/local`，或 PATH 指错。
+- 浅克隆、残缺拷贝导致以后 `brew update` 怪问题。
+- 把镜像 URL 写死在脑子里；镜像站改路径时以帮助页为准。
 
 **相关：**
+- [TL-002,1 | 镜像安装 Homebrew](<./TL-002,1 | 镜像安装 Homebrew.md>) — 冷启动步骤（已晋升，仍待验收）
 - [TL-001 | VS Code Git](<./TL-001 | VS Code Git.md>) — 装完常用 brew 装 git/node
 
 **参考：**

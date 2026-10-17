@@ -5,7 +5,7 @@
 
 **答：**
 顺序：环境能跑 → 基本语法 → 项目结构与调试。  
-练习代码在 `knowledge/Web/JavascriptDemo/`；未整理草稿在 `.cursor/memory/`。
+练习代码在 `knowledge/Web/JavascriptDemo/`。语法摘抄还在未审核区，不整篇晋升。
 
 一句话：先跑起来，再抠语法，最后认目录。
 

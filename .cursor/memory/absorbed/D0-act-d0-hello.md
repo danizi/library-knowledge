@@ -1,3 +1,5 @@
+> 已吸收 · 2026-10-17 · 结论见同目录 README，勿再当未审核。
+
 # D0 卡点 · 2026-08-27
 
 - Android Studio 必须 Open **Gradle 根**：`demos/activity/act-d0-hello`（有 `settings.gradle.kts` / `gradlew`）。

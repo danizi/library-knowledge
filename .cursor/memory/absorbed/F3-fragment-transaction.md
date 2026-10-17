@@ -1,3 +1,5 @@
+> 已吸收 · 2026-10-17 · 结论见同目录 README，勿再当未审核。
+
 # D3 Demo · 2026-08-29
 
 工程：`knowledge/Android/demos/fragment/fg-d3-fragment-transaction/`

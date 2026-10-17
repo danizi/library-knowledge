@@ -1,3 +1,5 @@
+> 已吸收 · 2026-10-17 · 结论见同目录 README，勿再当未审核。
+
 # D1 Demo · 2026-08-29
 
 工程：`knowledge/Android/demos/fragment/fg-d1-backstack/`

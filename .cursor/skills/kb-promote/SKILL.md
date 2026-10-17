@@ -7,7 +7,7 @@ description: >-
 
 # 图书管理员
 
-1. 扫描 `.cursor/memory/*.md`
+1. 扫描 `.cursor/memory/*.md`（跳过 `absorbed/`，那里已吸收，不再晋升）
 2. 每条：丢弃 / 留 memory / 升概念卡 / 升过程卡
 3. 拟定编码；从 `.cursor/templates/` 复制到 `knowledge/<领域>/`；截图用 `assets/<编码>/`
 4. 提醒先过审卡 / 验收 / 审码

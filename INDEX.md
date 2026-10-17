@@ -124,7 +124,7 @@
 
 ### PD · 工程与资源
 
-- [PD-001 | 工程文件目录](<knowledge/Android/PD-001 | 工程文件目录.md>)
+- [PD-001 | 工程文件目录](<knowledge/Android/PD-001 | 工程文件目录.md>) — 易错已补「Open Gradle 根」；**仍待审卡**
   - [PD-001,1 | res资源文件夹](<knowledge/Android/PD-001,1 | res资源文件夹.md>)
     - [PD-001,1,a | drawable目录](<knowledge/Android/PD-001,1,a | drawable目录.md>)
       - [PD-001,1,a,1 | 状态列表的使用](<knowledge/Android/PD-001,1,a,1 | 状态列表的使用.md>)
@@ -169,7 +169,8 @@
 ### R · React
 
 - [R-001 | React](<knowledge/Web/R-001 | React.md>)
-  - [R-001,a | 环境搭建](<knowledge/Web/R-001,a | 环境搭建.md>)
+  - [R-001,a | 环境搭建](<knowledge/Web/R-001,a | 环境搭建.md>) — 只留「为何 Vite」；**仍待审卡**
+    - [R-001,a,1 | 跑起 Vite React](<knowledge/Web/R-001,a,1 | 跑起 Vite React.md>) — 过程卡，**已晋升 · 仍待审查**
   - [R-001,b | 基本语法](<knowledge/Web/R-001,b | 基本语法.md>)
   - [R-001,c | 项目使用及说明](<knowledge/Web/R-001,c | 项目使用及说明.md>)
 
@@ -187,8 +188,10 @@
 
 - [TL-001 | VS Code Git](<knowledge/Tools/TL-001 | VS Code Git.md>)
   - [TL-001,1 | git pull 分叉速查](<knowledge/Tools/TL-001,1 | git pull 分叉速查.md>)
-- [TL-002 | macOS 安装 Homebrew](<knowledge/Tools/TL-002 | macOS 安装 Homebrew.md>)
-- [TL-003 | 修改 Hosts](<knowledge/Tools/TL-003 | 修改 Hosts.md>)
+- [TL-002 | macOS 安装 Homebrew](<knowledge/Tools/TL-002 | macOS 安装 Homebrew.md>) — 只留「为何镜像、路径分两种」；**仍待审卡**
+  - [TL-002,1 | 镜像安装 Homebrew](<knowledge/Tools/TL-002,1 | 镜像安装 Homebrew.md>) — 过程卡，**已晋升 · 仍待审查**
+- [TL-003 | 修改 Hosts](<knowledge/Tools/TL-003 | 修改 Hosts.md>) — 只留「为何不生效」；**仍待审卡**
+  - [TL-003,1 | 写入 Hosts 并刷新 DNS](<knowledge/Tools/TL-003,1 | 写入 Hosts 并刷新 DNS.md>) — 过程卡，**已晋升 · 仍待审查**
 
 ---
 
@@ -196,21 +199,11 @@
 
 ## memory · 未审核
 
-- [react语法学习](.cursor/memory/react语法学习.md) → 拆入 `R-001`（喊「整理 memory」）
-- [D0-act-d0-hello](.cursor/memory/D0-act-d0-hello.md) → Open 必须点到 Gradle 根目录
-- [D2-lifecycle-log](.cursor/memory/D2-lifecycle-log.md) → 四段 LIFE 顺序
-- [D3-intent-launchmode](.cursor/memory/D3-intent-launchmode.md) → Extra / 回传 / onNewIntent
-- [D4-survive-rotate](.cursor/memory/D4-survive-rotate.md) → ViewModel 旋转还在，remember 归零
-- [D5-host-fragment](.cursor/memory/D5-host-fragment.md) → ACT D5：单 Activity 宿主；没入栈返回会退出
-- [F1-fragment-backstack](.cursor/memory/F1-fragment-backstack.md) → D1：根 Home 不入栈；`runOnCommit` 不能配 `addToBackStack`
-- [F2-dialog-fragment](.cursor/memory/F2-dialog-fragment.md) → D2：DialogFragment 旋转 `restored=true`，裸 Dialog 会丢
-- [F3-fragment-transaction](.cursor/memory/F3-fragment-transaction.md) → D3：replace 拆 view；hide 只关灯；commit 立刻 find 可能仍是旧的
-- [D4-fg-view-lifecycle](.cursor/memory/D4-fg-view-lifecycle.md) → D4：hide 看 HiddenChanged；入栈拆 view；观察用 viewLifecycleOwner
-- [D5-fragment-result](.cursor/memory/D5-fragment-result.md) → D5：Result API 一次性回传，不互握 Fragment
-- [D6-nested-fragment](.cursor/memory/D6-nested-fragment.md) → D6：嵌套用 childFM；primaryNavigation 让系统返回先弹子栈
-- [D7-fragment-args](.cursor/memory/D7-fragment-args.md) → D7：空构造 + arguments；旋转实例换了 id 还在
-- [D8-navigation](.cursor/memory/D8-navigation.md) → D8：NavHost + graph；navigate 前进，系统返回 NavController pop
-- [D9-viewpager2](.cursor/memory/D9-viewpager2.md) → D9：FragmentStateAdapter；离屏拆 view，滑回可新实例 restored
+- [react语法学习](.cursor/memory/react语法学习.md) → 摘抄，不整篇晋升；能默答的一句再拆进 `R-001`
+
+## memory · 已吸收
+
+- [归档说明](.cursor/memory/absorbed/README.md) — 14 条 ACT/FG Demo 笔记。结论已在对应概念卡；D0 的「Open Gradle 根」写进了 PD-001 易错。不再当未审核。
 
 
 

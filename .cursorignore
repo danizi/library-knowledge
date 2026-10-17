@@ -1,0 +1,21 @@
+# Demo 检索噪声。概念卡和 INDEX 仍链接工程目录。
+# Kotlin / XML 布局 / Manifest / *.gradle.kts 保留可搜。
+
+# 生成物与本机
+knowledge/Android/demos/**/.gradle/
+knowledge/Android/demos/**/build/
+knowledge/Android/demos/**/.kotlin/
+knowledge/Android/demos/**/.idea/
+knowledge/Android/demos/**/local.properties
+knowledge/Android/demos/**/captures/
+knowledge/Android/demos/**/.externalNativeBuild/
+knowledge/Android/demos/**/.cxx/
+
+# Wrapper 二进制。保留 gradle-wrapper.properties 与 gradlew。
+knowledge/Android/demos/**/gradle/wrapper/gradle-wrapper.jar
+
+# 启动图标
+knowledge/Android/demos/**/mipmap-*/
+knowledge/Android/demos/**/ic_launcher*
+knowledge/Android/demos/**/ic_launcher_background.xml
+knowledge/Android/demos/**/ic_launcher_foreground.xml

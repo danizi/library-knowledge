@@ -1,3 +1,5 @@
+> 已吸收 · 2026-10-17 · 结论见同目录 README，勿再当未审核。
+
 # D4 Demo · 2026-08-27
 
 工程：`knowledge/Android/demos/activity/act-d4-survive-rotate/`
