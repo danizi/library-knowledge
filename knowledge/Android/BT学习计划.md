@@ -8,7 +8,15 @@ D0–D9 各有一个 Demo 和一张卡。D10 默答，D11 复跑，这两天不�
 
 原先写成 8 天，是把官方文档里分开的步骤压进了同一天：Find BLE devices 里的普通扫描和 `ScanFilter` / `ScanSettings` 不是一回事；Transfer BLE data 里的发现服务、读、通知也不是一回事。Punch Through 的 Android BLE 指南还把连接、写入、以及「上一次回调回来再发下一次」分开讲。所以内容日扩到 D0–D9。
 
-材料：
+## 学习重点
+
+必学：Android 12 的扫描和连接权限（D2）、限时扫描（D3）、连接后先发现服务（D5）、读（D6）、写并等待回调（D7）、通知要写描述符（D8）。
+
+知道即可：扫描过滤和低延迟模式（D4）、经典蓝牙 socket 会阻塞（D9）。能讲清和 BLE 不是一条路即可。
+
+不必深挖：抓自己的蓝牙空口日志、Android 4.3 的协议栈不稳定、UUID 的全部档案。旧系统上扫描还要定位，本批 Demo 的 minSdk 是 31，知道有过这一页即可。
+
+## 读过的材料
 
 - [Set up Bluetooth](https://developer.android.com/develop/connectivity/bluetooth/setup)
 - [Bluetooth permissions](https://developer.android.com/develop/connectivity/bluetooth/bt-permissions)
@@ -17,6 +25,21 @@ D0–D9 各有一个 Demo 和一张卡。D10 默答，D11 复跑，这两天不�
 - [Transfer BLE data](https://developer.android.com/develop/connectivity/bluetooth/ble/transfer-ble-data)
 - [Connect Bluetooth devices](https://developer.android.com/develop/connectivity/bluetooth/connect-bluetooth-devices)
 - [Punch Through：Android BLE Guide](https://punchthrough.com/android-ble-guide/) — 日常实战里权限、扫描、连接、读、写、通知的顺序
+
+## 常见坑
+
+`[android] [bluetooth]` 按票排序的前 8 条。
+
+| 票 | 现象 | 链接 |
+|----|------|------|
+| 196 | Android 4.3 上 BLE 不稳定 | [17870189](https://stackoverflow.com/questions/17870189/android-4-3-bluetooth-low-energy-unstable) |
+| 125 | Android 6 扫描 BLE 还必须开定位 | [33045581](https://stackoverflow.com/questions/33045581/location-needs-to-be-enabled-for-bluetooth-low-energy-scanning-on-android-6-0) |
+| 122 | 想用代码直接开关蓝牙 | [3806536](https://stackoverflow.com/questions/3806536/how-to-enable-disable-bluetooth-programmatically-in-android) |
+| 116 | 经典蓝牙 `connect` 报 socket might closed | [18657427](https://stackoverflow.com/questions/18657427/ioexception-read-failed-socket-might-closed-bluetooth-on-android-4-3) |
+| 97 | Android 12 要新的蓝牙权限 | [67722950](https://stackoverflow.com/questions/67722950/android-12-new-bluetooth-permissions) |
+| 95 | 经典蓝牙 UUID 到底要不要自己生成 | [13964342](https://stackoverflow.com/questions/13964342/android-how-do-bluetooth-uuids-work) |
+| 90 | 想抓自己手机的蓝牙空口日志 | [23877761](https://stackoverflow.com/questions/23877761/sniffing-logging-your-own-android-bluetooth-traffic) |
+| 88 | 怎么判断蓝牙开没开 | [7672334](https://stackoverflow.com/questions/7672334/how-to-check-if-bluetooth-is-enabled-programmatically) |
 
 配套：[BT面试题库](BT面试题库.md) · [BT错题库](BT错题库.md)（只记你答歪的，现在是空表）  
 环境：Android Studio + Kotlin。Demo 的 minSdk 是 **31**。  

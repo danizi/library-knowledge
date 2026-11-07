@@ -11,6 +11,33 @@
 Demo 目录：`knowledge/Android/demos/service/`  
 命名：`svc-d{日程天}-{主题}`（如 `svc-d2-lifecycle`）。与 `act-d*` / `fg-d*` / `br-d*` / `cp-d*` 各算各的。
 
+## 学习重点
+
+必学：前台 Service 必须在时限内调用 `startForeground`（D4）、通知渠道和通知本身（D4）、绑定与 Binder 只解决同进程调用（D3）。高票问题几乎都集中在「调了 startForegroundService 却没有马上 startForeground」。
+
+知道即可：前台通知的文字稍后怎么改。
+
+不必深挖：从 Service 反查当前前台 Activity。这是坏味道，不是这条日程要练的。标签里混进的定位开关、LayoutInflater，也不是 Service 主线。
+
+## 读过的材料
+
+- https://developer.android.com/develop/background-work/services
+- https://developer.android.com/develop/background-work/services/foreground-services
+- https://developer.android.com/guide/components/bound-services
+
+## 常见坑
+
+| 票 | 现象 | 链接 |
+|----|------|------|
+| 400 | `startForegroundService` 之后没有马上 `startForeground` | [44425584](https://stackoverflow.com/questions/44425584/context-startforegroundservice-did-not-then-call-service-startforeground) |
+| 283 | 问的是定位开关，不是 Service | [10311834](https://stackoverflow.com/questions/10311834/how-to-check-if-location-services-are-enabled) |
+| 268 | 升到 Android 8.1 后 `startForeground` 失败 | [47531742](https://stackoverflow.com/questions/47531742/startforeground-fail-after-upgrade-to-android-8-1) |
+| 210 | 不在 Activity 里拿 LayoutInflater | [7803771](https://stackoverflow.com/questions/7803771/call-getlayoutinflater-in-places-not-in-activity) |
+| 205 | 想从 Service 拿到当前前台 Activity | [3873659](https://stackoverflow.com/questions/3873659/android-how-can-i-get-the-current-foreground-activity-from-a-service) |
+| 177 | 前台通知的文字要更新 | [5528288](https://stackoverflow.com/questions/5528288/how-do-i-update-the-notification-text-for-a-foreground-service-in-android) |
+| 148 | 怎么实现 `startForeground` | [6397754](https://stackoverflow.com/questions/6397754/android-implementing-startforeground-for-a-service) |
+| 128 | Service 怎么启动 | [4765517](https://stackoverflow.com/questions/4765517/start-service-in-android) |
+
 ---
 
 ## 8 天总览

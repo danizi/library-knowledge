@@ -8,6 +8,33 @@
 Demo 目录：`knowledge/Android/demos/activity/`  
 命名：`act-d{日程天}-{主题}`（如 `act-d2-lifecycle-log`）。与 FG 的 `fg-d*` 各算各的，不共用全局序号。
 
+## 学习重点
+
+必学：生命周期回调顺序（D2）、Intent 传参（D3）、旋转后状态怎么留（D4）、启动模式把任务栈怎么摆（D3 的 `ACT-001,4`）。这四天对得上票最高的保存状态、Activity 之间传数据和旋转重建。
+
+知道即可：透明 Activity、把对象塞进 Intent。能讲清「可以，但是有代价」即可。
+
+不必深挖：EditText 一启动就抢焦点。票最高，但是界面细节，不是这条 Activity 主线。`startActivityForResult` 的旧写法也不要再背，现有日程已经用结果回调。
+
+## 读过的材料
+
+- https://developer.android.com/guide/components/activities/intro-activities
+- https://developer.android.com/guide/components/activities/activity-lifecycle
+- https://developer.android.com/guide/components/activities/tasks-and-back-stack
+
+## 常见坑
+
+| 票 | 现象 | 链接 |
+|----|------|------|
+| 3179 | Activity 一打开，输入框就拿到焦点 | [1555109](https://stackoverflow.com/questions/1555109/how-can-i-stop-edittext-from-gaining-focus-when-an-activity-starts-in-android) |
+| 2876 | 旋转或被系统杀掉后，界面状态丢了 | [151777](https://stackoverflow.com/questions/151777/how-can-i-save-an-activity-state-using-the-save-instance-state) |
+| 1539 | 两个 Activity 之间怎么把数据带过去 | [2091465](https://stackoverflow.com/questions/2091465/how-do-i-pass-data-between-activities-in-android-application) |
+| 1463 | 一旋转，Activity 整个重建 | [456211](https://stackoverflow.com/questions/456211/activity-restart-on-rotation-android) |
+| 1108 | `startActivityForResult` 的结果接不回来 | [10407159](https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android) |
+| 1029 | 想要一个透明的 Activity | [2176922](https://stackoverflow.com/questions/2176922/how-do-i-create-a-transparent-activity-on-android) |
+| 993 | 在 Fragment 里收不到 `onActivityResult` | [6147884](https://stackoverflow.com/questions/6147884/onactivityresult-is-not-being-called-in-fragment) |
+| 932 | 想用 Intent 传整个对象 | [2139134](https://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents) |
+
 ---
 
 ## 7 天总览

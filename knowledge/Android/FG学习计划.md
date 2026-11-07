@@ -14,6 +14,33 @@ ACT 的 D5 只交了「宿主」（`FG-001,5` + act-d5）。本计划从入口�
 Demo 目录：D1 起 `knowledge/Android/demos/fragment/`；`act-d5`（D0 交界 / ACT D5）仍在 `demos/activity/`  
 命名：`fg-d{日程天}-{主题}`（如 `fg-d1-backstack`）。与 ACT 的 `act-d*` 各算各的，不共用全局 `stageN`。
 
+## 学习重点
+
+必学：回退栈（D1）、事务不能在状态保存之后再提交（D3 一带）、Fragment 把结果交回去（D5）、`viewLifecycleOwner` 和视图生命周期分开（D4）。
+
+知道即可：Navigation 的返回键（D8）、布局里的 `FragmentContainerView`（D8）。能对上现有 Demo 即可。
+
+不必深挖：`setHasOptionsMenu` 已弃用，不必再记旧菜单写法。Dialog 点外部关闭是交互细节，不是这条主线。
+
+## 读过的材料
+
+- https://developer.android.com/guide/fragments
+- https://developer.android.com/guide/fragments/lifecycle
+- https://developer.android.com/guide/fragments/communicate
+
+## 常见坑
+
+| 票 | 现象 | 链接 |
+|----|------|------|
+| 259 | DialogFragment 的结果传不回宿主 | [10905312](https://stackoverflow.com/questions/10905312/receive-result-from-dialogfragment) |
+| 159 | 状态已保存后还提交 Fragment 事务 | [15729138](https://stackoverflow.com/questions/15729138/on-showing-dialog-i-get-can-not-perform-this-action-after-onsaveinstancestate) |
+| 156 | Navigation 里返回键不按预期 | [51043428](https://stackoverflow.com/questions/51043428/handling-back-button-in-android-navigation-component) |
+| 105 | `setHasOptionsMenu` 被标成弃用 | [71917856](https://stackoverflow.com/questions/71917856/sethasoptionsmenuboolean-unit-is-deprecated-deprecated-in-java) |
+| 105 | `FragmentContainerView` 当作 NavHost | [58703451](https://stackoverflow.com/questions/58703451/fragmentcontainerview-as-navhostfragment) |
+| 102 | Fragment 还没挂上就拿 Context | [28515049](https://stackoverflow.com/questions/28515049/android-content-context-getpackagename-on-a-null-object-reference) |
+| 87 | 点 Dialog 外面如何关掉 | [8404140](https://stackoverflow.com/questions/8404140/how-to-dismiss-a-dialogfragment-when-pressing-outside-the-dialog) |
+| 82 | XML 里声明的 Fragment 怎么塞参数 | [13034746](https://stackoverflow.com/questions/13034746/if-i-declare-a-fragment-in-an-xml-layout-how-do-i-pass-it-a-bundle) |
+
 ---
 
 ## 11 天总览

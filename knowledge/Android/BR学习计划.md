@@ -10,6 +10,31 @@
 Demo 目录：`knowledge/Android/demos/broadcast/`  
 命名：`br-d{日程天}-{主题}`（如 `br-d2-dynamic`）。
 
+## 学习重点
+
+必学：动态注册和注销成对出现（D1）、清单里的接收器在新系统上默认收不到大部分隐式广播（D4 的系统广播边界）、权限和导出（D2）。
+
+知道即可：一个接收器挂多个 filter，或拆成多个接收器。能选一种说清即可。
+
+不必深挖：`LocalBroadcastManager`。高票教程还在用，官方现在的替代是应用内的其他回调，不要把它当成新代码的默认写法。开机自启连着 Service，放在和 SVC 的交界知道即可。
+
+## 读过的材料
+
+- https://developer.android.com/develop/background-work/background-tasks/broadcasts
+
+## 常见坑
+
+| 票 | 现象 | 链接 |
+|----|------|------|
+| 481 | 应用内广播找 LocalBroadcastManager | [8802157](https://stackoverflow.com/questions/8802157/how-to-use-localbroadcastmanager) |
+| 344 | 开机广播里拉起 Service | [2784441](https://stackoverflow.com/questions/2784441/trying-to-start-a-service-on-boot-on-android) |
+| 319 | 在 Service 里拿 Context | [6446221](https://stackoverflow.com/questions/6446221/get-context-in-a-service) |
+| 293 | 不知道接收器现在有没有注册 | [2682043](https://stackoverflow.com/questions/2682043/how-to-check-if-receiver-is-registered-in-android) |
+| 276 | 用广播监听网络开关 | [15698790](https://stackoverflow.com/questions/15698790/broadcast-receiver-for-checking-internet-connection-in-android-app) |
+| 269 | 手机开机时把自己拉起来 | [6391902](https://stackoverflow.com/questions/6391902/how-do-i-start-my-app-when-the-phone-starts-on-android) |
+| 167 | 代码里动态注册接收器 | [4805269](https://stackoverflow.com/questions/4805269/programmatically-register-a-broadcast-receiver) |
+| 142 | 一个接收器要不要挂多个 filter | [9128103](https://stackoverflow.com/questions/9128103/broadcastreceiver-with-multiple-filters-or-multiple-broadcastreceivers) |
+
 ---
 
 ## 6 天总览

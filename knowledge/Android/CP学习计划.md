@@ -10,6 +10,34 @@
 Demo 目录：`knowledge/Android/demos/contentprovider/`  
 命名：`cp-d{日程天}-{主题}`（如 `cp-d2-crud`）。
 
+## 学习重点
+
+必学：ContentProvider 是数据出口，ContentResolver 是调用方（D1）、增删改查和 Cursor 谁负责关（D2）、导出和权限（D3）。
+
+知道即可：插入不一定要理解成「永远在主线程」，先会把耗时查询放离界面。没有 Provider 也能用 CursorLoader，那是加载器的用法，不是本模块要先建的东西。
+
+不必深挖：用 Provider 安装 APK、为了 SyncAdapter 硬凑一个空 Provider、用 Gradle build type 在同一台机器装两个带同一个 authority 的包。这些是排障题，不是入门主线。
+
+## 读过的材料
+
+- https://developer.android.com/guide/topics/providers/content-provider-basics
+- https://developer.android.com/guide/topics/providers/content-provider-creating
+
+## 常见坑
+
+`[android]` 下按标题搜 ContentProvider、按票排序。这个标签组合没有单独的高票列表，下面是搜到的 8 条。
+
+| 票 | 现象 | 链接 |
+|----|------|------|
+| 132 | 同一台机器装两个变体，authority 撞车 | [16777534](https://stackoverflow.com/questions/16777534/using-build-types-in-gradle-to-run-same-app-that-uses-contentprovider-on-one-dev) |
+| 108 | 没有 ContentProvider 也想用 CursorLoader | [7182485](https://stackoverflow.com/questions/7182485/cursorloader-usage-without-contentprovider) |
+| 77 | Provider 里数据库何时关闭 | [4547461](https://stackoverflow.com/questions/4547461/closing-the-database-in-a-contentprovider) |
+| 61 | Provider 和 Resolver 有什么差别 | [18874801](https://stackoverflow.com/questions/18874801/what-is-difference-between-contentprovider-and-contentresolver-in-android) |
+| 46 | SQLite 和 Provider 怎么摆 | [1725880](https://stackoverflow.com/questions/1725880/best-practices-for-sqlite-db-and-contentprovider) |
+| 43 | 能不能从 Provider 安装 APK | [9637629](https://stackoverflow.com/questions/9637629/can-we-install-an-apk-from-a-contentprovider) |
+| 39 | SyncAdapter 能否不要 Provider | [4649808](https://stackoverflow.com/questions/4649808/syncadapter-without-a-contentprovider) |
+| 38 | 以为 `insert` 总在主线程 | [11604914](https://stackoverflow.com/questions/11604914/contentprovider-insert-always-runs-on-ui-thread) |
+
 ---
 
 ## 5 天总览
