@@ -116,6 +116,35 @@
 
 
 
+### BT · Bluetooth
+
+- [BT 学习计划 · 12 天稳妥](knowledge/Android/BT学习计划.md)
+- [BT 面试题库](knowledge/Android/BT面试题库.md)
+- [BT 错题库](knowledge/Android/BT错题库.md) — 只记你答歪过的，复习优先于题库全表
+- Demo（命名：`bt-d{天}-主题`；与 `act-d*` / `fg-d*` / `svc-d*` / `br-d*` / `cp-d*` 各算各的）
+  - [bt-d0-hello](knowledge/Android/demos/bluetooth/bt-d0-hello/)（D0）
+  - [bt-d1-adapter](knowledge/Android/demos/bluetooth/bt-d1-adapter/)（D1）
+  - [bt-d2-permission](knowledge/Android/demos/bluetooth/bt-d2-permission/)（D2）
+  - [bt-d3-scan](knowledge/Android/demos/bluetooth/bt-d3-scan/)（D3）
+  - [bt-d4-scan-settings](knowledge/Android/demos/bluetooth/bt-d4-scan-settings/)（D4）
+  - [bt-d5-connect](knowledge/Android/demos/bluetooth/bt-d5-connect/)（D5）
+  - [bt-d6-read](knowledge/Android/demos/bluetooth/bt-d6-read/)（D6）
+  - [bt-d7-write](knowledge/Android/demos/bluetooth/bt-d7-write/)（D7）
+  - [bt-d8-notify](knowledge/Android/demos/bluetooth/bt-d8-notify/)（D8）
+  - [bt-d9-classic](knowledge/Android/demos/bluetooth/bt-d9-classic/)（D9）
+- [BT-001 | 蓝牙](<knowledge/Android/BT-001 | 蓝牙.md>) — **仍待审查**
+  - [BT-001,1 | 蓝牙权限](<knowledge/Android/BT-001,1 | 蓝牙权限.md>) — **仍待审查**
+  - [BT-001,2 | BLE扫描](<knowledge/Android/BT-001,2 | BLE扫描.md>) — **仍待审查**
+  - [BT-001,3 | GATT读写](<knowledge/Android/BT-001,3 | GATT读写.md>) — **仍待审查**
+  - [BT-001,4 | 经典蓝牙对照](<knowledge/Android/BT-001,4 | 经典蓝牙对照.md>) — **仍待审查**
+  - [BT-001,5 | 清单声明](<knowledge/Android/BT-001,5 | 清单声明.md>) — **仍待审查**
+  - [BT-001,6 | 扫描设置](<knowledge/Android/BT-001,6 | 扫描设置.md>) — **仍待审查**
+  - [BT-001,7 | 连接与关闭](<knowledge/Android/BT-001,7 | 连接与关闭.md>) — **仍待审查**
+  - [BT-001,8 | 写特征](<knowledge/Android/BT-001,8 | 写特征.md>) — **仍待审查**
+  - [BT-001,9 | 通知](<knowledge/Android/BT-001,9 | 通知.md>) — **仍待审查**
+
+
+
 ### V · View / UI / Compose
 
 - [V-001 | View的定义](<knowledge/Android/V-001 | View的定义.md>)
