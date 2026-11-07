@@ -1,25 +1,51 @@
 # res 资源命名规范
 
-**问：**
-layout / drawable / 各种资源文件，团队命名怎么定才不乱？
+**问：** 资源文件名怎样同时表明类型和用途？
 
-**答：**
-关键是：**前缀表明类型 + 名字表明用途**，全小写+下划线。  
-layout 常用 `activity_` / `fragment_` / `item_` / `dialog_`；drawable 常用 `ic_` / `bg_` / `selector_`。  
-模块多时再加模块前缀。同一项目只选一种风格，写进团队约定。
+> **一句话：** 文件名使用全小写和下划线。前缀表明类型。后面的词表明用途。
 
-一句话：看文件名就知道「是啥类型、干啥用」。
+**例：** 布局文件可以叫 `activity_login.xml` 或 `item_user.xml`。drawable 可以叫 `bg_btn_primary.xml` 或 `selector_tab_icon.xml`。
 
-**例 / 类比：**
-- 例子：`activity_login.xml`、`item_user.xml`、`bg_btn_primary.xml`、`selector_tab_icon.xml`。
-- 类比：仓库货架标签——先写品类再写品名。
+<details>
+<summary>答</summary>
 
-**易错：**
-- 同一项目混用两套命名（类型在前 vs 模块在前）会找疯。
-- 用驼峰或中文名。
+文件名使用全小写。
+单词之间使用下划线。
+前缀表明类型。
+前缀后面的词表明用途。
+layout 常用前缀有 `activity_`、`fragment_`、`item_` 和 `dialog_`。
+drawable 常用前缀有 `ic_`、`bg_` 和 `selector_`。
+模块变多时，再加模块前缀。
+同一个项目只选一种风格。
+把这种风格写进团队约定。
 
-**相关：**
+</details>
+
+<details>
+<summary>类比</summary>
+
+货架标签先写品类，再写品名。
+
+</details>
+
+<details>
+<summary>易错</summary>
+
+- 不要在同一个项目里混用两套命名。一套把类型放在前面。另一套把模块放在前面。混用之后难以查找。
+- 不要使用驼峰。不要使用中文文件名。
+
+</details>
+
+<details>
+<summary>相关</summary>
+
 - [PD-001,1 | res资源文件夹](<./PD-001,1 | res资源文件夹.md>)
 
-**参考：**
-- （团队约定为主；官方无强制文件名规范）
+</details>
+
+<details>
+<summary>参考</summary>
+
+- 命名以团队约定为准。官方没有强制的文件名规范。
+
+</details>

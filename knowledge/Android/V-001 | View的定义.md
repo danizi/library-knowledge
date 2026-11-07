@@ -1,28 +1,51 @@
 # View 的定义
 
-**问：**
-界面上看得见、点得着的东西，到底是谁构成的？View 和 ViewGroup 啥关系？
+**问：** View 和 ViewGroup 在界面里各做什么？
 
-**答：**
-能看见、能交互的控件，基本都从 `View` 长出来。  
-`ViewGroup` 多半自己不画内容，是装一堆子 View 的盒子（容器）。  
-整屏界面可以想成：盒子套盒子，最外层叶子才是具体控件。
+> **一句话：** ViewGroup 是容器。View 是容器里的控件。界面由容器嵌套控件组成。
 
-一句话：界面 = ViewGroup（盒子）嵌套 + View（叶子控件）。
+**例：** `TextView` 和 `Button` 是 View。`LinearLayout` 和 `RecyclerView` 是 ViewGroup。
 
-**例 / 类比：**
-- 例子：`TextView`、`Button` 是 View；`LinearLayout`、`RecyclerView` 是 ViewGroup。
-- 类比：ViewGroup 像收纳盒，View 像盒里的物件；盒子本身也可以再被更大的盒子装走。
+<details>
+<summary>答</summary>
 
-**易错：**
-- 别因为 ViewGroup「常常不直接画内容」就忽略它——量尺寸、摆子控件、分发触摸都靠它。
-- Compose 不是这套继承树，对照见 V-005。
+能看见、能交互的控件，基本都继承 `View`。
+ViewGroup 通常自己不绘制内容。
+ViewGroup 装入一组子 View。
+ViewGroup 是容器。
+一整屏界面是容器套容器。
+最里面的叶子才是具体控件。
 
-**相关：**
-- [V-002 | 盒子模型](<./V-002 | 盒子模型.md>) — 单个 View 怎么占地方
-- [V-003 | 坐标系](<./V-003 | 坐标系.md>) — 点落在屏幕还是控件里
-- [V-004 | Widget](<./V-004 | Widget.md>) — 常用叶子控件先认谁
-- [V-005 | Jetpack Compose](<./V-005 | Jetpack Compose.md>) — 声明式 UI 另一条路
+</details>
 
-**参考：**
+<details>
+<summary>类比</summary>
+
+ViewGroup 像收纳盒。View 像盒里的物件。一个盒子还可以放进更大的盒子。
+
+</details>
+
+<details>
+<summary>易错</summary>
+
+- 不要因为 ViewGroup 常常不直接绘制内容就忽略它。测量尺寸、摆放子控件和分发触摸都由它完成。
+- Compose 不使用这套继承树。对照见 V-005。
+
+</details>
+
+<details>
+<summary>相关</summary>
+
+- [V-002 | 盒子模型](<./V-002 | 盒子模型.md>) — 一个 View 怎样占地方
+- [V-003 | 坐标系](<./V-003 | 坐标系.md>) — 点相对屏幕，还是相对控件
+- [V-004 | Widget](<./V-004 | Widget.md>) — 先认识常用控件
+- [V-005 | Jetpack Compose](<./V-005 | Jetpack Compose.md>) — 另一条声明式界面路径
+
+</details>
+
+<details>
+<summary>参考</summary>
+
 - [View 官方文档](https://developer.android.com/reference/android/view/View)
+
+</details>

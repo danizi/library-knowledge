@@ -1,33 +1,67 @@
 # Fragment事务
 
-**问：**
-`add` / `replace` / `hide·show` 差在哪？`commit` 和 `commitNow` 呢？为啥回退栈事务不能配 `runOnCommit`？
+**问：** `add`、`replace`、`hide` 和 `show` 对已有 Fragment 各做什么？
 
-**答：**
-事务是交给 `FragmentManager` 的**一笔工单**：先记下要加、换、藏，再提交。隔断不会自己换。  
-**replace** 把容器里旧的拿走，旧隔断 **view 常被拆掉**（`onDestroyView`，没入栈还会 `onDestroy`）。**add** 不拿走旧的，再叠一块。**hide / show** 实例和 view 都还在，只走 `onHiddenChanged`，不一定再 `onResume`。  
-`commit()` 异步，写完立刻 `findFragment` 可能还是旧的；`commitNow()` 马上执行，立刻能 find 到新的，但**不能**和 `addToBackStack` 写在同一笔。`setReorderingAllowed(true)` 允许这一笔被合并优化，官方建议打开。
+> **一句话：** `replace` 移除容器里的旧 Fragment。`hide` 和 `show` 保留实例和 view。`commit` 异步提交。`commitNow` 立即执行。
 
-一句话：replace 拆房间，hide 只关灯；commit 排队，commitNow 当场干完。
+**例：** `fg-d3-fragment-transaction` 里，`replace` 之后调用 `commit`。此时 `findFragment` 仍找到 Home。随后 Home 执行 `onDestroyView`。`commitNow` 返回后立刻找到 Detail。第二次 `hide` / `show` 只调用 `onHiddenChanged`。Home 不执行 `onDestroy`。`add` 一个 Extra 时，Home 不执行 `onDestroy`。
 
-**例 / 类比：**
-- 例子（`fg-d3-fragment-transaction`）：`replace·commit` 立刻 find 仍是 Home，随后才 `onDestroyView`；`commitNow` 立刻 find 已是 Detail。hide/show 第二次只有 `onHiddenChanged`，Home 不 Destroy。add Extra，Home 不 Destroy。
-- 类比：工单交前台（commit）可能还没换牌；盯着师傅当场换完（commitNow）牌已经是新的。
+<details>
+<summary>答</summary>
 
-**易错：**
-- hide 当成 `onPause`。被藏着的仍可能 `onResume`；切 Tab 刷新常靠 `onHiddenChanged`。
-- `addToBackStack` 再 `runOnCommit` 或 `commitNow` → `IllegalStateException`（F1 / fg-d1 栽过）。
-- `commit()` 之后立刻当新 Fragment 已经在，读到的还是旧实例。
-- 容器用普通 `FrameLayout` 凑，不用 `FragmentContainerView`。
+事务是交给 `FragmentManager` 的一组操作。
+先记录添加、替换或隐藏。再提交。
+Fragment 不会自己更换。
+`replace` 拿走容器里的旧 Fragment。
+旧 Fragment 的 view 通常被销毁。系统调用 `onDestroyView`。
+这次事务没有入栈时，系统还会调用 `onDestroy`。
+`add` 不拿走旧 Fragment。`add` 再放入一个 Fragment。
+`hide` 和 `show` 保留实例。
+`hide` 和 `show` 保留 view。
+`hide` 和 `show` 调用 `onHiddenChanged`。
+`hide` 和 `show` 不一定再次调用 `onResume`。
+`commit()` 异步执行。
+`commit()` 返回后立刻调用 `findFragment`，可能仍找到旧 Fragment。
+`commitNow()` 立即执行。
+`commitNow()` 返回后可以找到新 Fragment。
+不要在同一笔事务里同时使用 `commitNow()` 和 `addToBackStack`。
+`setReorderingAllowed(true)` 允许系统合并这一笔事务。官方建议打开它。
 
-**相关：**
+</details>
+
+<details>
+<summary>类比</summary>
+
+把工单交给前台。前台可能还没有换牌。看着操作当场完成时，牌子已经是新的。
+
+</details>
+
+<details>
+<summary>易错</summary>
+
+- 不要把 `hide` 当成 `onPause`。被隐藏的 Fragment 可能已经执行 `onResume`。切换 Tab 的刷新常常写在 `onHiddenChanged`。
+- 不要在带 `addToBackStack` 的事务里调用 `runOnCommit`。不要在这笔事务里调用 `commitNow`。系统抛出 `IllegalStateException`。见 F1 和 `fg-d1`。
+- `commit()` 返回后，不要认为新 Fragment 已经在容器里。读到的可能仍是旧实例。
+- 容器使用 `FragmentContainerView`。不要用普通 `FrameLayout` 代替。
+
+</details>
+
+<details>
+<summary>相关</summary>
+
 - Demo：[fg-d3-fragment-transaction](../demos/fragment/fg-d3-fragment-transaction/)
-- [FG-001 | Fragment](<./FG-001 | Fragment.md>) — 容器用 `FragmentContainerView`
-- [FG-001,1 | Fragment生命周期](<./FG-001,1 | Fragment生命周期.md>) — hide 不走完整销毁；人 vs view
-- [FG-001,7 | viewLifecycleOwner](<./FG-001,7 | viewLifecycleOwner.md>) — 观察绑谁、view 何时空
-- [FG-001,3 | Fragment回退栈](<./FG-001,3 | Fragment回退栈.md>) — replace 才能入栈；`runOnCommit` 不能配回退栈
+- [FG-001 | Fragment](<./FG-001 | Fragment.md>) — 容器使用 `FragmentContainerView`
+- [FG-001,1 | Fragment生命周期](<./FG-001,1 | Fragment生命周期.md>) — `hide` 不走完整销毁。实例和 view 的寿命不同
+- [FG-001,7 | viewLifecycleOwner](<./FG-001,7 | viewLifecycleOwner.md>) — 观察绑在 view 的生命周期上
+- [FG-001,3 | Fragment回退栈](<./FG-001,3 | Fragment回退栈.md>) — `replace` 可以入栈。`runOnCommit` 不能和回退栈写在同一笔
 - [FG面试题库](./FG面试题库.md) — F7 F9
 - [FG错题库](./FG错题库.md)
 
-**参考：**
+</details>
+
+<details>
+<summary>参考</summary>
+
 - [Fragment 事务](https://developer.android.com/guide/fragments/transactions?hl=zh-cn)
+
+</details>

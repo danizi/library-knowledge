@@ -1,28 +1,51 @@
 # Jetpack Compose
 
-**问：**
-Jetpack Compose 是啥？和传统 View 怎么对照着学？
+**问：** Jetpack Compose 怎样描述界面？
 
-**答：**
-Compose 是 Android 的**声明式 UI**工具包：你描述「界面现在应该长什么样」，系统按状态去对齐；  
-不像传统 View 那样到处找控件再命令式改。本卡是入口，细节在子卡。
+> **一句话：** Compose 根据状态描述界面现在应该是什么样。它不先找到控件再修改控件。
 
-一句话：Compose 用「状态 → UI」描述界面，而不是「找到控件再改」。
+**例：** `count` 改变之后，`Text("$count")` 按新的 `count` 更新。不需要手写 `textView.text = …`。
 
-**例 / 类比：**
-- 例子：`count` 变了，`Text("$count")` 自动更新，不必手写 `textView.text = …`。
-- 类比：点菜报「要一份辣的」——厨房按菜单出菜；不是你冲进厨房一勺一勺炒。
+<details>
+<summary>答</summary>
 
-**易错：**
-- 别在 Compose 里继续「握着控件引用改」。
-- 可与 XML View 共存，但先把声明式心态立住。
+Compose 是 Android 的声明式界面工具包。
+你描述界面在当前状态下应该是什么样。
+系统按状态把界面对齐到这个描述。
+传统 View 先找到控件，再修改控件。
+这张卡是入口。细节在子卡里。
 
-**相关：**
+</details>
+
+<details>
+<summary>类比</summary>
+
+点菜时说出要一份辣的。厨房按菜单出菜。你不进厨房一勺一勺炒。
+
+</details>
+
+<details>
+<summary>易错</summary>
+
+- 不要在 Compose 里保存控件引用再去改它。
+- Compose 可以和 XML View 放在同一个应用里。先把「描述状态」这件事立住。
+
+</details>
+
+<details>
+<summary>相关</summary>
+
 - [V-005,1 | Preview注解](<./V-005,1 | Preview注解.md>)
 - [V-005,2 | 声明式与命令式对比](<./V-005,2 | 声明式与命令式对比.md>)
 - [V-005,4 | Compose 核心 API 分类](<./V-005,4 | Compose 核心 API 分类.md>)
 - [V-005,4,a | Modifier](<./V-005,4,a | Modifier.md>)
 - [V-001 | View的定义](<./V-001 | View的定义.md>)
 
-**参考：**
+</details>
+
+<details>
+<summary>参考</summary>
+
 - [Compose 组件](https://developer.android.com/develop/ui/compose/components?hl=zh-cn)
+
+</details>

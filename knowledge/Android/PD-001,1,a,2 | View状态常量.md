@@ -1,24 +1,51 @@
 # View 状态常量
 
-**问：**
-写 selector / 代码 addState 时，常见 View 状态常量各自表示什么？
+**问：** `selector` 和代码里的 `addState` 使用哪些常见状态常量？
 
-**答：**
-常用：`state_pressed` 按下、`state_focused` 焦点、`state_selected` 选中、`state_enabled` 启用、`state_checked` 勾选、`state_activated` 激活、`state_window_focused` 窗口焦点。  
-在代码里对「假」状态常在属性前加负号（如 `-state_enabled` 表示禁用）。
+> **一句话：** 状态常量是 `selector` 用来匹配 View 状态的名称。
 
-一句话：状态常量 = selector 用来「对暗号」的开关名。
+**例：** 按钮按下使用 `state_pressed`。CheckBox 勾选使用 `state_checked`。
 
-**例 / 类比：**
-- 例子：按钮按下用 `state_pressed`；CheckBox 勾选用 `state_checked`。
-- 类比：门禁卡上的权限位——对上哪一位就走哪条门。
+<details>
+<summary>答</summary>
 
-**易错：**
-- `selected` 和 `activated` 场景不同，别混用。
-- XML 里写 `false` 与代码里负号属性，写法不一样。
+`state_pressed` 表示按下。
+`state_focused` 表示有焦点。
+`state_selected` 表示选中。
+`state_enabled` 表示启用。
+`state_checked` 表示勾选。
+`state_activated` 表示激活。
+`state_window_focused` 表示窗口有焦点。
+在代码里表示某个状态为假时，常常在属性前加负号。
+`-state_enabled` 表示禁用。
 
-**相关：**
+</details>
+
+<details>
+<summary>类比</summary>
+
+门禁卡上有多位权限。对上哪一位，就走哪一扇门。
+
+</details>
+
+<details>
+<summary>易错</summary>
+
+- 不要把 `state_selected` 和 `state_activated` 当成同一个状态。它们用于不同场景。
+- XML 里写 `false`。代码里用属性前的负号。这两种写法不相同。
+
+</details>
+
+<details>
+<summary>相关</summary>
+
 - [PD-001,1,a,1 | 状态列表的使用](<./PD-001,1,a,1 | 状态列表的使用.md>)
 
-**参考：**
+</details>
+
+<details>
+<summary>参考</summary>
+
 - [StateList 文档](https://developer.android.com/guide/topics/resources/drawable-resource?hl=zh-cn#StateList)
+
+</details>

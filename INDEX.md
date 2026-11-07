@@ -5,7 +5,7 @@
 
 含 `|` 的卡片文件名，链接写成 `[标题](<knowledge/Android/编码 | 标题.md>)`，用 `<>` 包真实路径；不要写成 `%20%7C`，Cursor 会点不开。
 
-> `knowledge/Android|Web|Tools` 下正式卡均已统一为费曼格式（问/答/一句话/例或类比/易错）。  
+> `knowledge/Android|Web|Tools` 下概念卡正面是问、一句话、一个例子。答、类比、易错、相关、参考折叠。句子一句一个事实。  
 > `JavascriptDemo/` 仍是练习场，不成概念卡。  
 > 学习法和固定项目文档在 `.cursor/docs/`，不占领域编号。
 

@@ -1,24 +1,53 @@
 # BLE扫描
 
-**问：**
-BLE 扫描为什么必须限时，并且找到目标就停？
+**问：** 为什么 BLE 扫描必须有时间上限，并且找到目标设备后必须停止？
 
-**答：**
-调用 `BluetoothLeScanner.startScan()`，设备从 `ScanCallback.onScanResult` 送来。蓝牙没有打开时，`getBluetoothLeScanner()` 返回 null，没有扫描器可用。扫描耗电：找到要的设备就 `stopScan()`，还要定一个时间上限，不要循环扫。同一次也不能又扫 BLE 又扫经典蓝牙。
+> **一句话：** 为 BLE 扫描设置时间上限。找到目标设备后停止扫描。
 
-一句话：限时扫描，找到就停；蓝牙关着就没有 scanner，也不能和经典扫描同时进行。
+**例：** `bt-d3-scan` 扫描约 10 秒。到时后调用 `stopScan()`。屏幕只列出设备地址。
 
-**例 / 类比：**
-- 例子：bt-d3 按下后扫描约 10 秒，到点调用 `stopScan()`，屏幕上只积累设备地址。
-- 类比：用手电找钥匙，照到就关掉，不要整晚照着院子。
+<details>
+<summary>答</summary>
 
-**易错：**
-- 蓝牙关着仍去 `startScan()`。这时扫描器是 null。
-- 想在一次扫描里同时拿到经典设备和 BLE 设备。文档写明两种扫描不能同时做。
+调用 `BluetoothLeScanner.startScan()`。
+扫描结果从 `ScanCallback.onScanResult` 到达。
+蓝牙功能未打开时，`getBluetoothLeScanner()` 返回 null。
+返回 null 时，没有扫描器。
+扫描消耗电池电量。
+找到目标设备后，调用 `stopScan()`。
+为扫描设置一个时间上限。
+不要循环调用 `startScan()`。
+一次扫描只能扫描 BLE 设备。
+一次扫描不能同时扫描经典蓝牙设备。
 
-**相关：**
-- [BT-001,1 | 蓝牙权限](<./BT-001,1 | 蓝牙权限.md>) — 没有 BLUETOOTH_SCAN 不能扫
-- [BT-001,3 | GATT读写](<./BT-001,3 | GATT读写.md>) — 扫描只拿到地址，读数要再连接
+</details>
 
-**参考：**
-- [Find BLE devices](https://developer.android.com/develop/connectivity/bluetooth/ble/find-ble-devices) — startScan、10 秒上限、scanner 为 null、不能同时扫两种
+<details>
+<summary>类比</summary>
+
+用手电找到钥匙后，关闭手电。
+
+</details>
+
+<details>
+<summary>易错</summary>
+
+- 蓝牙功能未打开时，不要调用 `startScan()`。此时扫描器是 null。
+- 不要在一次扫描中同时获取经典蓝牙设备和 BLE 设备。
+
+</details>
+
+<details>
+<summary>相关</summary>
+
+- [BT-001,1 | 蓝牙权限](<./BT-001,1 | 蓝牙权限.md>) — 没有 `BLUETOOTH_SCAN` 不能扫描
+- [BT-001,6 | 扫描设置](<./BT-001,6 | 扫描设置.md>) — 过滤器和扫描模式是另两个参数
+
+</details>
+
+<details>
+<summary>参考</summary>
+
+- [Find BLE devices](https://developer.android.com/develop/connectivity/bluetooth/ble/find-ble-devices) — `startScan`、时间上限、扫描器为 null
+
+</details>

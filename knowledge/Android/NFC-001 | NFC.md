@@ -1,25 +1,49 @@
 # NFC
 
-**问：**
-`getDefaultAdapter()` 返回 null，和适配器还在但 `isEnabled()` 为 false，差在哪？
+**问：** `getDefaultAdapter()` 返回 null，和 `isEnabled()` 返回 false，有什么差别？
 
-**答：**
-null 表示这台设备没有 NFC 硬件。对象还在时，`isEnabled()` 为 true 才表示功能开着。NFC 的基础文档没有蓝牙那种申请打开的弹窗，应用不要自己改系统开关。模拟器上经常是 null，贴卡要换真机。
+> **一句话：** null 表示没有 NFC 硬件。false 表示有 NFC 硬件，但 NFC 功能未打开。
 
-一句话：null 是没有芯片，false 是有芯片但没开；开不开由系统设置决定。
+**例：** `nfc-d1-adapter` 只显示这两项结果。这个 Demo 没有「打开 NFC」按钮。
 
-**例 / 类比：**
-- 例子：nfc-d1-adapter 只显示这两句判断，没有「打开 NFC」按钮。
-- 类比：房子没有门，和门在但插销扣着，不是同一件事。
+<details>
+<summary>答</summary>
 
-**易错：**
-- 把模拟器上的 null 说成「用户关了 NFC」。
-- 仿照蓝牙去发一个打开无线电的意图。基础文档没有这一步。
+`getDefaultAdapter()` 返回 null。设备没有 NFC 硬件。
+`getDefaultAdapter()` 返回一个适配器。设备有 NFC 硬件。
+适配器的 `isEnabled()` 返回 true。NFC 功能已打开。
+适配器的 `isEnabled()` 返回 false。NFC 功能未打开。
+应用不能用代码打开 NFC 功能。用户在系统设置里打开 NFC 功能。
 
-**相关：**
-- [NFC-001,1 | 清单声明](<./NFC-001,1 | 清单声明.md>) — 有硬件之前，清单要先声明
-- [NFC-001,7 | HCE对照](<./NFC-001,7 | HCE对照.md>) — 手机当卡是另一种模式
+</details>
 
-**参考：**
-- [NFC basics](https://developer.android.com/develop/connectivity/nfc/nfc) — getDefaultAdapter() 为 null
-- [NfcAdapter.isEnabled](https://developer.android.com/reference/android/nfc/NfcAdapter#isEnabled()) — 功能是否打开
+<details>
+<summary>类比</summary>
+
+没有门，和门在但锁着，是两件不同的事。
+
+</details>
+
+<details>
+<summary>易错</summary>
+
+- 不要把模拟器上的 null 说成「用户关闭了 NFC」。模拟器通常没有 NFC 硬件。
+- 不要发送一个意图去打开 NFC。NFC 基础文档没有这个步骤。
+
+</details>
+
+<details>
+<summary>相关</summary>
+
+- [NFC-001,1 | 清单声明](<./NFC-001,1 | 清单声明.md>) — 使用适配器之前，先在清单里声明
+- [NFC-001,7 | HCE对照](<./NFC-001,7 | HCE对照.md>) — 卡模拟是另一种模式
+
+</details>
+
+<details>
+<summary>参考</summary>
+
+- [NFC basics](https://developer.android.com/develop/connectivity/nfc/nfc) — `getDefaultAdapter()` 为 null
+- [NfcAdapter.isEnabled](https://developer.android.com/reference/android/nfc/NfcAdapter#isEnabled()) — NFC 功能是否打开
+
+</details>

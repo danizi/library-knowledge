@@ -1,24 +1,45 @@
 # Kotlin
 
-**问：**
-在这套库里，Kotlin 要从哪几张卡啃起？
+**问：** 在这套库里，Kotlin 先读哪一张卡？
 
-**答：**
-先搞清并发相关基本词汇（KT-001,1），再学 Flow 冷数据流（KT-001,2）。  
-别一上来扎进操作符手册。
+> **一句话：** 先读并发词汇。再读 Flow。不要把操作符手册当作第一遍阅读。
 
-一句话：先词汇，再 Flow；手册当速查不当第一遍阅读。
+**例：** 阅读顺序是 `KT-001,1`，然后是 `KT-001,2`。
 
-**例 / 类比：**
-- 例子：阅读顺序 `KT-001,1` → `KT-001,2`。
-- 类比：先认路牌，再开高速。
+<details>
+<summary>答</summary>
 
-**易错：**
-- 把长文当一篇背完——要拆问拆答。
+先读 KT-001,1。那张卡讲并发词汇。
+再读 KT-001,2。那张卡讲 Flow。
+不要一开始阅读操作符手册。
 
-**相关：**
+</details>
+
+<details>
+<summary>类比</summary>
+
+先认识路牌，再上高速。
+
+</details>
+
+<details>
+<summary>易错</summary>
+
+- 不要把一篇长文一次背完。把长文拆成问和答。
+
+</details>
+
+<details>
+<summary>相关</summary>
+
 - [KT-001,1 | 基本概念](<./KT-001,1 | 基本概念.md>)
 - [KT-001,2 | Flow 的使用](<./KT-001,2 | Flow 的使用.md>)
 
-**参考：**
+</details>
+
+<details>
+<summary>参考</summary>
+
 - [Kotlin 文档](https://kotlinlang.org/docs/home.html)
+
+</details>
