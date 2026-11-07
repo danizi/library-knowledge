@@ -13,6 +13,8 @@ from pathlib import Path
 from urllib.parse import unquote, urlparse
 
 ROOT = Path(__file__).resolve().parent
+REPO = ROOT.parent.parent
+INDEX_PATH = REPO / "INDEX.md"
 DB_PATH = ROOT / "kanban.sqlite"
 HTML_PATH = ROOT / "kanban.html"
 PORT = 8741
@@ -61,6 +63,11 @@ def connect():
         )
         """
     )
+    have = {row[1] for row in conn.execute("PRAGMA table_info(cards)")}
+    if "source_mtime" not in have:
+        conn.execute("ALTER TABLE cards ADD COLUMN source_mtime TEXT NOT NULL DEFAULT ''")
+    if "chapter" not in have:
+        conn.execute("ALTER TABLE cards ADD COLUMN chapter TEXT NOT NULL DEFAULT ''")
     return conn
 
 
@@ -71,6 +78,7 @@ def card_from_row(row):
         "code": row["code"],
         "column": row["column_name"],
         "domain": row["domain"],
+        "chapter": row["chapter"] if "chapter" in row.keys() else row["domain"],
         "kind": row["kind"],
         "summary": row["summary"],
         "tags": json.loads(row["tags"] or "[]"),
@@ -94,7 +102,8 @@ def clean_card(raw, index):
         "title": str(raw.get("title") or "未命名"),
         "code": str(raw.get("code") or ""),
         "column": column,
-        "domain": str(raw.get("domain") or ""),
+        "domain": str(raw.get("chapter") or raw.get("domain") or ""),
+        "chapter": str(raw.get("chapter") or raw.get("domain") or ""),
         "kind": str(raw.get("kind") or ""),
         "summary": str(raw.get("summary") or ""),
         "tags": [str(tag) for tag in tags],
@@ -109,8 +118,8 @@ def upsert(conn, card):
     conn.execute(
         """
         INSERT INTO cards (
-          id, title, code, column_name, domain, kind, summary, tags, path, body, blocks, position, updated_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+          id, title, code, column_name, domain, kind, summary, tags, path, body, blocks, position, updated_at, source_mtime, chapter
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ON CONFLICT(id) DO UPDATE SET
           title = excluded.title,
           code = excluded.code,
@@ -123,7 +132,9 @@ def upsert(conn, card):
           body = excluded.body,
           blocks = excluded.blocks,
           position = excluded.position,
-          updated_at = excluded.updated_at
+          updated_at = excluded.updated_at,
+          source_mtime = excluded.source_mtime,
+          chapter = excluded.chapter
         """,
         (
             card["id"],
@@ -139,13 +150,132 @@ def upsert(conn, card):
             json.dumps(card["blocks"], ensure_ascii=False),
             card["position"],
             now(),
+            card.get("source_mtime") or "",
+            card.get("chapter") or card.get("domain") or "",
         ),
     )
 
 
+LINK_RE = re.compile(r"\[([^\]]+)\]\(<([^>]+)>\)|\[([^\]]+)\]\(([^)\s]+)\)")
+
+
+def chapter_name(heading):
+    if heading.count(" · ") > 1:
+        return heading
+    if " · " in heading:
+        return heading.split(" · ", 1)[1].strip()
+    return heading
+
+
+def index_entries():
+    if not INDEX_PATH.exists():
+        return []
+    section = ""
+    chapter = ""
+    entries = []
+    for line in INDEX_PATH.read_text(encoding="utf-8").splitlines():
+        if line.startswith("### "):
+            chapter = chapter_name(line[4:].strip())
+            continue
+        if line.startswith("## "):
+            section = line[3:].strip()
+            chapter = ""
+            continue
+        label = chapter or section
+        if not label or label in ("Android", "Web"):
+            continue
+        for match in LINK_RE.finditer(line):
+            title = match.group(1) or match.group(3)
+            path = (match.group(2) or match.group(4) or "").strip()
+            if not path or path.startswith(("http://", "https://", "#")):
+                continue
+            entries.append({"title": title, "path": path, "chapter": label, "line": line.strip()})
+    return entries
+
+
+def code_of(title):
+    if " | " in title:
+        return title.split(" | ", 1)[0].strip()
+    return ""
+
+
+def one_line(text):
+    for line in text.splitlines():
+        stripped = line.strip().lstrip("#").strip()
+        if stripped:
+            return stripped[:180]
+    return ""
+
+
+def derive_column(line, text, exists):
+    blob = line + "\n" + (text or "")[:800]
+    if (not exists) or ("待建" in line):
+        return "todo"
+    if "仍待审查" in blob or "仍待审卡" in blob:
+        return "review"
+    return "doing"
+
+
+def read_source(rel):
+    target = (REPO / rel).resolve()
+    try:
+        target.relative_to(REPO.resolve())
+    except ValueError:
+        return "", "", False
+    if not target.exists() or target.is_dir():
+        return "", "", False
+    if target.suffix.lower() not in (".md", ".txt"):
+        return "", "", False
+    stat = target.stat()
+    return target.read_text(encoding="utf-8"), str(stat.st_mtime_ns), True
+
+
+def sync_from_index(conn):
+    stored = {row["id"]: row for row in conn.execute("SELECT * FROM cards").fetchall()}
+    seen = set()
+    for position, entry in enumerate(index_entries()):
+        file_body, mtime, exists = read_source(entry["path"])
+        card_id = "path:" + entry["path"]
+        while card_id in seen:
+            card_id += "-2"
+        seen.add(card_id)
+        row = stored.get(card_id)
+        if exists:
+            body = file_body
+            source_mtime = mtime
+        else:
+            body = entry["line"]
+            source_mtime = ""
+        if row and row["source_mtime"] == source_mtime and (row["body"] or "").strip():
+            body = row["body"]
+        column = row["column_name"] if row else derive_column(entry["line"], file_body, exists)
+        if column not in ("todo", "doing", "review", "done"):
+            column = "doing"
+        summary = one_line(file_body) if exists else one_line(entry["line"])
+        upsert(conn, {
+            "id": card_id,
+            "title": entry["title"],
+            "code": code_of(entry["title"]),
+            "column": column,
+            "domain": entry["chapter"],
+            "chapter": entry["chapter"],
+            "kind": "",
+            "summary": summary,
+            "tags": [],
+            "path": entry["path"],
+            "body": body,
+            "blocks": [],
+            "position": position,
+            "source_mtime": source_mtime,
+        })
+    conn.commit()
+
+
 def list_cards(conn):
+    sync_from_index(conn)
     rows = conn.execute("SELECT * FROM cards ORDER BY position, title").fetchall()
-    return [card_from_row(row) for row in rows]
+    fresh = {("path:" + entry["path"]) for entry in index_entries()}
+    return [card_from_row(row) for row in rows if row["id"] in fresh or row["id"].startswith("path:")]
 
 
 def seed_if_empty(conn):
@@ -333,9 +463,10 @@ class Handler(BaseHTTPRequestHandler):
         with LOCK:
             conn = connect()
             try:
-                row = conn.execute("SELECT position FROM cards WHERE id = ?", (card_id,)).fetchone()
+                row = conn.execute("SELECT position, source_mtime FROM cards WHERE id = ?", (card_id,)).fetchone()
                 card = clean_card(raw, row["position"] if row else 0)
                 card["id"] = card_id
+                card["source_mtime"] = row["source_mtime"] if row else ""
                 if row:
                     card["position"] = row["position"]
                 upsert(conn, card)

@@ -352,31 +352,61 @@
     .board-empty { margin: auto; max-width: 36ch; color: var(--secondary); }
     .board-empty p { margin: 0 0 12px; }
     .inspector {
-      min-height: 0;
+      position: fixed;
+      inset: 0;
+      z-index: 40;
       display: flex;
       flex-direction: column;
-      background: var(--sidebar);
-      border-left: 1px solid var(--separator);
+      background: var(--bg);
     }
     .inspector[hidden] { display: none; }
     .inspector-head {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 16px 8px 4px 16px;
+      min-height: 52px;
+      padding: 8px 16px;
+      background: var(--sidebar);
+      border-bottom: 1px solid var(--separator);
     }
     .inspector-head h2 {
       margin: 0;
       flex: 1;
       min-width: 0;
-      font-size: 20px;
+      font-size: 15px;
       line-height: 1.25;
-      letter-spacing: -0.02em;
-      font-weight: 700;
+      letter-spacing: -0.01em;
+      font-weight: 650;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
+    .back-btn {
+      border: 0;
+      background: transparent;
+      color: var(--blue-text);
+      font: inherit;
+      font-size: 15px;
+      padding: 6px 8px;
+      border-radius: 8px;
+    }
+    .back-btn:hover { background: var(--fill); }
+    .style-pick { display: flex; align-items: center; gap: 6px; color: var(--secondary); font-size: 13px; }
+    .style-pick select {
+      font: inherit;
+      font-size: 13px;
+      color: var(--label);
+      background: var(--fill);
+      border: 0;
+      border-radius: 8px;
+      padding: 6px 8px;
+    }
+    .reader-sheet { max-width: 760px; margin: 0 auto; padding: 28px 24px 80px; }
+    .reader-sheet textarea.code-src { min-height: 70vh; width: 100%; }
+    .md.style-github { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; font-size: 16px; line-height: 1.6; }
+    .md.style-github h3, .md.style-github h4, .md.style-github h5 { padding-bottom: 0.3em; border-bottom: 1px solid var(--separator); font-weight: 600; }
+    .md.style-serif { font-family: "Iowan Old Style", Palatino, "Palatino Linotype", "Songti SC", serif; font-size: 18px; line-height: 1.7; }
+    .md.style-system { font-family: inherit; }
     .icon-btn {
       width: 32px;
       height: 32px;
@@ -564,15 +594,6 @@
     }
     @media (max-width: 1080px) {
       .app.with-inspector { grid-template-columns: 220px minmax(0, 1fr); }
-      .inspector {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        width: min(420px, 100%);
-        z-index: 30;
-        box-shadow: -12px 0 40px rgba(0, 0, 0, 0.18);
-      }
     }
     @media (max-width: 860px) {
       .app, .app.with-inspector { grid-template-columns: minmax(0, 1fr); }
@@ -601,15 +622,13 @@
   <div class="app" id="app">
     <aside class="sidebar" id="sidebar">
       <h1>知识看板</h1>
-      <p class="lede">点开看详情。可以改、可以删。编辑能在普通和 Markdown 之间换。</p>
+      <p class="lede">按索引里的章节过滤。点开后可以在文本和 Markdown 之间换。</p>
       <div class="search">
         <span class="icon" id="search-icon"></span>
         <input id="q" type="search" placeholder="搜索标题、编码、正文" autocomplete="off" aria-label="搜索卡片" />
       </div>
-      <h2 class="side-h">领域</h2>
+      <h2 class="side-h">章节</h2>
       <div id="domain-nav"></div>
-      <h2 class="side-h">类型</h2>
-      <div id="kind-nav"></div>
       <p class="foot" id="db-foot">数据库在这台电脑上。</p>
     </aside>
     <div class="scrim" id="scrim"></div>
@@ -626,22 +645,20 @@
           <button type="button" data-appearance="system" aria-label="跟随系统"></button>
           <button type="button" data-appearance="dark" aria-label="深色"></button>
         </div>
-        <details class="menu" id="file-menu">
-          <summary>文件</summary>
-          <div class="menu-pop">
-            <button type="button" id="export">导出</button>
-            <button type="button" id="import">导入</button>
-            <button type="button" id="restore">恢复快照</button>
-          </div>
-        </details>
-        <button type="button" class="primary" id="create"></button>
       </div>
       <div class="board" id="board"></div>
     </section>
     <aside class="inspector" id="inspector" hidden>
       <div class="inspector-head">
+        <button type="button" class="back-btn" id="close">返回</button>
         <h2 id="inspector-title"></h2>
-        <button type="button" class="icon-btn" id="close" aria-label="关闭"></button>
+        <label class="style-pick">风格
+          <select id="md-style" aria-label="Markdown 风格">
+            <option value="system">系统</option>
+            <option value="github">GitHub</option>
+            <option value="serif">衬线</option>
+          </select>
+        </label>
       </div>
       <div class="scroll" id="inspector-scroll"></div>
     </aside>
@@ -658,8 +675,7 @@
   </div>
   <div class="toast" id="toast" hidden role="status"></div>
   <input id="import-file" type="file" accept="application/json,.json" hidden />
-  <script id="seed" type="application/json">[{"id":"pa0465a65f5","title":"BroadcastReceiver","code":"BR-001","column":"todo","domain":"Android","kind":"概念","summary":"待建。是什么，Manifest 静态限制。","tags":["待建"],"path":"","blocks":[{"id":"t-BR-001","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\n是什么，Manifest 静态限制。"}]},{"id":"pfddab173a2","title":"动态注册","code":"BR-001,1","column":"todo","domain":"Android","kind":"概念","summary":"待建。动态注册与解绑。","tags":["待建"],"path":"","blocks":[{"id":"t-BR-001-1","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\n动态注册与解绑。"}]},{"id":"pef56742d41","title":"有序与权限","code":"BR-001,2","column":"todo","domain":"Android","kind":"概念","summary":"待建。有序广播、权限、exported。","tags":["待建"],"path":"","blocks":[{"id":"t-BR-001-2","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\n有序广播、权限、exported。"}]},{"id":"p959d5bf24b","title":"本地广播与替代","code":"BR-001,3","column":"todo","domain":"Android","kind":"概念","summary":"待建。本地广播与替代。","tags":["待建"],"path":"","blocks":[{"id":"t-BR-001-3","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\n本地广播与替代。"}]},{"id":"p2efa86313e","title":"ContentProvider","code":"CP-001","column":"todo","domain":"Android","kind":"概念","summary":"待建。是什么、authority、URI。","tags":["待建"],"path":"","blocks":[{"id":"t-CP-001","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\n是什么、authority、URI。"}]},{"id":"p4ed0120809","title":"CRUD 与 Cursor","code":"CP-001,1","column":"todo","domain":"Android","kind":"概念","summary":"待建。query / insert / update / delete 与 Cursor。","tags":["待建"],"path":"","blocks":[{"id":"t-CP-001-1","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\nquery / insert / update / delete 与 Cursor。"}]},{"id":"p7f9d3076af","title":"权限与导出","code":"CP-001,2","column":"todo","domain":"Android","kind":"概念","summary":"待建。权限与导出。","tags":["待建"],"path":"","blocks":[{"id":"t-CP-001-2","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\n权限与导出。"}]},{"id":"p05ca2badc0","title":"Service","code":"SVC-001","column":"todo","domain":"Android","kind":"概念","summary":"待建。是什么、Manifest、不能当线程池乱用。","tags":["待建"],"path":"","blocks":[{"id":"t-SVC-001","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\n是什么、Manifest、不能当线程池乱用。"}]},{"id":"p311a6e175d","title":"生命周期","code":"SVC-001,1","column":"todo","domain":"Android","kind":"概念","summary":"待建。start / stop。","tags":["待建"],"path":"","blocks":[{"id":"t-SVC-001-1","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\nstart / stop。"}]},{"id":"p375988e64b","title":"绑定与 Binder","code":"SVC-001,2","column":"todo","domain":"Android","kind":"概念","summary":"待建。绑定与 Binder。","tags":["待建"],"path":"","blocks":[{"id":"t-SVC-001-2","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\n绑定与 Binder。"}]},{"id":"p63817dca6b","title":"前台 Service","code":"SVC-001,3","column":"todo","domain":"Android","kind":"概念","summary":"待建。前台 Service 与通知。","tags":["待建"],"path":"","blocks":[{"id":"t-SVC-001-3","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\n前台 Service 与通知。"}]},{"id":"pa71df5cd29","title":"后台限制与 WorkManager","code":"SVC-001,4","column":"todo","domain":"Android","kind":"概念","summary":"待建。后台限制，以及和 WorkManager 的边界。","tags":["待建"],"path":"","blocks":[{"id":"t-SVC-001-4","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\n后台限制，以及和 WorkManager 的边界。"}]},{"id":"p3124ee3af5","title":"AOP","code":"","column":"todo","domain":"Android","kind":"概念","summary":"待建。INDEX 待建：第三方库。","tags":["待建"],"path":"","blocks":[{"id":"t-AOP","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\nINDEX 待建：第三方库。"}]},{"id":"p4f32ae2c88","title":"BR Demo","code":"","column":"todo","domain":"Android","kind":"计划","summary":"待建。br-d0-hello 到 br-d4-local-vs-system，目录 demos/broadcast/，还没建。","tags":["待建"],"path":"","blocks":[{"id":"t-BR Demo","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\nbr-d0-hello 到 br-d4-local-vs-system，目录 demos/broadcast/，还没建。"}]},{"id":"paa9a053a8c","title":"CP Demo","code":"","column":"todo","domain":"Android","kind":"计划","summary":"待建。cp-d0-hello 到 cp-d3-permission，目录 demos/contentprovider/，还没建。","tags":["待建"],"path":"","blocks":[{"id":"t-CP Demo","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\ncp-d0-hello 到 cp-d3-permission，目录 demos/contentprovider/，还没建。"}]},{"id":"p7bfb06497e","title":"RecyclerView","code":"","column":"todo","domain":"Android","kind":"概念","summary":"待建。INDEX 待建：系统控件。","tags":["待建"],"path":"","blocks":[{"id":"t-RecyclerView","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\nINDEX 待建：系统控件。"}]},{"id":"p6dcf16e1c5","title":"Router","code":"","column":"todo","domain":"Android","kind":"概念","summary":"待建。INDEX 待建：第三方库。","tags":["待建"],"path":"","blocks":[{"id":"t-Router","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\nINDEX 待建：第三方库。"}]},{"id":"pb5969a0dce","title":"SVC Demo","code":"","column":"todo","domain":"Android","kind":"计划","summary":"待建。svc-d0-hello 到 svc-d5-workmanager-boundary，目录 demos/service/，还没建。","tags":["待建"],"path":"","blocks":[{"id":"t-SVC Demo","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\nsvc-d0-hello 到 svc-d5-workmanager-boundary，目录 demos/service/，还没建。"}]},{"id":"pe522fd149a","title":"TabLayout","code":"","column":"todo","domain":"Android","kind":"概念","summary":"待建。INDEX 待建：系统控件。","tags":["待建"],"path":"","blocks":[{"id":"t-TabLayout","type":"text","text":"学习计划或 INDEX 里标了待建，仓库里还没有这张卡。\nINDEX 待建：系统控件。"}]},{"id":"ex-image","title":"窗口里有三层","code":"","column":"doing","domain":"示例","kind":"示例","summary":"示例。图片插件把一张图画在卡片上。","tags":["插件","图片"],"path":"","blocks":[{"id":"ex-image-t","type":"text","text":"这是插件示例，不是正式卡。Activity 是系统窗口，Fragment 是窗里的隔断，View 是内容。"},{"id":"ex-image-i","type":"image","src":"data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20640%20360%22%3E%3Crect%20width%3D%22640%22%20height%3D%22360%22%20fill%3D%22%23f2f2f7%22/%3E%3Crect%20x%3D%2240%22%20y%3D%2228%22%20width%3D%22560%22%20height%3D%22304%22%20rx%3D%2228%22%20fill%3D%22%23ffffff%22/%3E%3Ctext%20x%3D%2268%22%20y%3D%2272%22%20fill%3D%22%234a4a4f%22%20font-family%3D%22-apple-system%2CBlinkMacSystemFont%2Csans-serif%22%20font-size%3D%2216%22%3E%E4%B8%80%E6%89%87%E7%B3%BB%E7%BB%9F%E7%AA%97%E5%8F%A3%3C/text%3E%3Ctext%20x%3D%2268%22%20y%3D%22110%22%20fill%3D%22%231d1d1f%22%20font-family%3D%22-apple-system%2CBlinkMacSystemFont%2Csans-serif%22%20font-size%3D%2232%22%20font-weight%3D%22700%22%3EActivity%3C/text%3E%3Crect%20x%3D%2268%22%20y%3D%22136%22%20width%3D%22504%22%20height%3D%2278%22%20rx%3D%2216%22%20fill%3D%22%23e8f2ff%22/%3E%3Ctext%20x%3D%2288%22%20y%3D%22182%22%20fill%3D%22%230058c5%22%20font-family%3D%22-apple-system%2CBlinkMacSystemFont%2Csans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22650%22%3EFragment%20%C2%B7%20%E5%8F%AF%E6%8B%86%E7%9A%84%E9%9A%94%E6%96%AD%3C/text%3E%3Crect%20x%3D%2288%22%20y%3D%22232%22%20width%3D%22464%22%20height%3D%2268%22%20rx%3D%2214%22%20fill%3D%22%23f2f2f7%22/%3E%3Ctext%20x%3D%22108%22%20y%3D%22273%22%20fill%3D%22%231d1d1f%22%20font-family%3D%22-apple-system%2CBlinkMacSystemFont%2Csans-serif%22%20font-size%3D%2222%22%20font-weight%3D%22650%22%3EView%20%C2%B7%20%E5%B1%8B%E9%87%8C%E7%9A%84%E5%86%85%E5%AE%B9%3C/text%3E%3C/svg%3E","alt":"Activity 里面是 Fragment，Fragment 里面是 View"}]},{"id":"ex-sequence","title":"点图标之后","code":"","column":"doing","domain":"示例","kind":"示例","summary":"示例。时序图插件，对应 Activity 被启动的顺序。","tags":["插件","时序图"],"path":"","blocks":[{"id":"ex-seq-t","type":"text","text":"这是插件示例。源码可以在卡片里改，松手后会重画。"},{"id":"ex-seq-d","type":"sequence","source":"sequenceDiagram\n  actor User as 用户\n  participant Launcher as 启动器\n  participant AMS as 系统\n  participant Main as MainActivity\n  User->>Launcher: 点图标\n  Launcher->>AMS: startActivity\n  AMS->>Main: onCreate\n  AMS->>Main: onStart\n  AMS->>Main: onResume"}]},{"id":"ex-class","title":"窗口和隔断","code":"","column":"doing","domain":"示例","kind":"示例","summary":"示例。类图插件，UML 里 Activity、Fragment、View 谁包含谁。","tags":["插件","类图"],"path":"","blocks":[{"id":"ex-cls-t","type":"text","text":"这是插件示例。类图是 UML 的一种。"},{"id":"ex-cls-d","type":"class","source":"classDiagram\n  class Activity {\n    +onCreate()\n    +onStart()\n    +onResume()\n  }\n  class Fragment {\n    +onAttach()\n    +onCreateView()\n  }\n  class View {\n    +onDraw()\n  }\n  Activity \"1\" o-- \"*\" Fragment : hosts\n  Fragment \"1\" o-- \"*\" View : draws"}]},{"id":"ex-state","title":"Activity 怎么活","code":"","column":"doing","domain":"示例","kind":"示例","summary":"示例。状态图插件，回调名和状态机上的箭头一致。","tags":["插件","状态图"],"path":"","blocks":[{"id":"ex-st-t","type":"text","text":"这是插件示例。状态名用回调前后的英文，和官方文档同一套词。"},{"id":"ex-st-d","type":"state","source":"stateDiagram-v2\n  [*] --> Created\n  Created --> Started: onStart\n  Started --> Resumed: onResume\n  Resumed --> Paused: onPause\n  Paused --> Stopped: onStop\n  Stopped --> Destroyed: onDestroy\n  Destroyed --> [*]"}]},{"id":"k19941bd900","title":"Android 架构模式","code":"AAP-001","column":"doing","domain":"Android","kind":"概念","summary":"UI 变瘦，状态进 ViewModel，数据进 Repository，单向流动。","tags":[],"path":"knowledge/Android/AAP-001 | Android 架构模式.md","blocks":[{"id":"t-19941","type":"text","text":"官方推荐的 App 架构，核心原则和分层是啥？MVC/MVP/MVVM 处在哪？\nUI 变瘦，状态进 ViewModel，数据进 Repository，单向流动。"}]},{"id":"kca648ee6f3","title":"Activity","code":"ACT-001","column":"doing","domain":"Android","kind":"概念","summary":"Activity = 必须在 Manifest 登记的系统窗口；View 画内容，Fragment 是窗里的隔断。","tags":[],"path":"knowledge/Android/ACT-001 | Activity.md","blocks":[{"id":"t-ca648","type":"text","text":"Activity 是啥？它和 View、Fragment 各管哪一层？系统怎么认出它来？\nActivity = 必须在 Manifest 登记的系统窗口；View 画内容，Fragment 是窗里的隔断。"}]},{"id":"k4714d1fecf","title":"Activity生命周期","code":"ACT-001,1","column":"doing","domain":"Android","kind":"概念","summary":"先丢焦点（Pause）再看不见（Stop）；Start 可见、Resume 可点。","tags":[],"path":"knowledge/Android/ACT-001,1 | Activity生命周期.md","blocks":[{"id":"t-4714d","type":"text","text":"Activity 生命周期主路径是哪几段？看得见和可交互差在哪？A 开 B、返回、Home 各怎么走？\n先丢焦点（Pause）再看不见（Stop）；Start 可见、Resume 可点。"}]},{"id":"k57b4ef0767","title":"Intent与传参","code":"ACT-001,2","column":"doing","domain":"Android","kind":"概念","summary":"小数据走 Extra；回传走 Result API；大数据不进 Intent。","tags":[],"path":"knowledge/Android/ACT-001,2 | Intent与传参.md","blocks":[{"id":"t-57b4e","type":"text","text":"两个 Activity 之间怎么传小数据、怎么把结果送回来？Extra 有什么不能塞？\n小数据走 Extra；回传走 Result API；大数据不进 Intent。"}]},{"id":"kab348619b5","title":"配置变更与状态","code":"ACT-001,3","column":"doing","domain":"Android","kind":"概念","summary":"旋转 ViewModel 常还在；杀进程内存没了，要靠 SavedState 或磁盘。","tags":[],"path":"knowledge/Android/ACT-001,3 | 配置变更与状态.md","blocks":[{"id":"t-ab348","type":"text","text":"旋转屏幕时发生了什么、数据放哪才还在？配置变更和进程被杀（process death）差在哪？\n旋转 ViewModel 常还在；杀进程内存没了，要靠 SavedState 或磁盘。"}]},{"id":"ke7ff298786","title":"启动模式与任务栈","code":"ACT-001,4","column":"doing","domain":"Android","kind":"概念","summary":"栈顶防叠用 singleTop；回首页清上面用 singleTask；复用必 `onNewIntent` + `setIntent`。","tags":[],"path":"knowledge/Android/ACT-001,4 | 启动模式与任务栈.md","blocks":[{"id":"t-e7ff2","type":"text","text":"四种 `launchMode` 各管什么？`singleTop` 和 `singleTask` 怎么用业务举例？`onNewIntent` 何时来、要不要 `setIntent`？\n栈顶防叠用 singleTop；回首页清上面用 singleTask；复用必 `onNewIntent` + `setIntent`。"}]},{"id":"k93d8a8be8a","title":"设计模式","code":"DP-001","column":"doing","domain":"Android","kind":"概念","summary":"模式 = 给常见问题起名的标准解法，不是炫技清单。","tags":[],"path":"knowledge/Android/DP-001 | 设计模式.md","blocks":[{"id":"t-93d8a","type":"text","text":"在 Android/日常开发里，设计模式是啥？这张卡打算怎么用？\n模式 = 给常见问题起名的标准解法，不是炫技清单。"}]},{"id":"k5d037a0382","title":"开发踩坑记录","code":"ERR-001","column":"doing","domain":"Android","kind":"概念","summary":"坑多半是「生命周期假设错 / 资源命名空间撞车 / 查找作用域太大」。","tags":[],"path":"knowledge/Android/ERR-001 | 开发踩坑记录.md","blocks":[{"id":"t-5d037","type":"text","text":"这几类常见坑分别是啥原因、怎么解？（配置变更刷新 / 图片缩放 / 多模块字符串 R / findViewById 同 id）\n坑多半是「生命周期假设错 / 资源命名空间撞车 / 查找作用域太大」。"}]},{"id":"k59c155e45b","title":"Fragment","code":"FG-001","column":"doing","domain":"Android","kind":"概念","summary":"Fragment = Activity 里可装卸的子页面模块。","tags":[],"path":"knowledge/Android/FG-001 | Fragment.md","blocks":[{"id":"t-59c15","type":"text","text":"Fragment 是啥？为啥用、啥时候用？\nFragment = Activity 里可装卸的子页面模块。"}]},{"id":"k341e5976a6","title":"Fragment生命周期","code":"FG-001,1","column":"doing","domain":"Android","kind":"概念","summary":"多出来的生命周期是为了描述「同一宿主里装卸/显隐」；人活着 ≠ 房间还在。","tags":[],"path":"knowledge/Android/FG-001,1 | Fragment生命周期.md","blocks":[{"id":"t-341e5","type":"text","text":"Fragment 生命周期和 Activity 比，多记哪几段？`hide/show` 会不会每次 `onResume`？人还在时 view 会不会没了？\n多出来的生命周期是为了描述「同一宿主里装卸/显隐」；人活着 ≠ 房间还在。"}]},{"id":"ke780c629ed","title":"Navigation与Fragment","code":"FG-001,10","column":"doing","domain":"Android","kind":"概念","summary":"现代项目多用 Nav graph；手写要能讲清入栈与返回——规则与 Fragment 栈相同。","tags":[],"path":"knowledge/Android/FG-001,10 | Navigation与Fragment.md","blocks":[{"id":"t-e780c","type":"text","text":"Navigation 和手写 `FragmentManager` 怎么选？现代单 Activity 项目为啥多用 Nav？\n现代项目多用 Nav graph；手写要能讲清入栈与返回——规则与 Fragment 栈相同。"}]},{"id":"k31b58e0eba","title":"ViewPager2与Fragment","code":"FG-001,11","column":"doing","domain":"Android","kind":"概念","summary":"ViewPager2 配 FragmentStateAdapter；离屏拆 view 省内存，别手写一堆 Tab replace。","tags":[],"path":"knowledge/Android/FG-001,11 | ViewPager2与Fragment.md","blocks":[{"id":"t-31b58","type":"text","text":"ViewPager2 为啥用 `FragmentStateAdapter`？离屏页会怎样？为啥别自己 `replace` 一堆 Tab？\nViewPager2 配 FragmentStateAdapter；离屏拆 view 省内存，别手写一堆 Tab replace。"}]},{"id":"kf0c65a8894","title":"DialogFragment","code":"FG-001,2","column":"doing","domain":"Android","kind":"概念","summary":"对话框也当 Fragment 管，旋转才跟得上；裸 Dialog 不登记、不恢复。","tags":[],"path":"knowledge/Android/FG-001,2 | DialogFragment.md","blocks":[{"id":"t-f0c65","type":"text","text":"对话框为啥用 DialogFragment，不用裸 `AlertDialog.show()`？旋转后为啥还能在？\n对话框也当 Fragment 管，旋转才跟得上；裸 Dialog 不登记、不恢复。"}]},{"id":"kcabc0134b1","title":"Fragment回退栈","code":"FG-001,3","column":"doing","domain":"Android","kind":"概念","summary":"返回先拆隔断，栈空了才拆楼；入栈靠 `addToBackStack`。","tags":[],"path":"knowledge/Android/FG-001,3 | Fragment回退栈.md","blocks":[{"id":"t-cabc0","type":"text","text":"系统返回键先弹谁？`addToBackStack` 干什么？为啥 act-d5 一按返回就退出 App？\n返回先拆隔断，栈空了才拆楼；入栈靠 `addToBackStack`。"}]},{"id":"kd1fc494920","title":"Fragment通信","code":"FG-001,4","column":"doing","domain":"Android","kind":"概念","summary":"持续状态放信箱（ViewModel）；一次性结果用签收单（Result）；别互塞口袋。","tags":[],"path":"knowledge/Android/FG-001,4 | Fragment通信.md","blocks":[{"id":"t-d1fc4","type":"text","text":"两个 Fragment（或 Fragment 与 Activity）要传数据，优先用哪种方式？共享 ViewModel 和 Fragment Result API 各管啥？\n持续状态放信箱（ViewModel）；一次性结果用签收单（Result）；别互塞口袋。"}]},{"id":"k28f7a3cebf","title":"Fragment与Activity关联","code":"FG-001,5","column":"doing","domain":"Android","kind":"概念","summary":"Activity 管楼和大门，Fragment 只换隔断；单 Activity 是为了导航和状态收拢，不是消灭 Activity。","tags":[],"path":"knowledge/Android/FG-001,5 | Fragment与Activity关联.md","blocks":[{"id":"t-28f7a","type":"text","text":"Fragment 挂在 Activity 上时，各自管什么？为啥现在流行 single Activity + 多 Fragment/Compose？\nActivity 管楼和大门，Fragment 只换隔断；单 Activity 是为了导航和状态收拢，不是消灭 Activity。"}]},{"id":"k1a895d9858","title":"Fragment事务","code":"FG-001,6","column":"doing","domain":"Android","kind":"概念","summary":"replace 拆房间，hide 只关灯；commit 排队，commitNow 当场干完。","tags":[],"path":"knowledge/Android/FG-001,6 | Fragment事务.md","blocks":[{"id":"t-1a895","type":"text","text":"`add` / `replace` / `hide·show` 差在哪？`commit` 和 `commitNow` 呢？为啥回退栈事务不能配 `runOnCommit`？\nreplace 拆房间，hide 只关灯；commit 排队，commitNow 当场干完。"}]},{"id":"k86b8acd138","title":"viewLifecycleOwner","code":"FG-001,7","column":"doing","domain":"Android","kind":"概念","summary":"订阅绑房间（`viewLifecycleOwner`），别绑人，更别 forever 乱碰已拆的 view。","tags":[],"path":"knowledge/Android/FG-001,7 | viewLifecycleOwner.md","blocks":[{"id":"t-86b8a","type":"text","text":"`getActivity()` / `view` 为啥会空？LiveData / Flow 观察该绑谁？为啥不能绑 Fragment 自己或 `observeForever` 乱碰 UI？\n订阅绑房间（`viewLifecycleOwner`），别绑人，更别 forever 乱碰已拆的 view。"}]},{"id":"k1793d621b2","title":"嵌套Fragment","code":"FG-001,8","column":"doing","domain":"Android","kind":"概念","summary":"嵌套用 child；和宿主同级用 support；返回先弹子栈要靠入栈 + primaryNavigation。","tags":[],"path":"knowledge/Android/FG-001,8 | 嵌套Fragment.md","blocks":[{"id":"t-1793d","type":"text","text":"`childFragmentManager`、`parentFragmentManager`、`supportFragmentManager` 各管哪一层？嵌套时系统返回为啥先弹子页？\n嵌套用 child；和宿主同级用 support；返回先弹子栈要靠入栈 + primaryNavigation。"}]},{"id":"kd53b14be33","title":"Fragment传参与状态","code":"FG-001,9","column":"doing","domain":"Android","kind":"概念","summary":"传参用空构造 + arguments；旋转靠 Bundle；别碰 setRetainInstance。","tags":[],"path":"knowledge/Android/FG-001,9 | Fragment传参与状态.md","blocks":[{"id":"t-d53b1","type":"text","text":"给 Fragment 传参为啥不用带参构造器？旋转后 id 靠什么还在？`setRetainInstance` 还能用吗？\n传参用空构造 + arguments；旋转靠 Bundle；别碰 setRetainInstance。"}]},{"id":"ka8fb31aea0","title":"Kotlin","code":"KT-001","column":"doing","domain":"Android","kind":"概念","summary":"先词汇，再 Flow；手册当速查不当第一遍阅读。","tags":[],"path":"knowledge/Android/KT-001 | Kotlin.md","blocks":[{"id":"t-a8fb3","type":"text","text":"在这套库里，Kotlin 要从哪几张卡啃起？\n先词汇，再 Flow；手册当速查不当第一遍阅读。"}]},{"id":"kd2130e76f5","title":"基本概念","code":"KT-001,1","column":"doing","domain":"Android","kind":"概念","summary":"四组词分别谈「怎么拿结果、线程闲不闲、多任务怎么叠、调度粒度多细」。","tags":[],"path":"knowledge/Android/KT-001,1 | 基本概念.md","blocks":[{"id":"t-d2130","type":"text","text":"同步/异步、阻塞/非阻塞、并发/并行、进程/线程/协程——这几组词到底在区分什么？\n四组词分别谈「怎么拿结果、线程闲不闲、多任务怎么叠、调度粒度多细」。"}]},{"id":"kfc888f60f9","title":"Flow 的使用","code":"KT-001,2","column":"doing","domain":"Android","kind":"概念","summary":"Flow = 冷管道——有人接管子（collect）才出水（emit）。","tags":[],"path":"knowledge/Android/KT-001,2 | Flow 的使用.md","blocks":[{"id":"t-fc888","type":"text","text":"Kotlin Flow 是啥？为啥说它是「冷」数据流？\nFlow = 冷管道——有人接管子（collect）才出水（emit）。"}]},{"id":"ke4194cf915","title":"res资源文件夹","code":"PD-001,1","column":"doing","domain":"Android","kind":"概念","summary":"资源放 res，靠文件夹后缀（限定符）自动适配。","tags":[],"path":"knowledge/Android/PD-001,1 | res资源文件夹.md","blocks":[{"id":"t-e4194","type":"text","text":"Android 的资源文件指什么？设备那么碎，系统怎么挑对资源？\n资源放 res，靠文件夹后缀（限定符）自动适配。"}]},{"id":"kdbb61d9c91","title":"drawable目录","code":"PD-001,1,a","column":"doing","domain":"Android","kind":"概念","summary":"drawable = 各种「可画到屏幕上的皮」；先精通图、selector、shape。","tags":[],"path":"knowledge/Android/PD-001,1,a | drawable目录.md","blocks":[{"id":"t-dbb61","type":"text","text":"`res/drawable` 里都能放啥？日常最常用哪几类？\ndrawable = 各种「可画到屏幕上的皮」；先精通图、selector、shape。"}]},{"id":"kac6d0dd6bb","title":"状态列表的使用","code":"PD-001,1,a,1","column":"doing","domain":"Android","kind":"概念","summary":"selector 按状态换皮，顺序越上越优先，默认垫底。","tags":[],"path":"knowledge/Android/PD-001,1,a,1 | 状态列表的使用.md","blocks":[{"id":"t-ac6d0","type":"text","text":"StateListDrawable（selector）怎么让同一个背景随按下/禁用变样？匹配规则是啥？\nselector 按状态换皮，顺序越上越优先，默认垫底。"}]},{"id":"k20c3b22b5e","title":"View状态常量","code":"PD-001,1,a,2","column":"doing","domain":"Android","kind":"概念","summary":"状态常量 = selector 用来「对暗号」的开关名。","tags":[],"path":"knowledge/Android/PD-001,1,a,2 | View状态常量.md","blocks":[{"id":"t-20c3b","type":"text","text":"写 selector / 代码 addState 时，常见 View 状态常量各自表示什么？\n状态常量 = selector 用来「对暗号」的开关名。"}]},{"id":"kfea95ea046","title":"形状可绘制对象","code":"PD-001,1,a,3","column":"doing","domain":"Android","kind":"概念","summary":"shape = 代码/XML 画出来的背景皮，常替代简单切图。","tags":[],"path":"knowledge/Android/PD-001,1,a,3 | 形状可绘制对象.md","blocks":[{"id":"t-fea95","type":"text","text":"`shape` / `GradientDrawable` 适合干什么？XML 里最小怎么写一个圆角渐变？\nshape = 代码/XML 画出来的背景皮，常替代简单切图。"}]},{"id":"ka1b44e2eb2","title":"values目录","code":"PD-001,1,b","column":"doing","domain":"Android","kind":"概念","summary":"values = 给颜色/字串/尺寸/样式起名的地方。","tags":[],"path":"knowledge/Android/PD-001,1,b | values目录.md","blocks":[{"id":"t-a1b44","type":"text","text":"`res/values` 里通常放什么？和布局/图片资源怎么分工？\nvalues = 给颜色/字串/尺寸/样式起名的地方。"}]},{"id":"kcdac94d8ab","title":"记一次主题样式重构","code":"PD-001,1,b,1","column":"doing","domain":"Android","kind":"概念","summary":"主题重构 = 消灭硬编码，让外观走主题属性总线。","tags":[],"path":"knowledge/Android/PD-001,1,b,1 | 记一次主题样式重构.md","blocks":[{"id":"t-cdac9","type":"text","text":"主题/样式一团糟（硬编码、AppCompat/Material 混用、styles/themes 乱放）时，重构的核心原则是啥？\n主题重构 = 消灭硬编码，让外观走主题属性总线。"}]},{"id":"kfc4faffcc5","title":"res资源文件夹下命名规范","code":"PD-001,2","column":"doing","domain":"Android","kind":"概念","summary":"看文件名就知道「是啥类型、干啥用」。","tags":[],"path":"knowledge/Android/PD-001,2 | res资源文件夹下命名规范.md","blocks":[{"id":"t-fc4fa","type":"text","text":"layout / drawable / 各种资源文件，团队命名怎么定才不乱？\n看文件名就知道「是啥类型、干啥用」。"}]},{"id":"k2a721a79ee","title":"AndroidManifest清单文件","code":"PD-001,3","column":"doing","domain":"Android","kind":"概念","summary":"Manifest = 向系统登记「我有谁、我要啥权限、别人怎么找到我」。","tags":[],"path":"knowledge/Android/PD-001,3 | AndroidManifest清单文件.md","blocks":[{"id":"t-2a721","type":"text","text":"`AndroidManifest.xml` 是干啥的？里面最少要关心哪些块？\nManifest = 向系统登记「我有谁、我要啥权限、别人怎么找到我」。"}]},{"id":"k9a73c63313","title":"View的定义","code":"V-001","column":"doing","domain":"Android","kind":"概念","summary":"界面 = ViewGroup（盒子）嵌套 + View（叶子控件）。","tags":[],"path":"knowledge/Android/V-001 | View的定义.md","blocks":[{"id":"t-9a73c","type":"text","text":"界面上看得见、点得着的东西，到底是谁构成的？View 和 ViewGroup 啥关系？\n界面 = ViewGroup（盒子）嵌套 + View（叶子控件）。"}]},{"id":"kd335e84e2f","title":"盒子模型","code":"V-002","column":"doing","domain":"Android","kind":"概念","summary":"内容在最里，padding 撑内空，border 描边，margin 隔开别人。","tags":[],"path":"knowledge/Android/V-002 | 盒子模型.md","blocks":[{"id":"t-d335e","type":"text","text":"一个 View 在屏幕上占的地方，从里到外是哪几层？\n内容在最里，padding 撑内空，border 描边，margin 隔开别人。"}]},{"id":"ke95111d799","title":"坐标系","code":"V-003","column":"doing","domain":"Android","kind":"概念","summary":"都问「点在哪」——相对屏幕叫屏幕坐标，相对控件自己叫视图坐标。","tags":[],"path":"knowledge/Android/V-003 | 坐标系.md","blocks":[{"id":"t-e9511","type":"text","text":"Android 里「屏幕坐标」和「视图坐标」有啥区别？原点在哪？\n都问「点在哪」——相对屏幕叫屏幕坐标，相对控件自己叫视图坐标。"}]},{"id":"k98de19e9e5","title":"Widget","code":"V-004","column":"doing","domain":"Android","kind":"概念","summary":"先会显示、输入、图片、按钮，就够搭大多数简单页。","tags":[],"path":"knowledge/Android/V-004 | Widget.md","blocks":[{"id":"t-98de1","type":"text","text":"传统 View 体系里，最常用的叶子控件先认哪几个？各自干啥？\n先会显示、输入、图片、按钮，就够搭大多数简单页。"}]},{"id":"ke7aaa2137c","title":"Jetpack Compose","code":"V-005","column":"doing","domain":"Android","kind":"概念","summary":"Compose 用「状态 → UI」描述界面，而不是「找到控件再改」。","tags":[],"path":"knowledge/Android/V-005 | Jetpack Compose.md","blocks":[{"id":"t-e7aaa","type":"text","text":"Jetpack Compose 是啥？和传统 View 怎么对照着学？\nCompose 用「状态 → UI」描述界面，而不是「找到控件再改」。"}]},{"id":"k6561bd006c","title":"Preview注解","code":"V-005,1","column":"doing","domain":"Android","kind":"概念","summary":"`@Preview` = 编辑器里的「假设备截图」，常用尺寸/主题/设备参数即可。","tags":[],"path":"knowledge/Android/V-005,1 | Preview注解.md","blocks":[{"id":"t-6561b","type":"text","text":"`@Preview` 是干啥的？常用参数记哪几个就够？\n`@Preview` = 编辑器里的「假设备截图」，常用尺寸/主题/设备参数即可。"}]},{"id":"k1c8ad21129","title":"声明式与命令式对比","code":"V-005,2","column":"doing","domain":"Android","kind":"概念","summary":"命令式管「怎么改」，声明式管「是什么」。","tags":[],"path":"knowledge/Android/V-005,2 | 声明式与命令式对比.md","blocks":[{"id":"t-1c8ad","type":"text","text":"写 UI 时「命令式」和「声明式」差在哪？为啥 Compose 叫声明式？\n命令式管「怎么改」，声明式管「是什么」。"}]},{"id":"k360697deae","title":"Compose 核心 API 分类","code":"V-005,4","column":"doing","domain":"Android","kind":"概念","summary":"先认「这 API 属于哪一桶」，再记具体名字。","tags":[],"path":"knowledge/Android/V-005,4 | Compose 核心 API 分类.md","blocks":[{"id":"t-36069","type":"text","text":"Compose API 那么多，怎么先分桶，免得记成一锅粥？\n先认「这 API 属于哪一桶」，再记具体名字。"}]},{"id":"kacf2fd1f00","title":"Modifier","code":"V-005,4,a","column":"doing","domain":"Android","kind":"概念","summary":"Modifier = 给 UI 节点挂属性的链条，顺序有意义。","tags":[],"path":"knowledge/Android/V-005,4,a | Modifier.md","blocks":[{"id":"t-acf2f","type":"text","text":"Compose 里的 `Modifier` 是干啥的？为啥到处链式调用？\nModifier = 给 UI 节点挂属性的链条，顺序有意义。"}]},{"id":"k7b470a986e","title":"Activity 学习计划 · 7 天稳妥","code":"","column":"doing","domain":"Android","kind":"计划","summary":"目标：**7 天内**能讲清 Activity 高频面试题，并有 Demo 可举证。每天约 **3 h**，到点停。","tags":[],"path":"knowledge/Android/ACT学习计划.md","blocks":[{"id":"t-7b470","type":"text","text":"目标：**7 天内**能讲清 Activity 高频面试题，并有 Demo 可举证。每天约 **3 h**，到点停。"}]},{"id":"k34a17640bc","title":"Activity 错题库（只记你栽过的）","code":"","column":"doing","domain":"Android","kind":"错题","summary":"和题库对照：[ACT面试题库](ACT面试题库.md) · 卡片从「相关」点进去。","tags":[],"path":"knowledge/Android/ACT错题库.md","blocks":[{"id":"t-34a17","type":"text","text":"和题库对照：[ACT面试题库](ACT面试题库.md) · 卡片从「相关」点进去。"}]},{"id":"k0681b1465f","title":"Activity 面试题库（网络汇总 + AI 时代校准）","code":"","column":"doing","domain":"Android","kind":"题库","summary":"和本库学习闭环配合：[ACT学习计划](ACT学习计划.md) — **7 天稳妥** Demo → 卡片 → 默答。","tags":[],"path":"knowledge/Android/ACT面试题库.md","blocks":[{"id":"t-0681b","type":"text","text":"和本库学习闭环配合：[ACT学习计划](ACT学习计划.md) — **7 天稳妥** Demo → 卡片 → 默答。"}]},{"id":"k870dd8e935","title":"Broadcast 学习计划 · 6 天稳妥","code":"","column":"doing","domain":"Android","kind":"计划","summary":"目标：**6 天内**把 BroadcastReceiver 高频点走完。每天约 **3 h**，到点停。","tags":[],"path":"knowledge/Android/BR学习计划.md","blocks":[{"id":"t-870dd","type":"text","text":"目标：**6 天内**把 BroadcastReceiver 高频点走完。每天约 **3 h**，到点停。"}]},{"id":"k3f64d02659","title":"Broadcast 错题库（只记你栽过的）","code":"","column":"doing","domain":"Android","kind":"错题","summary":"1. 只看 **题** 和 **坑**，先开口。","tags":[],"path":"knowledge/Android/BR错题库.md","blocks":[{"id":"t-3f64d","type":"text","text":"1. 只看 **题** 和 **坑**，先开口。"}]},{"id":"k9f8fff3e96","title":"Broadcast 面试题库","code":"","column":"doing","domain":"Android","kind":"题库","summary":"背全量系统 Action 列表；坚持「静态注册万能」。","tags":[],"path":"knowledge/Android/BR面试题库.md","blocks":[{"id":"t-9f8ff","type":"text","text":"背全量系统 Action 列表；坚持「静态注册万能」。"}]},{"id":"k795d3bafb6","title":"ContentProvider 学习计划 · 5 天稳妥","code":"","column":"doing","domain":"Android","kind":"计划","summary":"目标：**5 天内**把 ContentProvider 高频点走完。每天约 **3 h**，到点停。","tags":[],"path":"knowledge/Android/CP学习计划.md","blocks":[{"id":"t-795d3","type":"text","text":"目标：**5 天内**把 ContentProvider 高频点走完。每天约 **3 h**，到点停。"}]},{"id":"kefba47117d","title":"ContentProvider 错题库（只记你栽过的）","code":"","column":"doing","domain":"Android","kind":"错题","summary":"1. 只看 **题** 和 **坑**，先开口。","tags":[],"path":"knowledge/Android/CP错题库.md","blocks":[{"id":"t-efba4","type":"text","text":"1. 只看 **题** 和 **坑**，先开口。"}]},{"id":"k68af0aef59","title":"ContentProvider 面试题库","code":"","column":"doing","domain":"Android","kind":"题库","summary":"背 ContentResolver 每一个重载；同步适配器源码。","tags":[],"path":"knowledge/Android/CP面试题库.md","blocks":[{"id":"t-68af0","type":"text","text":"背 ContentResolver 每一个重载；同步适配器源码。"}]},{"id":"k50b50605aa","title":"Fragment 学习计划 · 11 天稳妥","code":"","column":"doing","domain":"Android","kind":"计划","summary":"目标：**11 天内**把 Fragment 知识点走完（能讲、有 Demo、有卡）。每天约 **3 h**，到点停。","tags":[],"path":"knowledge/Android/FG学习计划.md","blocks":[{"id":"t-50b50","type":"text","text":"目标：**11 天内**把 Fragment 知识点走完（能讲、有 Demo、有卡）。每天约 **3 h**，到点停。"}]},{"id":"k2d19091247","title":"Fragment 错题库（只记你栽过的）","code":"","column":"doing","domain":"Android","kind":"错题","summary":"对照：[FG面试题库](FG面试题库.md)","tags":[],"path":"knowledge/Android/FG错题库.md","blocks":[{"id":"t-2d190","type":"text","text":"对照：[FG面试题库](FG面试题库.md)"}]},{"id":"k268fa7a71d","title":"Fragment 面试题库","code":"","column":"doing","domain":"Android","kind":"题库","summary":"Fragment 考的是「同一扇窗里怎么装卸」，不是再背一遍 Activity。","tags":[],"path":"knowledge/Android/FG面试题库.md","blocks":[{"id":"t-268fa","type":"text","text":"Fragment 考的是「同一扇窗里怎么装卸」，不是再背一遍 Activity。"}]},{"id":"ka6fc130be6","title":"Service 学习计划 · 8 天稳妥","code":"","column":"doing","domain":"Android","kind":"计划","summary":"目标：**8 天内**把 Service 高频点走完（能讲、有 Demo、有卡）。每天约 **3 h**，到点停。","tags":[],"path":"knowledge/Android/SVC学习计划.md","blocks":[{"id":"t-a6fc1","type":"text","text":"目标：**8 天内**把 Service 高频点走完（能讲、有 Demo、有卡）。每天约 **3 h**，到点停。"}]},{"id":"k81abda8810","title":"Service 错题库（只记你栽过的）","code":"","column":"doing","domain":"Android","kind":"错题","summary":"对照：[SVC面试题库](SVC面试题库.md)","tags":[],"path":"knowledge/Android/SVC错题库.md","blocks":[{"id":"t-81abd","type":"text","text":"对照：[SVC面试题库](SVC面试题库.md)"}]},{"id":"k93364795b1","title":"Service 面试题库","code":"","column":"doing","domain":"Android","kind":"题库","summary":"死记 AIDL 样板、保证「杀不死」、把 Service 当万能线程池。","tags":[],"path":"knowledge/Android/SVC面试题库.md","blocks":[{"id":"t-93364","type":"text","text":"死记 AIDL 样板、保证「杀不死」、把 Service 当万能线程池。"}]},{"id":"kad21799994","title":"React","code":"R-001","column":"doing","domain":"Web","kind":"概念","summary":"先跑起来，再抠语法，最后认目录。","tags":[],"path":"knowledge/Web/R-001 | React.md","blocks":[{"id":"t-ad217","type":"text","text":"学 React 从哪几步走？这套卡怎么拆？\n先跑起来，再抠语法，最后认目录。"}]},{"id":"ke9db794d46","title":"基本语法","code":"R-001,b","column":"doing","domain":"Web","kind":"概念","summary":"这行 = 请来 `useState`，让函数组件也能有「会变的状态」。","tags":[],"path":"knowledge/Web/R-001,b | 基本语法.md","blocks":[{"id":"t-e9db7","type":"text","text":"`import { useState } from 'react'` 是什么意思？它在组件里解决啥问题？\n这行 = 请来 `useState`，让函数组件也能有「会变的状态」。"}]},{"id":"k59205cbc47","title":"项目使用及说明","code":"R-001,c","column":"doing","domain":"Web","kind":"概念","summary":"认入口与 App，其余按需深入；插件负责写得快、写得干净。","tags":[],"path":"knowledge/Web/R-001,c | 项目使用及说明.md","blocks":[{"id":"t-59205","type":"text","text":"Vite 建好的 React 项目，目录各自干啥？VS Code 里常装哪些插件？\n认入口与 App，其余按需深入；插件负责写得快、写得干净。"}]},{"id":"k9ddbadffee","title":"JS 学习计划（12 周，全栈入门，3–5 小时/周）","code":"","column":"doing","domain":"Web","kind":"计划","summary":"假设每周 2–3 次、每次 60–90 分钟，设备具备 Node 18+、浏览器和 VSCode。","tags":[],"path":"knowledge/Web/JavascriptDemo/JS学习计划.md","blocks":[{"id":"t-9ddba","type":"text","text":"假设每周 2–3 次、每次 60–90 分钟，设备具备 Node 18+、浏览器和 VSCode。"}]},{"id":"k8a448f0e05","title":"React 语法摘抄","code":"","column":"doing","domain":"Web","kind":"笔记","summary":"摘抄，还没拆成能默答的一句。","tags":[],"path":".cursor/memory/react语法学习.md","blocks":[{"id":"t-8a448","type":"text","text":"摘抄，还没拆成能默答的一句。"}]},{"id":"k24b7b22e5e","title":"VS Code Git","code":"TL-001","column":"doing","domain":"Tools","kind":"概念","summary":"看改动 → 暂存 → 提交 → 拉/推；冲突在文件里点选再提交。","tags":[],"path":"knowledge/Tools/TL-001 | VS Code Git.md","blocks":[{"id":"t-24b7b","type":"text","text":"在 VS Code 里，日常 Git 最小闭环怎么走？（不用背一堆命令）\n看改动 → 暂存 → 提交 → 拉/推；冲突在文件里点选再提交。"}]},{"id":"k61d3a05858","title":"git pull 分叉速查","code":"TL-001,1","column":"doing","domain":"Tools","kind":"概念","summary":"先护住本地改动，再显式选 rebase 或 merge 拉完。","tags":[],"path":"knowledge/Tools/TL-001,1 | git pull 分叉速查.md","blocks":[{"id":"t-61d3a","type":"text","text":"`git pull` 提示 divergent branches、要选 rebase 还是 merge——该怎么处理？\n先护住本地改动，再显式选 rebase 或 merge 拉完。"}]},{"id":"kc719f9058a","title":"工程文件目录","code":"PD-001","column":"review","domain":"Android","kind":"概念","summary":"代码与资源在 `app/src/main`，其余大多是构建与缓存。","tags":[],"path":"knowledge/Android/PD-001 | 工程文件目录.md","blocks":[{"id":"t-c719f","type":"text","text":"新建一个 Android 工程，日常开发到底主要盯哪些目录？\n代码与资源在 `app/src/main`，其余大多是构建与缓存。"}]},{"id":"kf6f21df923","title":"环境搭建","code":"R-001,a","column":"review","domain":"Web","kind":"概念","summary":"Node 能跑 npm，再用 Vite 把 React 跑到能热更新。","tags":[],"path":"knowledge/Web/R-001,a | 环境搭建.md","blocks":[{"id":"t-f6f21","type":"text","text":"从零跑一个 React 页面，最小要准备啥？为啥新项目用 Vite，而不是 CRA？\nNode 能跑 npm，再用 Vite 把 React 跑到能热更新。"}]},{"id":"k54fd39ec9b","title":"跑起 Vite React","code":"R-001,a,1","column":"review","domain":"Web","kind":"过程","summary":"浏览器打开本地地址能看到页面；改 src/App.jsx 的字，页面自己更新","tags":[],"path":"knowledge/Web/R-001,a,1 | 跑起 Vite React.md","blocks":[{"id":"t-54fd3","type":"text","text":"浏览器打开本地地址能看到页面；改 src/App.jsx 的字，页面自己更新"}]},{"id":"k6315718e2a","title":"macOS 安装 Homebrew","code":"TL-002","column":"review","domain":"Tools","kind":"概念","summary":"镜像只换下载地址；装到哪、PATH 指哪，仍按 CPU 架构走官方路径。","tags":[],"path":"knowledge/Tools/TL-002 | macOS 安装 Homebrew.md","blocks":[{"id":"t-63157","type":"text","text":"国内 Mac 上，Homebrew 为啥往往不走官方安装脚本？装完的目录为啥还分两种？\n镜像只换下载地址；装到哪、PATH 指哪，仍按 CPU 架构走官方路径。"}]},{"id":"k5a757daba5","title":"镜像安装 Homebrew","code":"TL-002,1","column":"review","domain":"Tools","kind":"过程","summary":"新开一个终端，brew -v 有版本号，brew update 能结束","tags":[],"path":"knowledge/Tools/TL-002,1 | 镜像安装 Homebrew.md","blocks":[{"id":"t-5a757","type":"text","text":"新开一个终端，brew -v 有版本号，brew update 能结束"}]},{"id":"k93f50b96af","title":"修改 Hosts","code":"TL-003","column":"review","domain":"Tools","kind":"概念","summary":"hosts 是本机的域名小抄；没写进去，或缓存没清，都等于没改。","tags":[],"path":"knowledge/Tools/TL-003 | 修改 Hosts.md","blocks":[{"id":"t-93f50","type":"text","text":"hosts 文件是干啥的？改完为啥经常「不生效」？\nhosts 是本机的域名小抄；没写进去，或缓存没清，都等于没改。"}]},{"id":"k282b9f96e5","title":"写入 Hosts 并刷新 DNS","code":"TL-003,1","column":"review","domain":"Tools","kind":"过程","summary":"指定域名解析到你写的 IP；浏览器打开该域名走到这条记录","tags":[],"path":"knowledge/Tools/TL-003,1 | 写入 Hosts 并刷新 DNS.md","blocks":[{"id":"t-282b9","type":"text","text":"指定域名解析到你写的 IP；浏览器打开该域名走到这条记录"}]},{"id":"kb19d8ce3f0","title":"Cursor Canvas是什么","code":"TL-004","column":"review","domain":"Tools","kind":"概念","summary":"Canvas 是能点的说明页，Markdown 是正文；打开源码不等于打开预览。","tags":[],"path":"knowledge/Tools/TL-004 | Cursor Canvas是什么.md","blocks":[{"id":"t-b19d8","type":"text","text":"Cursor Canvas 是什么？它和一篇 Markdown 差在哪？\nCanvas 是能点的说明页，Markdown 是正文；打开源码不等于打开预览。"}]},{"id":"kc8adfca25a","title":"cursor怎么打开Canvas预览","code":"TL-004,1","column":"review","domain":"Tools","kind":"概念","summary":"`Cmd+P` 打开 canvases 目录里的那份；`.cursor/docs/` 里的是源码。","tags":[],"path":"knowledge/Tools/TL-004,1 | cursor怎么打开Canvas预览.md","blocks":[{"id":"t-c8adf","type":"text","text":"自己怎么打开一张 Canvas 的预览，而不是一屏代码？\n`Cmd+P` 打开 canvases 目录里的那份；`.cursor/docs/` 里的是源码。"}]},{"id":"ka90e420362","title":"费曼学习法","code":"","column":"review","domain":"工作台","kind":"笔记","summary":"先丢焦点（Pause）再看不见（Stop）；Start 可见、Resume 可点。类比也在同一张卡里：开会时有人进门，你先停嘴（Pause），对方站定（Resume），你才离开会场（Stop）。「易错」写的是真会讲错的地方，例如以为打开 B 时 A 立刻 Destroy，其实 A 通常只到 Stop。","tags":[],"path":".cursor/docs/费曼学习法.md","blocks":[{"id":"t-a90e4","type":"text","text":"先丢焦点（Pause）再看不见（Stop）；Start 可见、Resume 可点。类比也在同一张卡里：开会时有人进门，你先停嘴（Pause），对方站定（Resume），你才离开会场（Stop）。「易错」写的是真会讲错的地方，例如以为打开 B 时 A 立刻 Destroy，其实 A 通常只到 Stop。"}]}]</script>
-  <script data-mermaid src="https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.min.js" async></script>
+    <script src="https://cdn.jsdelivr.net/npm/marked@15.0.12/marked.min.js"></script>
   <script>
     (function () {
       const KEY = "lk-kanban-v1";
@@ -737,9 +753,9 @@
       }
       const UI_KEY = "lk-kanban-ui";
       function defaultUi() {
-        return { q: "", domain: "全部", kind: "全部", selected: null, appearance: "system", panel: "read" };
+        return { q: "", domain: "全部", kind: "全部", selected: null, appearance: "system", panel: "markdown", mdStyle: "system" };
       }
-      const SEED = JSON.parse(document.getElementById("seed").textContent);
+      const SEED = [];
       function loadUi() {
         try {
           const saved = JSON.parse(localStorage.getItem(UI_KEY) || "null");
@@ -751,7 +767,7 @@
       function clone(v) { return JSON.parse(JSON.stringify(v)); }
       const state = { cards: [], online: false };
       const ui = loadUi();
-      ui.panel = "read";
+      ui.panel = ui.panel === "text" ? "text" : "markdown";
       let saveTimer = 0;
       const dirty = new Set();
 
@@ -769,8 +785,7 @@
         return bits.filter(Boolean).join("\n").toLowerCase().indexOf(query) !== -1;
       }
       function matchParts(card, part) {
-        if (part.domain !== "全部" && card.domain !== part.domain) return false;
-        if (part.kind !== "全部" && card.kind !== part.kind) return false;
+        if (part.domain !== "全部" && (card.chapter || card.domain) !== part.domain) return false;
         return queryOk(card, part.q);
       }
       function matches(card) { return matchParts(card, ui); }
@@ -1015,8 +1030,12 @@
       const qInput = document.getElementById("q");
 
       document.getElementById("search-icon").replaceWith(icon("search"));
-      document.getElementById("close").append(icon("close"));
-      document.getElementById("create").append(icon("plus"), document.createTextNode("新卡片"));
+      document.getElementById("close").addEventListener("click", function () { select(null, false); });
+      document.getElementById("md-style").addEventListener("change", function (e) {
+        ui.mdStyle = e.target.value;
+        persistSoon();
+        renderInspector();
+      });
       document.querySelector('[data-appearance="light"]').append(icon("sun"));
       document.querySelector('[data-appearance="system"]').append(icon("auto"));
       document.querySelector('[data-appearance="dark"]').append(icon("moon"));
@@ -1039,6 +1058,7 @@
             domain: ui.domain,
             kind: ui.kind,
             appearance: ui.appearance,
+            mdStyle: ui.mdStyle || "system",
             selected: ui.selected
           }));
         } catch (e) { /* 外观和过滤存不住时，卡片仍在数据库里 */ }
@@ -1060,13 +1080,13 @@
           summary: card.summary || "",
           tags: card.tags || [],
           path: card.path || "",
+          chapter: card.chapter || card.domain || "",
           body: card.body || blocksToMarkdown(card.blocks),
           blocks: card.blocks || []
         };
       }
       function saveCard(card) {
         if (!card || !state.online) return;
-        if (ui.panel !== "markdown") card.body = blocksToMarkdown(card.blocks);
         dirty.add(card.id);
         clearTimeout(saveTimer);
         saveTimer = setTimeout(flushSaves, 350);
@@ -1118,7 +1138,10 @@
         scrim.classList.remove("show");
         document.getElementById("filter-toggle").setAttribute("aria-expanded", "false");
       }
-      function closeMenu() { document.getElementById("file-menu").removeAttribute("open"); }
+      function closeMenu() {
+        const menu = document.getElementById("file-menu");
+        if (menu) menu.removeAttribute("open");
+      }
 
       function updateNav() {
         document.querySelectorAll("#domain-nav .nav-btn").forEach(function (btn) {
@@ -1508,13 +1531,12 @@
         });
       }
       function modeSwitch(card) {
-        const group = el("div", { class: "segment mode-switch", role: "tablist", "aria-label": "详情方式" });
-        [["read", "查看"], ["normal", "普通编辑"], ["markdown", "Markdown"]].forEach(function (item) {
+        const group = el("div", { class: "segment mode-switch", role: "tablist", "aria-label": "正文" });
+        [["markdown", "Markdown"], ["text", "文本"]].forEach(function (item) {
           const button = el("button", {
             type: "button",
             role: "tab",
             "aria-selected": ui.panel === item[0] ? "true" : "false",
-            "aria-checked": ui.panel === item[0] ? "true" : "false",
             text: item[1]
           });
           button.addEventListener("click", function () { setPanel(item[0], card); });
@@ -1523,25 +1545,11 @@
         return group;
       }
       function setPanel(next, card) {
-        if (ui.panel === "markdown" && next !== "markdown") {
-          card.blocks = markdownToBlocks(card.body || "");
-        }
-        if (ui.panel !== "markdown" && next === "markdown") {
-          card.body = blocksToMarkdown(card.blocks);
-        }
-        if (ui.panel === "normal" && next === "read") {
-          card.body = blocksToMarkdown(card.blocks);
-        }
-        ui.panel = next;
-        if (next !== "read") saveCard(card);
+        ui.panel = next === "text" ? "text" : "markdown";
         renderInspector();
-        if (next === "markdown") {
+        if (ui.panel === "text") {
           const area = document.getElementById("md-source");
           if (area) area.focus();
-        }
-        if (next === "normal") {
-          const input = document.getElementById("card-title");
-          if (input) input.focus();
         }
       }
       function statusControl(card) {
@@ -1635,98 +1643,28 @@
         app.classList.add("with-inspector");
         inspector.hidden = false;
         inspectorTitle.textContent = card.title || "未命名";
+        const stylePick = document.getElementById("md-style");
+        if (stylePick) stylePick.value = ui.mdStyle || "system";
         const note = el("p", { class: "note", id: "filter-note", text: "这张卡不在当前过滤里。" });
         note.hidden = matches(card);
         const path = card.path ? el("p", { class: "path" }, "仓库里的文件 ", el("code", { text: card.path })) : null;
-        if (ui.panel === "read") {
-          const view = el("div", { class: "md" });
-          renderMarkdown(view, cardBody(card));
-          const bits = [columnName(card.column)];
-          if (card.kind) bits.push(card.kind);
-          if (card.domain) bits.push(card.domain);
-          inspectorScroll.replaceChildren(
-            modeSwitch(card),
-            note,
-            el("p", { class: "meta", text: bits.join(" · ") }),
-            card.summary ? el("p", { class: "lead", text: card.summary }) : null,
-            view,
-            statusControl(card),
-            path,
-            deleteControl(card)
-          );
-          return;
-        }
-        const groups = fieldGroups(card);
-        if (ui.panel === "markdown") {
-          if (!card.body) card.body = blocksToMarkdown(card.blocks);
-          const area = el("textarea", { id: "md-source", class: "code-src", spellcheck: "false", "aria-label": "Markdown" });
-          area.value = card.body;
-          const live = el("div");
+        const sheet = el("div", { class: "reader-sheet" });
+        if (ui.panel === "text") {
+          const area = el("textarea", { id: "md-source", class: "code-src", spellcheck: "false", "aria-label": "文本" });
+          area.value = cardBody(card);
           area.addEventListener("input", function () {
             card.body = area.value;
-            card.blocks = markdownToBlocks(card.body);
             commit(card);
-            renderMarkdown(live, card.body);
           });
-          renderMarkdown(live, card.body);
-          inspectorScroll.replaceChildren(
-            modeSwitch(card),
-            note,
-            groups[0],
-            statusControl(card),
-            groups[1],
-            el("h3", { text: "Markdown" }),
-            el("div", { class: "block" }, area, live),
-            path,
-            deleteControl(card)
-          );
-          return;
+          sheet.append(note, path, area);
+        } else {
+          const view = el("div", { class: "md style-" + (ui.mdStyle || "system") });
+          const source = cardBody(card);
+          if (window.marked && window.marked.parse) view.innerHTML = window.marked.parse(source);
+          else renderMarkdown(view, source);
+          sheet.append(note, path, view, statusControl(card));
         }
-        const blocks = el("div");
-        (card.blocks || []).forEach(function (block, index) {
-          const plugin = PLUGINS[block.type];
-          const bar = el("div", { class: "block-bar" }, el("strong", { text: plugin ? plugin.label : block.type }));
-          const up = el("button", { type: "button", text: "上移" });
-          const down = el("button", { type: "button", text: "下移" });
-          const remove = el("button", { type: "button", class: "danger", text: "删除" });
-          up.disabled = index === 0;
-          down.disabled = index === card.blocks.length - 1;
-          up.addEventListener("click", function () {
-            card.blocks.splice(index - 1, 0, card.blocks.splice(index, 1)[0]);
-            commit(card);
-            renderInspector();
-          });
-          down.addEventListener("click", function () {
-            card.blocks.splice(index + 1, 0, card.blocks.splice(index, 1)[0]);
-            commit(card);
-            renderInspector();
-          });
-          remove.addEventListener("click", function () {
-            card.blocks.splice(index, 1);
-            commit(card);
-            renderInspector();
-          });
-          bar.append(up, down, remove);
-          const body = el("div", { class: "block" }, bar);
-          if (!plugin) body.append(el("p", { class: "diagram-error", text: "不认识的插件：" + block.type }));
-          else body.append(plugin.mountEditor(block, { commit: function () { commit(card); } }));
-          blocks.append(body);
-        });
-        const add = el("div", { class: "add-row" });
-        Object.keys(PLUGINS).forEach(function (type) {
-          const button = el("button", { type: "button", text: PLUGINS[type].label });
-          button.addEventListener("click", function () {
-            card.blocks = card.blocks || [];
-            card.blocks.push(PLUGINS[type].create());
-            commit(card);
-            renderInspector();
-            const areas = inspectorScroll.querySelectorAll("textarea");
-            const last = areas[areas.length - 1];
-            if (last) last.focus();
-          });
-          add.append(button);
-        });
-        inspectorScroll.replaceChildren(modeSwitch(card), note, groups[0], statusControl(card), groups[1], el("h3", { text: "内容" }), blocks, add, path, deleteControl(card));
+        inspectorScroll.replaceChildren(modeSwitch(card), sheet);
       }
       function select(id, focusTitle) {
         const changed = ui.selected !== id;
@@ -1872,30 +1810,28 @@
         });
       }
 
-      DOMAINS.forEach(function (domain) {
-        const btn = el("button", { type: "button", class: "nav-btn", "data-domain": domain });
-        btn.append(el("span", { text: domain }), el("span", { class: "n", text: "0" }));
-        btn.addEventListener("click", function () {
-          ui.domain = domain;
-          renderBoard();
-          updateNav();
-          persistSoon();
-          if (window.innerWidth <= 860) closeSidebar();
+      function rebuildNav() {
+        const names = ["全部"];
+        state.cards.forEach(function (card) {
+          const name = card.chapter || card.domain;
+          if (name && names.indexOf(name) === -1) names.push(name);
         });
-        document.getElementById("domain-nav").append(btn);
-      });
-      KINDS.forEach(function (kind) {
-        const btn = el("button", { type: "button", class: "nav-btn", "data-kind": kind });
-        btn.append(el("span", { text: kind }), el("span", { class: "n", text: "0" }));
-        btn.addEventListener("click", function () {
-          ui.kind = kind;
-          renderBoard();
-          updateNav();
-          persistSoon();
-          if (window.innerWidth <= 860) closeSidebar();
+        if (names.indexOf(ui.domain) === -1) ui.domain = "全部";
+        const nav = document.getElementById("domain-nav");
+        nav.replaceChildren();
+        names.forEach(function (domain) {
+          const btn = el("button", { type: "button", class: "nav-btn", "data-domain": domain });
+          btn.append(el("span", { text: domain }), el("span", { class: "n", text: "0" }));
+          btn.addEventListener("click", function () {
+            ui.domain = domain;
+            renderBoard();
+            updateNav();
+            persistSoon();
+            if (window.innerWidth <= 860) closeSidebar();
+          });
+          nav.append(btn);
         });
-        document.getElementById("kind-nav").append(btn);
-      });
+      }
 
       qInput.value = ui.q || "";
       qInput.addEventListener("input", function () {
@@ -1905,17 +1841,7 @@
         persistSoon();
       });
       clearBtn.addEventListener("click", resetFilter);
-      document.getElementById("create").addEventListener("click", createCard);
       document.getElementById("close").addEventListener("click", function () { select(null, false); });
-      document.getElementById("export").addEventListener("click", exportCards);
-      document.getElementById("import").addEventListener("click", function () { document.getElementById("import-file").click(); });
-      document.getElementById("import-file").addEventListener("change", function (e) {
-        const file = e.target.files && e.target.files[0];
-        e.target.value = "";
-        closeMenu();
-        if (file) importCards(file);
-      });
-      document.getElementById("restore").addEventListener("click", function () { closeMenu(); restore(); });
       document.getElementById("filter-toggle").addEventListener("click", function () {
         if (sidebar.classList.contains("open")) closeSidebar();
         else openSidebar();
@@ -1937,7 +1863,7 @@
       });
       document.addEventListener("click", function (e) {
         const menu = document.getElementById("file-menu");
-        if (menu.open && !menu.contains(e.target)) menu.removeAttribute("open");
+        if (menu && menu.open && !menu.contains(e.target)) menu.removeAttribute("open");
       });
       document.addEventListener("keydown", function (e) {
         if (e.key === "Escape") {
@@ -1993,6 +1919,7 @@
           state.online = true;
           state.cards = data.cards || [];
           if (ui.selected && !cardById(ui.selected)) ui.selected = null;
+          rebuildNav();
           renderBoard();
           updateNav();
           renderInspector();
