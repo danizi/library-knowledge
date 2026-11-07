@@ -1,0 +1,31 @@
+---
+version: 1
+slug: "cursor-docs-kanban-html"
+primary_target: ".cursor/docs/kanban.html"
+related_targets: []
+---
+
+# 知识看板
+
+- 范围：`.cursor/docs/kanban.html` 这一页。
+- 模式：Operate。
+- 谁在用：维护这份知识库的人，在 Mac 上按学习状态找卡、改卡、看图。
+- 要完成的事：过滤，改状态，编辑正文和图，拖拽分列。
+- 内容：2026-10-31 从仓库扫出的卡片快照，加上四张标成示例的插件卡。已掌握列开始为空。
+- 约束：苹果系统界面；不回写 `knowledge/`；单文件，无构建。
+
+## Direction contract
+
+THESIS: 四列学习状态是这页的全部结构，卡片脸直接画出它携带的图。拒绝空白便利贴墙，也拒绝把每张已写卡标成已掌握。
+
+OWN-WORLD: 分组灰底 #f2f2f7，白卡片，苹方与系统无衬线，选中与主按钮用能过对比度的蓝 #0058c5，分隔用 1px 发丝线，连续圆角 12px，阴影带 1px 向下偏移和柔和模糊。状态色只出现在列点上：石墨、蓝、橙、绿。侧栏是分组底，不是色条。
+
+STORY: 打开就看见未开始、在学、待审查，以及空着的已掌握。用领域和类型缩小范围，把卡拖进另一列，或点开后改字、换图。写过不等于会了，会了要自己拖过去。
+
+FIRST VIEWPORT: 整窗。左栏约 220px：标题「知识看板」，其下一条说明，搜索框，领域与类型列表及计数。右面四列等分铺满剩余宽度，列头是状态名和张数，主按钮「新卡片」在看板右上。在学列最上方是四张示例卡，脸朝外画出结构图、时序图、类图和状态图。已掌握列是一句空状态，没有假数据。
+
+FORM: 用户指定的苹果系统界面，按提醒事项的分列节奏加备忘录的检查器来组织，不另开视觉方案。seed: none (unavailable)
+
+FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+
+签名动作：松手落入一列时，卡片从轻微抬起落回原位，这一列的底色浅浅闪一下状态色，列上的张数跟着变。图在卡片脸和检查器里是同一插件画的，改源码就重画。

@@ -30,7 +30,7 @@
 | `rules/` | 工作台的硬约束。现在只有知识库支线的 `kb-workflow.mdc` |
 | `skills/` | 一项能力一个目录。上表六个是知识库角色；`android-studio-autosetup/` 是环境搭建，不是知识库 |
 | `templates/` | 空表。现在有概念卡、过程卡、闪念三份，都服务于知识库支线 |
-| `docs/` | 固定说明和图的源码。 |
+| `docs/` | 固定说明和图的源码。知识看板先运行 `python3 .cursor/docs/kanban_server.py` |
 | `memory/` | 未定稿。知识库支线里，这是还不能当正式卡的闪念 |
 | `memory/absorbed/` | 定稿后的归档。知识库支线里，结论已经写进正式卡 |
 

@@ -14,6 +14,7 @@
 ## 固定文档
 
 - [费曼学习法](.cursor/docs/费曼学习法.md) — 本库学习行为准则；图 [feynman-method.canvas.tsx](.cursor/docs/feynman-method.canvas.tsx)；**仍待审查**
+- [知识看板](.cursor/docs/kanban.html) — 网页。先运行 `python3 .cursor/docs/kanban_server.py`。数据在 SQLite，点开可看详情，普通编辑和 Markdown 可切换。不回写正式卡
 
 ---
 

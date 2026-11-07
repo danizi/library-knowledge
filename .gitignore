@@ -13,6 +13,10 @@ build/
 # Logs
 *.log
 
+# 知识看板数据库（在跑服务的那台电脑上）
+.cursor/docs/kanban.sqlite
+.cursor/docs/kanban.sqlite-*
+
 # Android / Gradle generated
 .gradle/
 .kotlin/
