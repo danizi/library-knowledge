@@ -12,5 +12,6 @@
 | 整理 memory | `kb-promote` |
 | 验收过程卡 | `kb-verify` |
 | 教我 | `kb-tutor` |
+| 每日新闻简报 | `daily-briefing` |
 
 未审核只写 `.cursor/memory/`；正式卡在 `knowledge/Android|Web|Tools/`。学习法和固定项目文档在 `.cursor/docs/`。

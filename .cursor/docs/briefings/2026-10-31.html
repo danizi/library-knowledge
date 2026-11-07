@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 每日新闻简报 · 2026-10-31</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #f7f3ea;
+      --ink: #1a1612;
+      --quiet: #3f3830;
+      --rule: #d9d0c2;
+      --mark: #c2410c;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 17px/1.6 "Songti SC", "Noto Serif SC", "Iowan Old Style", Palatino, serif;
+      text-wrap: pretty;
+    }
+    ::selection { background: #f0c2a8; color: #1a1612; }
+    :focus-visible { outline: 2px solid var(--mark); outline-offset: 3px; }
+    header { padding: 56px 28px 8px; }
+    header .wrap, main { max-width: 52rem; margin: 0 auto; }
+    .edition {
+      margin: 0 0 8px;
+      color: var(--mark);
+      font-family: Didot, "Bodoni 72", "Songti SC", serif;
+      font-size: 0.95rem;
+      letter-spacing: 0.14em;
+    }
+    header h1 {
+      margin: 0;
+      font-family: Didot, "Bodoni 72", "Songti SC", serif;
+      font-size: clamp(4.5rem, 12vw, 7.5rem);
+      font-weight: 400;
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      text-wrap: balance;
+    }
+    header .lede { margin: 18px 0 0; max-width: 62ch; color: var(--quiet); }
+    nav { display: flex; gap: 22px; margin-top: 28px; padding-bottom: 22px; border-bottom: 1px solid var(--rule); flex-wrap: wrap; }
+    nav a { color: var(--ink); text-underline-offset: 0.22em; }
+    main { padding: 8px 28px 88px; }
+    section { margin-top: 56px; }
+    .sec-head h2 {
+      margin: 28px 0 8px;
+      font-family: Didot, "Bodoni 72", "Songti SC", serif;
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      text-wrap: balance;
+    }
+    .sec-head p { margin: 0 0 8px; max-width: 62ch; color: var(--quiet); }
+    article {
+      display: grid;
+      grid-template-columns: 9.5rem minmax(0, 1fr);
+      column-gap: 1.5rem;
+      padding: 26px 0 8px;
+      border-top: 1px solid var(--rule);
+    }
+    .stars {
+      grid-column: 1;
+      grid-row: 1 / span 5;
+      margin: 4px 0 0;
+      color: var(--mark);
+      font-family: Didot, "Bodoni 72", "Songti SC", serif;
+      font-size: 1.85rem;
+      font-weight: 400;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      font-variant-numeric: tabular-nums;
+    }
+    h3, .repo, article > p, details { grid-column: 2; }
+    h3 {
+      margin: 0 0 4px;
+      font-size: 1.45rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      text-wrap: balance;
+    }
+    h3 a { color: inherit; text-decoration: none; }
+    h3 a:hover { color: var(--mark); }
+    .repo { margin: 0 0 8px; font-size: 0.8rem; line-height: 1.35; }
+    .repo a { color: var(--quiet); word-break: break-all; }
+    .tag { font-size: 0.72rem; font-weight: 650; color: var(--quiet); }
+    article > p { margin: 0 0 8px; max-width: 62ch; }
+    details summary {
+      cursor: pointer;
+      color: var(--mark);
+      font-size: 0.95rem;
+    }
+    details ol { margin: 8px 0 0; padding-left: 1.15em; max-width: 62ch; }
+    li { margin: 0.25em 0; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.84em;
+    }
+    footer {
+      margin-top: 48px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      color: var(--quiet);
+      max-width: 62ch;
+    }
+    @media (max-width: 680px) {
+      article { grid-template-columns: 1fr; }
+      .stars { grid-row: auto; font-size: 1.45rem; margin-bottom: 8px; }
+      h3, .repo, article > p, details { grid-column: 1; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="edition">2026-10-31</p>
+      <h1>简报</h1>
+      <p class="lede">星标来自 GitHub API 的 Stars，不是 Watch，也不是 Follow。热门取自当天 Trending。反编译一节是另查的仓库。查询时间 18:45（UTC+8）。</p>
+      <nav>
+        <a href="#hot">今日热门 · 9</a>
+        <a href="#design">资深设计师 · 1</a>
+        <a href="#reverse">反编译与逆向 · 9</a>
+      </nav>
+    </div>
+  </header>
+  <main>
+    <section id="hot">
+      <div class="sec-head">
+        <h2>今日热门里最流行的仓库</h2>
+        <p>今天榜上和 Agent 技能、记忆、设计约束有关的仓库最多。下面按总星标从高到低。</p>
+      </div>
+      <div class="grid">
+        <article>
+          <h3><a href="https://github.com/obra/superpowers">obra/superpowers</a></h3>
+          <p class="repo"><a href="https://github.com/obra/superpowers">https://github.com/obra/superpowers</a></p>
+          <p class="stars">309,670 星 · 27,549 forks</p>
+          <p>给编程 Agent 的一整套做法：先问清要做什么，再拆规格和实现计划，而不是一上来改代码。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>在 Cursor Agent 里执行 <code>/add-plugin superpowers</code>。</li>
+            <li>或在插件市场搜索 superpowers。</li>
+            <li>接下来让它做功能时，先看它给出的计划和测试，再接受改动。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></h3>
+          <p class="repo"><a href="https://github.com/mattpocock/skills">https://github.com/mattpocock/skills</a></p>
+          <p class="stars">307,791 星 · 25,904 forks</p>
+          <p>作者日常在用的一组小技能。每份都能单独改，不把整条开发流程锁死。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>打开 <a href="https://skills.sh/mattpocock/skills">skills.sh/mattpocock/skills</a>。</li>
+            <li>只拷需要的技能到 <code>.cursor/skills/</code>。</li>
+            <li>不要同时装插件和文件拷贝，否则同一技能会出现两遍。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/anthropics/skills">anthropics/skills</a></h3>
+          <p class="repo"><a href="https://github.com/anthropics/skills">https://github.com/anthropics/skills</a></p>
+          <p class="stars">185,640 星 · 21,917 forks</p>
+          <p>Anthropic 公开的技能示例。一个目录一份 <code>SKILL.md</code>，用来教模型重复完成专门任务。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>在仓库里选一个技能目录。</li>
+            <li>复制到 <code>.cursor/skills/</code>。</li>
+            <li>格式说明见 <a href="https://agentskills.io">agentskills.io</a>。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/thedotmack/claude-mem">thedotmack/claude-mem</a></h3>
+          <p class="repo"><a href="https://github.com/thedotmack/claude-mem">https://github.com/thedotmack/claude-mem</a></p>
+          <p class="stars">106,905 星 · 9,401 forks</p>
+          <p>跨会话记忆。它记下这次 Agent 做了什么，压缩后在下次会话里塞回相关的那一段。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>在项目里运行 <code>npx claude-mem install</code>。</li>
+            <li>用邮件链接在浏览器登录，领取记忆钥匙。</li>
+            <li>新开一次会话后，压缩过的上下文才会注入。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a></h3>
+          <p class="repo"><a href="https://github.com/pbakaus/impeccable">https://github.com/pbakaus/impeccable</a></p>
+          <p class="stars">97,604 星 · 5,755 forks</p>
+          <p>给 Agent 的设计用词。用 polish、bolder 调外观，用 critique、audit 做审查，用来拦住千篇一律的界面。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>项目根目录运行 <code>npx impeccable install</code>。</li>
+            <li>重新加载 Cursor。</li>
+            <li>在 Agent 里运行 <code>/impeccable init</code>。文档在 <a href="https://impeccable.style/docs">impeccable.style/docs</a>。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/Renhuai123/ziwei-doushu">Renhuai123/ziwei-doushu</a></h3>
+          <p class="repo"><a href="https://github.com/Renhuai123/ziwei-doushu">https://github.com/Renhuai123/ziwei-doushu</a></p>
+          <p class="stars">11,754 星 · 2,319 forks</p>
+          <p>紫微斗数排盘引擎，含排盘、四化和古籍数据。它是算法库，不是聊天助手。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>打开仓库 README，按其运行说明启动。</li>
+            <li>先确认它使用的历法和时区，再输入出生资料。</li>
+            <li>输出只当演算结果，不当已核对的结论。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/milind-soni/OpenMausBot">milind-soni/OpenMausBot</a></h3>
+          <p class="repo"><a href="https://github.com/milind-soni/OpenMausBot">https://github.com/milind-soni/OpenMausBot</a></p>
+          <p class="stars">9,152 星 · 1,249 forks</p>
+          <p>开源的 Grok Bot 替代。机器人使用一台虚拟机，而不是只在对话里空谈。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>按仓库 README 启动它自带的虚拟机环境。</li>
+            <li>先在虚拟机里试只读任务，再开放写文件和浏览器。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/CopilotKit/OpenBot">CopilotKit/OpenBot</a></h3>
+          <p class="repo"><a href="https://github.com/CopilotKit/OpenBot">https://github.com/CopilotKit/OpenBot</a></p>
+          <p class="stars">9,021 星 · 1,125 forks</p>
+          <p>开源 AI 同事。每个同事有自己的电脑：浏览器、文件和工具，动作先决定、后记录。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>阅读仓库 README，接入一个 AG-UI agent。</li>
+            <li>先给一个只读同事，确认动作日志能回放，再加写权限。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/expo/skills">expo/skills</a></h3>
+          <p class="repo"><a href="https://github.com/expo/skills">https://github.com/expo/skills</a></p>
+          <p class="stars">3,964 星 · 249 forks</p>
+          <p>Expo 官方的 Agent 技能集，覆盖 Expo 项目和 Expo Application Services。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>在做 Expo 应用时，把需要的技能目录拷进 <code>.cursor/skills/</code>。</li>
+            <li>让 Agent 先读对应 <code>SKILL.md</code>，再改工程。</li>
+          </ol>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section id="design">
+      <div class="sec-head">
+        <h2>资深设计师 skill</h2>
+        <p>已装进这个仓库的 <code>.cursor/skills/impeccable/</code>。它要求 Agent 按设计总监的方式做界面。本页就是用它重排的。</p>
+      </div>
+      <div class="grid">
+        <article>
+          <h3><a href="https://github.com/pbakaus/impeccable">pbakaus/impeccable</a> <span class="tag">Impeccable</span></h3>
+          <p class="repo"><a href="https://github.com/pbakaus/impeccable">https://github.com/pbakaus/impeccable</a></p>
+          <p class="stars">97,604 星 · 5,755 forks</p>
+          <p>给编程 Agent 的设计技能。先判断页面是说服、操作、阅读还是展示，再改层级、字体、颜色和动效。Cursor 市场里还有两个配套 agent：<code>impeccable-asset-producer</code> 出图，<code>impeccable-manual-edit-applier</code> 把改动写回代码。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>仓库：<a href="https://github.com/pbakaus/impeccable">https://github.com/pbakaus/impeccable</a></li>
+            <li>技能页：<a href="https://cursor.com/marketplace/skills/impeccable">https://cursor.com/marketplace/skills/impeccable</a></li>
+            <li>文档：<a href="https://impeccable.style/docs">https://impeccable.style/docs</a></li>
+            <li>要装时在项目根目录运行 <code>npx impeccable install</code>，重新加载 Cursor，再运行 <code>/impeccable init</code>。常用说法：<code>critique</code>、<code>audit</code>、<code>polish</code>、<code>bolder</code>、<code>quieter</code>。</li>
+          </ol>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section id="reverse">
+      <div class="sec-head">
+        <h2>反编译与逆向的开源项目</h2>
+        <p>这一节不是今日热门榜。你要的 REA 是 morluto/rea，全称 Reverse Engineer Anything。命令行那套是 radare2，AI 插件叫 r2ai。Ghidra 是另一套底座。只从官方仓库安装，同名拷贝不算。</p>
+      </div>
+      <div class="grid">
+        <article>
+          <h3><a href="https://github.com/morluto/rea">morluto/rea</a> <span class="tag">REA</span></h3>
+          <p class="repo"><a href="https://github.com/morluto/rea">https://github.com/morluto/rea</a></p>
+          <p class="stars">413,680 星 · 103,481 forks</p>
+          <p>Reverse Engineer Anything。一个 MCP，让 Agent 在没有源码时查看原生二进制、JavaScript / Electron、.NET 和网站，并给出证据。分析在本机跑。原生分析可接已安装的 Hopper、Ghidra、IDA 或 Kuna。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>只从 <a href="https://github.com/morluto/rea">morluto/rea</a>、<a href="https://rea.tools/">rea.tools</a> 或 npm 包 <code>rea-agents</code> 安装。同名仓库不算官方。</li>
+            <li>已装 Node.js 时运行 <code>npx rea-agents setup</code>，在列表里选 Cursor，同意改动后重启 Agent。</li>
+            <li>然后直接说要查的应用和功能，例如「说明 Notes 的搜索怎么实现，并给出证据」。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/NationalSecurityAgency/ghidra">NationalSecurityAgency/ghidra</a> <span class="tag">反编译器，不是模型</span></h3>
+          <p class="repo"><a href="https://github.com/NationalSecurityAgency/ghidra">https://github.com/NationalSecurityAgency/ghidra</a></p>
+          <p class="stars">96,314 星 · 10,864 forks</p>
+          <p>NSA 的开源逆向框架。能反汇编、反编译、画调用图，并用 Java 或 Python 写脚本。后面几个 AI 项目都站在它或同类工具上。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>从 GitHub Releases 下载发行包并解压。</li>
+            <li>运行 <code>ghidraRun</code>，导入二进制，打开 Decompile 窗口。</li>
+            <li>要给 AI 用，再装下面的 MCP 插件，而不是把整个安装目录交给模型。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/radareorg/radare2">radareorg/radare2</a> <span class="tag">常被叫成 rae / r2</span></h3>
+          <p class="repo"><a href="https://github.com/radareorg/radare2">https://github.com/radareorg/radare2</a></p>
+          <p class="stars">25,216 星 · 3,395 forks</p>
+          <p>开源的命令行逆向框架。能反汇编、调试、改二进制。它自己的反编译插件有 r2dec（<code>pdd</code>）和 r2ghidra（<code>pdg</code>）。用大模型反编译要再装 r2ai 里的 decai。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>macOS 可 <code>brew install radare2</code>，或按仓库用 meson 编译。</li>
+            <li>用 <code>r2 文件</code> 打开，<code>aaa</code> 做分析，<code>pdf</code> 看反汇编。</li>
+            <li>装 AI：<code>r2pm -Uci r2ai</code>，反编译用 <code>r2pm -Uci decai</code>。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/radareorg/r2ai">radareorg/r2ai</a> <span class="tag">decai</span></h3>
+          <p class="repo"><a href="https://github.com/radareorg/r2ai">https://github.com/radareorg/r2ai</a></p>
+          <p class="stars">490 星 · 59 forks</p>
+          <p>radare2 的 LLM 插件。r2ai 负责提问、自动执行 r2 命令；decai 专门做增强反编译，例如给变量起名、解释当前函数、把伪代码改得可读。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>先装好 radare2，再执行 <code>r2pm -Uci r2ai</code> 和 <code>r2pm -Uci decai</code>。</li>
+            <li>在 r2 里运行 <code>r2ai -q</code>，选 <code>decompile</code>。</li>
+            <li>模型可接本机 ollama，或 OpenAI、Anthropic 等。输出要回 r2 里核对，不能当还原出的源码。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/mrexodia/ida-pro-mcp">mrexodia/ida-pro-mcp</a> <span class="tag">插件开源</span></h3>
+          <p class="repo"><a href="https://github.com/mrexodia/ida-pro-mcp">https://github.com/mrexodia/ida-pro-mcp</a></p>
+          <p class="stars">13,231 星 · 1,605 forks</p>
+          <p>把 IDA Pro 接上语言模型的 MCP 服务：模型可以驱动反编译器查函数、改名、看交叉引用。IDA 本体是商业软件，这个仓库只是桥。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>先有可用的 IDA Pro。</li>
+            <li>按仓库 README 安装插件，并在 Cursor 里添加这个 MCP。</li>
+            <li>让模型只读反编译结果，重命名和写注释再人工确认。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/LaurieWired/GhidraMCP">LaurieWired/GhidraMCP</a></h3>
+          <p class="repo"><a href="https://github.com/LaurieWired/GhidraMCP">https://github.com/LaurieWired/GhidraMCP</a></p>
+          <p class="stars">11,670 星 · 1,247 forks</p>
+          <p>Ghidra 的 MCP 服务。模型可以反编译、列出函数和导入导出，并提议重命名。也可以不打开 Ghidra 界面，用 PyGhidra 做无界面分析。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>把扩展装进 Ghidra，并设置 <code>GHIDRA_INSTALL_DIR</code>。</li>
+            <li>无界面示例：<code>uvx --python 3.13 --from "ghidra-mcp[headless] @ git+https://github.com/LaurieWired/GhidraMCP" ghidra-mcp --headless --binary 目标文件</code></li>
+            <li>Python 需 3.10–3.13，Ghidra 版本以仓库说明为准。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/bethington/ghidra-mcp">bethington/ghidra-mcp</a></h3>
+          <p class="repo"><a href="https://github.com/bethington/ghidra-mcp">https://github.com/bethington/ghidra-mcp</a></p>
+          <p class="stars">6,023 星 · 368 forks</p>
+          <p>另一套 Ghidra MCP，工具更多（约 200 项）：反编译、调用图、数据流、结构体恢复，以及 Docker 部署。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>按 README 选择图形界面插件或无界面服务。</li>
+            <li>和 LaurieWired 那套不要同时往同一个 Ghidra 实例乱装，先选一个。</li>
+            <li>批量改名之前，先让它只导出函数列表给你看。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/albertan017/LLM4Decompile">albertan017/LLM4Decompile</a></h3>
+          <p class="repo"><a href="https://github.com/albertan017/LLM4Decompile">https://github.com/albertan017/LLM4Decompile</a></p>
+          <p class="stars">7,195 星 · 567 forks</p>
+          <p>专门把二进制翻成 C 的开源模型系列。End 直接吃二进制；Ref 先让 Ghidra 出伪代码，再把伪代码改得更像人能读的源码。目前主要是 Linux x86_64、GCC O0 到 O3。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>从仓库 Quick Start 或<a href="https://colab.research.google.com/drive/1X5TuUKuNuksGJZz6Cc83KKI0ATBP9q7r">官方 Colab</a> 跑通一个函数。</li>
+            <li>要可读性，走 Ref：Ghidra 反编译结果再交给模型。</li>
+            <li>混淆过的二进制，作者论文里写明它和 Ghidra 都不可靠，不要当成还原成功。</li>
+          </ol>
+          </details>
+        </article>
+        <article>
+          <h3><a href="https://github.com/mahaloz/DAILA">mahaloz/DAILA</a></h3>
+          <p class="repo"><a href="https://github.com/mahaloz/DAILA">https://github.com/mahaloz/DAILA</a></p>
+          <p class="stars">711 星 · 60 forks</p>
+          <p>反编译器里的 AI 插件，不绑死某一个反编译器。可接 GPT、Claude 或本地模型，用来解释和整理反编译结果。</p>
+          <details>
+            <summary>用法</summary>
+            <ol>
+            <li>按 README 装到你已经在用的反编译器里。</li>
+            <li>先对一个小函数提问，确认密钥和本地模型地址。</li>
+            <li>星标远小于 Ghidra 本体，把它当辅助，不当主反编译器。</li>
+          </ol>
+          </details>
+        </article>
+      </div>
+    </section>
+    <footer>
+      另有经典开源反编译器 <a href="https://github.com/avast/retdec">avast/retdec</a>（8,665 星，基于 LLVM，不是大模型，仓库写明维护有限）。快照只代表 2026-10-31，明天重新跑「每日新闻简报」，不要手改星标。
+    </footer>
+  </main>
+</body>
+</html>
