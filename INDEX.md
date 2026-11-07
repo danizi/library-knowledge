@@ -145,6 +145,31 @@
 
 
 
+### NFC · NFC
+
+- [NFC 学习计划 · 10 天稳妥](knowledge/Android/NFC学习计划.md)
+- [NFC 面试题库](knowledge/Android/NFC面试题库.md)
+- [NFC 错题库](knowledge/Android/NFC错题库.md) — 只记你答歪过的，复习优先于题库全表
+- Demo（命名：`nfc-d{天}-主题`；与 `act-d*` / `bt-d*` 各算各的）
+  - [nfc-d0-hello](knowledge/Android/demos/nfc/nfc-d0-hello/)（D0）
+  - [nfc-d1-adapter](knowledge/Android/demos/nfc/nfc-d1-adapter/)（D1）
+  - [nfc-d2-dispatch](knowledge/Android/demos/nfc/nfc-d2-dispatch/)（D2）
+  - [nfc-d3-view](knowledge/Android/demos/nfc/nfc-d3-view/)（D3）
+  - [nfc-d4-read](knowledge/Android/demos/nfc/nfc-d4-read/)（D4）
+  - [nfc-d5-foreground](knowledge/Android/demos/nfc/nfc-d5-foreground/)（D5）
+  - [nfc-d6-write](knowledge/Android/demos/nfc/nfc-d6-write/)（D6）
+  - [nfc-d7-hce](knowledge/Android/demos/nfc/nfc-d7-hce/)（D7）
+- [NFC-001 | NFC](<knowledge/Android/NFC-001 | NFC.md>) — **仍待审查**
+  - [NFC-001,1 | 清单声明](<knowledge/Android/NFC-001,1 | 清单声明.md>) — **仍待审查**
+  - [NFC-001,2 | 三种Action](<knowledge/Android/NFC-001,2 | 三种Action.md>) — **仍待审查**
+  - [NFC-001,3 | 网址标签](<knowledge/Android/NFC-001,3 | 网址标签.md>) — **仍待审查**
+  - [NFC-001,4 | 读NDEF](<knowledge/Android/NFC-001,4 | 读NDEF.md>) — **仍待审查**
+  - [NFC-001,5 | 前台分发](<knowledge/Android/NFC-001,5 | 前台分发.md>) — **仍待审查**
+  - [NFC-001,6 | 写NDEF](<knowledge/Android/NFC-001,6 | 写NDEF.md>) — **仍待审查**
+  - [NFC-001,7 | HCE对照](<knowledge/Android/NFC-001,7 | HCE对照.md>) — **仍待审查**
+
+
+
 ### V · View / UI / Compose
 
 - [V-001 | View的定义](<knowledge/Android/V-001 | View的定义.md>)
