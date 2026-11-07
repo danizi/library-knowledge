@@ -18,6 +18,7 @@
 | 你说 | Skill |
 |------|--------|
 | 每日新闻简报 | `daily-briefing` |
+| 改界面 / critique / polish | `impeccable` |
 
 ## 目录
 
