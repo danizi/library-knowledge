@@ -18,6 +18,6 @@ alwaysApply: true
 
 1. 先查 `INDEX.md` 与 `knowledge/` 下已有卡。
 2. 新想法只写 `.cursor/memory/`。学习法和固定项目文档写 `.cursor/docs/`，不进领域卡。
-3. 新建概念卡：复制 `.cursor/templates/card.md`（费曼：问/答/例/易错）；过程卡用 `runbook.md`。
+3. 新建概念卡：复制 `.cursor/templates/card.md`。句式按 `.cursor/rules/card-ste100.mdc`（ASD-STE100，正面问 / 一句话 / 例）。过程卡用 `runbook.md`。
 4. 审查/督促/晋升：走对应 `kb-*` skill。
 5. 改正式卡或 INDEX 时说明「已晋升 / 仍待审查」。
