@@ -4,7 +4,7 @@
 
 | 层 | 路径 |
 |----|------|
-| 编排 | [`.cursor/`](.cursor/README.md)（规则 / skills / templates / memory） |
+| 编排 | [`.cursor/`](.cursor/README.md)（规则 / skills / templates / docs / memory） |
 | 知识 | [`knowledge/`](knowledge/)（`Android` `Web` `Tools`）+ [`INDEX.md`](INDEX.md) |
 
 **角色**：对话说「审卡 / 审 demo / 督促我 / 整理 memory / 验收过程卡 / 教我」。  

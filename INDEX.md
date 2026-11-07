@@ -6,7 +6,14 @@
 含 `|` 的卡片文件名，链接写成 `[标题](<knowledge/Android/编码 | 标题.md>)`，用 `<>` 包真实路径；不要写成 `%20%7C`，Cursor 会点不开。
 
 > `knowledge/Android|Web|Tools` 下正式卡均已统一为费曼格式（问/答/一句话/例或类比/易错）。  
-> `JavascriptDemo/` 仍是练习场，不成概念卡。
+> `JavascriptDemo/` 仍是练习场，不成概念卡。  
+> 学习法和固定项目文档在 `.cursor/docs/`，不占领域编号。
+
+---
+
+## 固定文档
+
+- [费曼学习法](.cursor/docs/费曼学习法.md) — 本库学习行为准则；图 [feynman-method.canvas.tsx](.cursor/docs/feynman-method.canvas.tsx)；**仍待审查**
 
 ---
 
