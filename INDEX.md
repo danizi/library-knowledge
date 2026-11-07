@@ -200,6 +200,8 @@
   - [TL-002,1 | 镜像安装 Homebrew](<knowledge/Tools/TL-002,1 | 镜像安装 Homebrew.md>) — 过程卡，**已晋升 · 仍待审查**
 - [TL-003 | 修改 Hosts](<knowledge/Tools/TL-003 | 修改 Hosts.md>) — 只留「为何不生效」；**仍待审卡**
   - [TL-003,1 | 写入 Hosts 并刷新 DNS](<knowledge/Tools/TL-003,1 | 写入 Hosts 并刷新 DNS.md>) — 过程卡，**已晋升 · 仍待审查**
+- [TL-004 | Cursor Canvas是什么](<knowledge/Tools/TL-004 | Cursor Canvas是什么.md>) — **仍待审查**
+  - [TL-004,1 | cursor怎么打开Canvas预览](<knowledge/Tools/TL-004,1 | cursor怎么打开Canvas预览.md>) — **仍待审查**
 - [TL-005 | Anthropic提示词结构](<knowledge/Tools/TL-005 | Anthropic提示词结构.md>) — **仍待审查**
 - [TL-006 | OpenAI提示词结构](<knowledge/Tools/TL-006 | OpenAI提示词结构.md>) — **仍待审查**
 
