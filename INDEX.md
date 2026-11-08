@@ -265,6 +265,7 @@
 
 ## memory · 未审核
 
+- [AI 学习计划 · 三个练习项目](.cursor/memory/AI学习计划.md) — **仍待审查**。笔记问答、订单客服、Docker。对得上技能词，对不上年限和真实用户上线
 - [react语法学习](.cursor/memory/react语法学习.md) → 摘抄，不整篇晋升；能默答的一句再拆进 `R-001`
 
 ## memory · 已吸收
