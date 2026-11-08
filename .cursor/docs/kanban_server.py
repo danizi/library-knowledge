@@ -493,6 +493,21 @@ class Handler(BaseHTTPRequestHandler):
         self.send_json(200, {"ok": True})
 
 
+class DualStackServer(ThreadingHTTPServer):
+    address_family = socket.AF_INET6
+
+    def server_bind(self):
+        self.socket.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_V6ONLY, 0)
+        super().server_bind()
+
+
+def make_server():
+    try:
+        return DualStackServer(("::", PORT), Handler)
+    except OSError:
+        return ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
+
+
 def main():
     with LOCK:
         conn = connect()
@@ -501,11 +516,12 @@ def main():
             count = conn.execute("SELECT COUNT(*) FROM cards").fetchone()[0]
         finally:
             conn.close()
-    server = ThreadingHTTPServer(("0.0.0.0", PORT), Handler)
+    server = make_server()
     print("知识看板", flush=True)
     print("数据库  %s" % DB_PATH, flush=True)
     print("卡片    %s 张" % count, flush=True)
     print("本机    http://127.0.0.1:%s/" % PORT, flush=True)
+    print("本机    http://localhost:%s/" % PORT, flush=True)
     for ip in lan_ips():
         print("局域网  http://%s:%s/" % (ip, PORT), flush=True)
     print("其他设备要和这台电脑在同一个网络，并且这个窗口保持开着。", flush=True)
