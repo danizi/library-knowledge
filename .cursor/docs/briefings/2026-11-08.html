@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI 每日新闻简报 · 2026-11-08</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #eef2f6;
+      --panel: #ffffff;
+      --ink: #0f172a;
+      --quiet: #475569;
+      --line: #cbd5e1;
+      --hot: #1d4ed8;
+      --re: #0f766e;
+      --hot-soft: #dbeafe;
+      --re-soft: #ccfbf1;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(900px 380px at 0% -8%, #e2e8f0 0%, transparent 55%),
+        radial-gradient(700px 320px at 100% 0%, #e2e8f0 0%, transparent 50%),
+        var(--paper);
+      color: var(--ink);
+      font: 16px/1.55 "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Segoe UI", sans-serif;
+      text-wrap: pretty;
+    }
+    ::selection { background: #bfdbfe; color: var(--ink); }
+    :focus-visible { outline: 2px solid var(--hot); outline-offset: 3px; }
+    .wrap { width: min(1120px, calc(100% - 2rem)); margin: 0 auto; }
+    header {
+      padding: 3.25rem 0 1.25rem;
+      animation: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(12px); filter: blur(4px); }
+      to { opacity: 1; transform: none; filter: none; }
+    }
+    header h1 {
+      margin: 0;
+      max-width: 14ch;
+      font-size: clamp(2.4rem, 6vw, 4.25rem);
+      font-weight: 700;
+      letter-spacing: -0.045em;
+      line-height: 1.02;
+      text-wrap: balance;
+    }
+    .meta {
+      margin: 1rem 0 0;
+      max-width: 62ch;
+      color: var(--quiet);
+      font-size: 0.95rem;
+    }
+    .meta strong { color: var(--ink); font-weight: 650; }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1.25rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+    }
+    nav a {
+      color: var(--ink);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      padding-bottom: 0.1rem;
+    }
+    nav a:hover { border-bottom-color: var(--hot); }
+    nav a.re:hover { border-bottom-color: var(--re); }
+    main { padding: 0.5rem 0 4.5rem; }
+    section { margin-top: 2.75rem; }
+    .sec-head {
+      margin-bottom: 1.1rem;
+      padding-bottom: 0.85rem;
+      border-bottom: 1px solid var(--line);
+    }
+    .sec-head h2 {
+      margin: 0;
+      font-size: clamp(1.55rem, 3vw, 2rem);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      text-wrap: balance;
+    }
+    .sec-head p {
+      margin: 0.55rem 0 0;
+      max-width: 70ch;
+      color: var(--quiet);
+    }
+    #trending .sec-head h2 { color: var(--ink); }
+    #reverse .sec-head h2 { color: var(--ink); }
+    #trending .sec-head h2::after,
+    #reverse .sec-head h2::after {
+      content: "";
+      display: block;
+      width: 3rem;
+      height: 3px;
+      margin-top: 0.55rem;
+      background: var(--hot);
+    }
+    #reverse .sec-head h2::after { background: var(--re); }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    article {
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      padding: 1.15rem 1.2rem 1.25rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 0;
+      border-top-width: 4px;
+      min-height: 100%;
+    }
+    #trending article { border-top-color: var(--hot); }
+    #reverse article { border-top-color: var(--re); }
+    .top {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+    }
+    .idx {
+      color: var(--quiet);
+      font-variant-numeric: tabular-nums;
+      font-size: 0.8rem;
+      font-weight: 650;
+    }
+    .stars {
+      margin: 0;
+      font-size: clamp(1.65rem, 3vw, 2.15rem);
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      font-variant-numeric: tabular-nums;
+      line-height: 1;
+    }
+    #trending .stars { color: var(--hot); }
+    #reverse .stars { color: var(--re); }
+    .stars span {
+      display: block;
+      margin-top: 0.28rem;
+      color: var(--quiet);
+      font-size: 0.72rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+    h3 {
+      margin: 0;
+      font-size: 1.15rem;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+    h3 a { color: inherit; text-decoration: none; }
+    h3 a:hover { color: var(--hot); }
+    #reverse h3 a:hover { color: var(--re); }
+    .repo {
+      margin: 0;
+      font-size: 0.78rem;
+      line-height: 1.4;
+      word-break: break-all;
+    }
+    .repo a { color: var(--quiet); }
+    .forks {
+      margin: 0;
+      color: var(--quiet);
+      font-size: 0.8rem;
+      font-variant-numeric: tabular-nums;
+    }
+    .pill {
+      display: inline-block;
+      margin: 0;
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.25rem;
+      font-size: 0.72rem;
+      font-weight: 650;
+      width: fit-content;
+    }
+    #trending .pill { background: var(--hot-soft); color: #1e3a8a; }
+    #reverse .pill { background: var(--re-soft); color: #115e59; }
+    article > p { margin: 0; color: var(--ink); max-width: 62ch; }
+    details {
+      margin-top: auto;
+      padding-top: 0.35rem;
+      border-top: 1px dashed var(--line);
+    }
+    details summary {
+      cursor: pointer;
+      color: var(--hot);
+      font-weight: 650;
+      font-size: 0.92rem;
+      list-style: none;
+    }
+    #reverse details summary { color: var(--re); }
+    details summary::-webkit-details-marker { display: none; }
+    details ol {
+      margin: 0.55rem 0 0;
+      padding-left: 1.15em;
+      color: var(--ink);
+    }
+    li { margin: 0.28em 0; }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.84em;
+      background: #f1f5f9;
+      padding: 0.08em 0.28em;
+      border-radius: 0.2rem;
+    }
+    footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--quiet);
+      font-size: 0.88rem;
+      max-width: 70ch;
+    }
+    @media (max-width: 820px) {
+      .grid { grid-template-columns: 1fr; }
+      header h1 { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <h1>AI 每日新闻简报</h1>
+    <p class="meta">
+      <strong>2026-11-08</strong> · 名单来自当天 GitHub Trending（daily）。
+      星标来自 GitHub API 查询，时间 <strong>2026-11-08 17:11 CST</strong>。
+      数字是 Stars，不是 Watch / Follow。
+      官方 Trending 页本次抓取超时，名单交叉核对 GitStock / Trendoday / Ageshio / SnailDev 同日归档。
+    </p>
+    <nav aria-label="页内目录">
+      <a href="#trending">一、GitHub 热门</a>
+      <a class="re" href="#reverse">二、反编译与逆向</a>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section id="trending">
+      <div class="sec-head">
+        <h2>GitHub 热门</h2>
+        <p>从当天 Trending 名单中，按 API 星标从高到低取 9 个。跳过越狱、破解与投毒仓库。</p>
+      </div>
+      <div class="grid">
+
+        <article>
+          <div class="top"><span class="idx">01</span><p class="stars">318,033<span>Stars</span></p></div>
+          <h3><a href="https://github.com/mattpocock/skills">mattpocock/skills</a></h3>
+          <p class="repo"><a href="https://github.com/mattpocock/skills">https://github.com/mattpocock/skills</a></p>
+          <p class="forks">Forks 26,614</p>
+          <p class="pill">是什么</p>
+          <p>给真实工程用的 Agent Skills 合集，强调可改、可组合，而不是整套接管流程的脚手架。</p>
+          <p class="pill">功能</p>
+          <p>按技能文件夹拆任务。可装进 Claude Code 插件，或用 skills.sh 把可编辑文件拷进项目。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>打开仓库 README 的 Installation。</li>
+              <li>Claude Code：<code>claude plugin install mattpocock-skills@claude-plugins-official</code></li>
+              <li>或到 <code>https://skills.sh/mattpocock/skills</code> 按页面复制技能文件。</li>
+              <li>同一代理不要同时装插件和拷贝版，避免技能重复。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">02</span><p class="stars">189,029<span>Stars</span></p></div>
+          <h3><a href="https://github.com/anthropics/skills">anthropics/skills</a></h3>
+          <p class="repo"><a href="https://github.com/anthropics/skills">https://github.com/anthropics/skills</a></p>
+          <p class="forks">Forks 22,282</p>
+          <p class="pill">是什么</p>
+          <p>Anthropic 公开的 Agent Skills 示例库：每个技能是带 <code>SKILL.md</code> 的文件夹。</p>
+          <p class="pill">功能</p>
+          <p>覆盖文档、测试、MCP、品牌流程等可重复任务。给 Claude 在专项任务上加载固定指令与脚本。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>克隆仓库：<code>git clone https://github.com/anthropics/skills.git</code></li>
+              <li>打开某个技能目录，阅读其中的 <code>SKILL.md</code>。</li>
+              <li>按 Claude 文档把技能挂到你的代理环境。</li>
+              <li>先跑一个最小任务，确认技能被加载。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">03</span><p class="stars">101,383<span>Stars</span></p></div>
+          <h3><a href="https://github.com/sherlock-project/sherlock">sherlock-project/sherlock</a></h3>
+          <p class="repo"><a href="https://github.com/sherlock-project/sherlock">https://github.com/sherlock-project/sherlock</a></p>
+          <p class="forks">Forks 11,988</p>
+          <p class="pill">是什么</p>
+          <p>用同一个用户名，在大量社交网站上查找公开账号是否存在。</p>
+          <p class="pill">功能</p>
+          <p>命令行批量探测站点。输出命中链接，适合 OSINT 与公开资料核对。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>打开仓库 README 的 Installation（本机抓取 README 时遇 API 限流）。</li>
+              <li>按 README 安装依赖后，传入要查的用户名运行。</li>
+              <li>阅读输出里的命中链接。</li>
+              <li>只查公开信息，不要用于未授权骚扰。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">04</span><p class="stars">98,605<span>Stars</span></p></div>
+          <h3><a href="https://github.com/tailwindlabs/tailwindcss">tailwindlabs/tailwindcss</a></h3>
+          <p class="repo"><a href="https://github.com/tailwindlabs/tailwindcss">https://github.com/tailwindlabs/tailwindcss</a></p>
+          <p class="forks">Forks 7,117</p>
+          <p class="pill">是什么</p>
+          <p>工具类优先的 CSS 框架，在标记里用短类名拼出界面样式。</p>
+          <p class="pill">功能</p>
+          <p>提供间距、排版、布局等原子类。配合官方 CLI 或构建插件生成最终 CSS。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>打开 <code>https://tailwindcss.com/docs/installation</code>。</li>
+              <li>按你的栈选择 CLI、Vite 或框架插件安装。</li>
+              <li>在 HTML 中写入工具类并启动开发命令。</li>
+              <li>确认构建产物里出现对应 CSS。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">05</span><p class="stars">94,387<span>Stars</span></p></div>
+          <h3><a href="https://github.com/zed-industries/zed">zed-industries/zed</a></h3>
+          <p class="repo"><a href="https://github.com/zed-industries/zed">https://github.com/zed-industries/zed</a></p>
+          <p class="forks">Forks 11,559</p>
+          <p class="pill">是什么</p>
+          <p>高性能多人协作代码编辑器，由 Atom / Tree-sitter 团队相关成员打造。</p>
+          <p class="pill">功能</p>
+          <p>强调编辑速度与协作。支持从源码构建，也提供发行版下载。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>打开仓库 README 的下载或构建说明。</li>
+              <li>优先从官方发行渠道安装桌面版。</li>
+              <li>若要从源码构建，按 README 安装 Rust 与系统依赖后再编译。</li>
+              <li>启动后打开一个本地项目试编辑。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">06</span><p class="stars">67,520<span>Stars</span></p></div>
+          <h3><a href="https://github.com/prometheus/prometheus">prometheus/prometheus</a></h3>
+          <p class="repo"><a href="https://github.com/prometheus/prometheus">https://github.com/prometheus/prometheus</a></p>
+          <p class="forks">Forks 11,011</p>
+          <p class="pill">是什么</p>
+          <p>CNCF 的监控与时序数据库系统，按间隔抓取指标并做规则告警。</p>
+          <p class="pill">功能</p>
+          <p>多维时序模型、PromQL 查询、告警规则。适合服务指标采集与可视化联动。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>阅读 <code>https://prometheus.io/docs/prometheus/latest/getting_started/</code>。</li>
+              <li>下载发行包或使用文档中的容器运行方式。</li>
+              <li>准备 <code>prometheus.yml</code> 并启动进程。</li>
+              <li>打开本机 UI（文档默认端口）执行一条查询。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">07</span><p class="stars">66,191<span>Stars</span></p></div>
+          <h3><a href="https://github.com/cloudflare/security-audit-skill">cloudflare/security-audit-skill</a></h3>
+          <p class="repo"><a href="https://github.com/cloudflare/security-audit-skill">https://github.com/cloudflare/security-audit-skill</a></p>
+          <p class="forks">Forks 4,309</p>
+          <p class="pill">是什么</p>
+          <p>给编码代理用的安全审计技能，把审计拆成可校验的多阶段流程。</p>
+          <p class="pill">功能</p>
+          <p>侦察、覆盖狩猎、候选验证、结构化输出、独立复核、中立报告。产物含 findings 与覆盖账本。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>克隆仓库到本机。</li>
+              <li>按 README 把技能接到你的编码代理。</li>
+              <li>对目标仓库启动审计，确认生成 <code>architecture.md</code> / coverage ledger。</li>
+              <li>跑仓库里的校验脚本（如 <code>validate-findings.cjs</code>）核对输出。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">08</span><p class="stars">51,059<span>Stars</span></p></div>
+          <h3><a href="https://github.com/astral-sh/ruff">astral-sh/ruff</a></h3>
+          <p class="repo"><a href="https://github.com/astral-sh/ruff">https://github.com/astral-sh/ruff</a></p>
+          <p class="forks">Forks 2,634</p>
+          <p class="pill">是什么</p>
+          <p>用 Rust 写的极快 Python 检查器与格式化器。</p>
+          <p class="pill">功能</p>
+          <p>一次命令做 lint 与 format。可替代多条缓慢的纯 Python 工具链。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>按 README 安装：常见是 <code>pip install ruff</code> 或包管理器安装。</li>
+              <li>在项目根执行 <code>ruff check .</code></li>
+              <li>需要格式化时执行 <code>ruff format .</code></li>
+              <li>把命令写进 CI 或本地 pre-commit。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">09</span><p class="stars">47,109<span>Stars</span></p></div>
+          <h3><a href="https://github.com/vercel-labs/agent-browser">vercel-labs/agent-browser</a></h3>
+          <p class="repo"><a href="https://github.com/vercel-labs/agent-browser">https://github.com/vercel-labs/agent-browser</a></p>
+          <p class="forks">Forks 3,230</p>
+          <p class="pill">是什么</p>
+          <p>给 AI 代理用的浏览器自动化 CLI（Rust）。当天 Trending 日榜第一。</p>
+          <p class="pill">功能</p>
+          <p><code>snapshot</code> 返回带 <code>@e1</code> 引用的可访问性树。代理按引用点击、输入，再快照校验。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li><code>npm install -g agent-browser</code></li>
+              <li><code>agent-browser install</code>（首次下载 Chrome for Testing）</li>
+              <li><code>agent-browser open example.com</code> → <code>agent-browser snapshot -i</code> → <code>agent-browser click @e1</code></li>
+              <li><code>agent-browser close</code></li>
+            </ol>
+          </details>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="reverse">
+      <div class="sec-head">
+        <h2>反编译与逆向</h2>
+        <p>只收开源仓库。优先带 AI / MCP 的工具，并固定收录 REA、radare2 与 r2ai（含 decai）。Ghidra / RetDec / Jadx / ILSpy / angr 是反编译或二进制分析引擎，不是大模型。</p>
+      </div>
+      <div class="grid">
+
+        <article>
+          <div class="top"><span class="idx">01</span><p class="stars">441,952<span>Stars</span></p></div>
+          <h3><a href="https://github.com/morluto/rea">morluto/rea</a></h3>
+          <p class="repo"><a href="https://github.com/morluto/rea">https://github.com/morluto/rea</a></p>
+          <p class="forks">Forks 109,300</p>
+          <p class="pill">是什么</p>
+          <p>Reverse Engineer Anything：用 Agent / MCP 从应用行为追到二进制层的逆向工作流。</p>
+          <p class="pill">功能</p>
+          <p>把逆向步骤接到代理工具链。官方站点提供指南与展示案例。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li><code>npx rea-agents setup</code></li>
+              <li>按安装向导完成代理与 MCP 配置。</li>
+              <li>打开 <code>https://rea.tools/guides/</code> 选一条入门指南。</li>
+              <li>对你有权分析的目标跑一次最小任务。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">02</span><p class="stars">98,615<span>Stars</span></p></div>
+          <h3><a href="https://github.com/NationalSecurityAgency/ghidra">NationalSecurityAgency/ghidra</a></h3>
+          <p class="repo"><a href="https://github.com/NationalSecurityAgency/ghidra">https://github.com/NationalSecurityAgency/ghidra</a></p>
+          <p class="forks">Forks 11,191</p>
+          <p class="pill">是什么</p>
+          <p>NSA 开源的软件逆向框架。这是反编译器 / SRE 套件，不是大模型。</p>
+          <p class="pill">功能</p>
+          <p>反汇编、反编译、图分析、脚本扩展。支持多架构与交互 / 自动化模式。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>先读仓库的 Security Advisories。</li>
+              <li>从 Releases 下载官方预构建包并解压。</li>
+              <li>按平台脚本启动 Ghidra。</li>
+              <li>新建工程，导入你有权分析的二进制。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">03</span><p class="stars">51,684<span>Stars</span></p></div>
+          <h3><a href="https://github.com/skylot/jadx">skylot/jadx</a></h3>
+          <p class="repo"><a href="https://github.com/skylot/jadx">https://github.com/skylot/jadx</a></p>
+          <p class="forks">Forks 5,916</p>
+          <p class="pill">是什么</p>
+          <p>把 Android Dex / APK 反编译成 Java 源码的开源工具（CLI + GUI）。</p>
+          <p class="pill">功能</p>
+          <p>解码清单与资源，带反混淆与 GUI 跳转。多数情况下无法 100% 还原。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>从 Releases 下载 <code>jadx-&lt;version&gt;.zip</code> 并解压。</li>
+              <li>进入 <code>bin</code> 目录。</li>
+              <li>GUI：运行 <code>jadx-gui</code>；命令行：运行 <code>jadx</code>。</li>
+              <li>打开 APK / dex，查看反编译结果。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">04</span><p class="stars">27,005<span>Stars</span></p></div>
+          <h3><a href="https://github.com/icsharpcode/ILSpy">icsharpcode/ILSpy</a></h3>
+          <p class="repo"><a href="https://github.com/icsharpcode/ILSpy">https://github.com/icsharpcode/ILSpy</a></p>
+          <p class="forks">Forks 3,822</p>
+          <p class="pill">是什么</p>
+          <p>开源跨平台 .NET 程序集浏览器与反编译器。</p>
+          <p class="pill">功能</p>
+          <p>桌面 UI（Avalonia）、VS / VS Code 扩展，以及 <code>ilspycmd</code> 命令行。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>从 Releases 下载桌面版，或安装 NuGet 包 <code>ilspycmd</code>。</li>
+              <li>打开程序集（.dll / .exe）。</li>
+              <li>在树里浏览类型并查看反编译 C#。</li>
+              <li>需要自动化时用 <code>ilspycmd</code> 导出。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">05</span><p class="stars">25,356<span>Stars</span></p></div>
+          <h3><a href="https://github.com/radareorg/radare2">radareorg/radare2</a></h3>
+          <p class="repo"><a href="https://github.com/radareorg/radare2">https://github.com/radareorg/radare2</a></p>
+          <p class="forks">Forks 3,430</p>
+          <p class="pill">是什么</p>
+          <p>类 Unix 的开源逆向框架与命令行工具集（r2）。</p>
+          <p class="pill">功能</p>
+          <p>十六进制编辑、反汇编、调试、脚本（r2pipe / JS）。可本地或远程调试。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>按官网 / README 安装 radare2。</li>
+              <li><code>r2 your-binary</code></li>
+              <li>在 r2 里做分析（常见从 <code>aaa</code> 一类分析命令起步，以你本机手册为准）。</li>
+              <li>需要 AI 辅助时再装同组织的 r2ai。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">06</span><p class="stars">9,345<span>Stars</span></p></div>
+          <h3><a href="https://github.com/angr/angr">angr/angr</a></h3>
+          <p class="repo"><a href="https://github.com/angr/angr">https://github.com/angr/angr</a></p>
+          <p class="forks">Forks 1,235</p>
+          <p class="pill">是什么</p>
+          <p>Python 二进制分析平台：符号执行、CFG、反编译等。</p>
+          <p class="pill">功能</p>
+          <p>加载二进制后可做插桩、依赖分析与求解。常见入口是 <code>angr.Project(...)</code>。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>准备 Python 3 虚拟环境。</li>
+              <li><code>python -m pip install angr</code></li>
+              <li>在 REPL 中：<code>import angr</code> → <code>p = angr.Project('/path/to/bin', auto_load_libs=False)</code></li>
+              <li>继续按 <code>https://docs.angr.io</code> 做符号执行示例。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">07</span><p class="stars">8,668<span>Stars</span></p></div>
+          <h3><a href="https://github.com/avast/retdec">avast/retdec</a></h3>
+          <p class="repo"><a href="https://github.com/avast/retdec">https://github.com/avast/retdec</a></p>
+          <p class="forks">Forks 1,001</p>
+          <p class="pill">是什么</p>
+          <p>基于 LLVM 的可重定向机器码反编译器。仓库注明目前处于有限维护模式。</p>
+          <p class="pill">功能</p>
+          <p>支持 ELF / PE / Mach-O 等格式，覆盖 x86、ARM、MIPS 等架构的静态分析与反编译。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>阅读 README 的构建与安装说明。</li>
+              <li>按文档编译或安装发行组件。</li>
+              <li>对目标二进制调用 RetDec 反编译命令（以 README 为准）。</li>
+              <li>查看生成的类 C 输出与分析报告。</li>
+            </ol>
+          </details>
+        </article>
+
+        <article>
+          <div class="top"><span class="idx">08</span><p class="stars">535<span>Stars</span></p></div>
+          <h3><a href="https://github.com/radareorg/r2ai">radareorg/r2ai</a></h3>
+          <p class="repo"><a href="https://github.com/radareorg/r2ai">https://github.com/radareorg/r2ai</a></p>
+          <p class="forks">Forks 71</p>
+          <p class="pill">是什么</p>
+          <p>radare2 的 LLM 增强插件集：原生 r2ai，以及侧重反编译的 decai。</p>
+          <p class="pill">功能</p>
+          <p>本地 / 远程模型、ReAct 自动模式、把 r2 命令输出做 RAG。另有 r2mcp 等 MCP 相关仓库可联动。</p>
+          <details>
+            <summary>如何使用</summary>
+            <ol>
+              <li>先安装可用的 radare2。</li>
+              <li>按 r2ai README 安装插件（含 decai）。</li>
+              <li>配置模型后端（ollama / openai 等，以 README 为准）。</li>
+              <li>在 r2 会话里调用 r2ai / decai 命令做辅助反编译。</li>
+            </ol>
+          </details>
+        </article>
+
+      </div>
+    </section>
+
+    <footer>
+      当天快照。星标以 GitHub API 在 2026-11-08 17:11 CST 返回值为准，不要手改。
+      热门节 9 条来自同日 Trending 名单并按星标排序；反编译节为开源工具清单。
+      本页不写入 <code>knowledge/</code> 正式卡。
+    </footer>
+  </main>
+</body>
+</html>
