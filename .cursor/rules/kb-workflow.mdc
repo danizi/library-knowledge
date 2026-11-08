@@ -11,7 +11,7 @@ alwaysApply: true
 | 已吸收 | `.cursor/memory/absorbed/` |
 | 模板 | `.cursor/templates/` |
 | 固定文档 | `.cursor/docs/`（学习法、项目级说明） |
-| 正式卡 | `knowledge/Android|Web|Tools/` |
+| 正式卡 | `knowledge/Android|Web|Tools|Python/` |
 | 练习 | `knowledge/Web/JavascriptDemo/` |
 | 截图 | `knowledge/<领域>/assets/<编码>/`（按需） |
 | 角色 | `.cursor/skills/kb-*/SKILL.md` |

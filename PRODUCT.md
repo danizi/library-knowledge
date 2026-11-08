@@ -24,7 +24,7 @@ web
 
 ## Operating Context
 
-本地打开 `.cursor/docs/kanban.html`。正式卡在 `knowledge/Android|Web|Tools/`，索引入口是 `INDEX.md`。学习状态四列：未开始、在学、待审查、已掌握。编辑结果留在这台浏览器。
+本地打开 `.cursor/docs/kanban.html`。正式卡在 `knowledge/Android|Web|Tools|Python/`，索引入口是 `INDEX.md`。学习状态四列：未开始、在学、待审查、已掌握。编辑结果留在这台浏览器。
 
 ## Capabilities and Constraints
 

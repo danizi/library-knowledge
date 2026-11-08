@@ -5,7 +5,7 @@
 
 含 `|` 的卡片文件名，链接写成 `[标题](<knowledge/Android/编码 | 标题.md>)`，用 `<>` 包真实路径；不要写成 `%20%7C`，Cursor 会点不开。
 
-> `knowledge/Android|Web|Tools` 下概念卡正面是问、一句话、一个例子。答、类比、易错、相关、参考折叠。句子一句一个事实。  
+> `knowledge/Android|Web|Tools|Python` 下概念卡正面是问、一句话、一个例子。答、类比、易错、相关、参考折叠。句子一句一个事实。  
 > `JavascriptDemo/` 仍是练习场，不成概念卡。  
 > 学习法和固定项目文档在 `.cursor/docs/`，不占领域编号。
 
@@ -170,6 +170,41 @@
 
 
 
+### AI · 应用
+
+- [AI 学习计划 · 长期胜任路线](knowledge/Android/AI学习计划.md) — **仍待审查**（主线；含 GitHub 查询地址）
+- [AI 练习册 · 14 天 Demo](knowledge/Android/AI练习册.md) — 可选，不当主课表
+- [AI 面试题库](knowledge/Android/AI面试题库.md)
+- [AI 错题库](knowledge/Android/AI错题库.md) — 只记你答歪过的
+- Demo（命名：`ai-d{天}-主题`；与 `nfc-d*` / `bt-d*` 各算各的）
+  - [ai-d0-hello](knowledge/Android/demos/ai/ai-d0-hello/)（D0）
+  - [ai-d1-loop](knowledge/Android/demos/ai/ai-d1-loop/)（D1）
+  - [ai-d2-read](knowledge/Android/demos/ai/ai-d2-read/)（D2）
+  - [ai-d3-deepseek](knowledge/Android/demos/ai/ai-d3-deepseek/)（D3）
+  - [ai-d4-tool](knowledge/Android/demos/ai/ai-d4-tool/)（D4）
+  - [ai-d5-graph](knowledge/Android/demos/ai/ai-d5-graph/)（D5）
+  - [ai-d6-keyword](knowledge/Android/demos/ai/ai-d6-keyword/)（D6）
+  - [ai-d7-chroma](knowledge/Android/demos/ai/ai-d7-chroma/)（D7）
+  - [ai-d8-ask](knowledge/Android/demos/ai/ai-d8-ask/)（D8）
+  - [ai-d9-docker](knowledge/Android/demos/ai/ai-d9-docker/)（D9）
+  - [ai-d10-avatar](knowledge/Android/demos/ai/ai-d10-avatar/)（D10）
+  - [ai-d11-android](knowledge/Android/demos/ai/ai-d11-android/)（D11）
+- [AI-001 | 问答](<knowledge/Android/AI-001 | 问答.md>) — **仍待审查**
+  - [AI-001,1 | 工具调用](<knowledge/Android/AI-001,1 | 工具调用.md>) — **仍待审查**
+  - [AI-001,2 | 检索](<knowledge/Android/AI-001,2 | 检索.md>) — **仍待审查**
+  - [AI-001,3 | 头像视频](<knowledge/Android/AI-001,3 | 头像视频.md>) — **仍待审查**
+  - [AI-001,4 | Android调用](<knowledge/Android/AI-001,4 | Android调用.md>) — **仍待审查**
+  - [AI-001,5 | 运行脚本](<knowledge/Android/AI-001,5 | 运行脚本.md>) — **仍待审查**
+  - [AI-001,6 | 列表循环](<knowledge/Android/AI-001,6 | 列表循环.md>) — **仍待审查**
+  - [AI-001,7 | 读文件](<knowledge/Android/AI-001,7 | 读文件.md>) — **仍待审查**
+  - [AI-001,8 | 模型调用](<knowledge/Android/AI-001,8 | 模型调用.md>) — **仍待审查**
+  - [AI-001,9 | 计算器图](<knowledge/Android/AI-001,9 | 计算器图.md>) — **仍待审查**
+  - [AI-001,10 | Chroma](<knowledge/Android/AI-001,10 | Chroma.md>) — **仍待审查**
+  - [AI-001,11 | 三项返回](<knowledge/Android/AI-001,11 | 三项返回.md>) — **仍待审查**
+  - [AI-001,12 | 容器运行](<knowledge/Android/AI-001,12 | 容器运行.md>) — **仍待审查**
+
+
+
 ### V · View / UI / Compose
 
 - [V-001 | View的定义](<knowledge/Android/V-001 | View的定义.md>)
@@ -258,6 +293,35 @@
   - [TL-004,1 | cursor怎么打开Canvas预览](<knowledge/Tools/TL-004,1 | cursor怎么打开Canvas预览.md>) — **仍待审查**
 - [TL-005 | Anthropic提示词结构](<knowledge/Tools/TL-005 | Anthropic提示词结构.md>) — **仍待审查**
 - [TL-006 | OpenAI提示词结构](<knowledge/Tools/TL-006 | OpenAI提示词结构.md>) — **仍待审查**
+- [TL-007 | macOS 截图](<knowledge/Tools/TL-007 | macOS 截图.md>) — **已晋升 · 仍待审查**
+- [TL-008 | VS Code 跑 Python](<knowledge/Tools/TL-008 | VS Code 跑 Python.md>) — **仍待审查**
+  - [TL-008,1 | 配置 VS Code Python](<knowledge/Tools/TL-008,1 | 配置 VS Code Python.md>) — 过程卡，**仍待审查**
+
+---
+
+
+
+## Python
+
+### PY · Python
+
+- [PY 学习计划 · 1 天速通](knowledge/Python/PY学习计划.md) — 有 Java/Kotlin；**仍待审查**
+- [PY 面试题库](knowledge/Python/PY面试题库.md)
+- [PY 错题库](knowledge/Python/PY错题库.md) — 只记你答歪过的，复习优先于题库全表
+- Demo（命名：`py-d{天}-主题`；与 `ai-d*` / `tl-*` 各算各的）
+  - [py-d0-hello](knowledge/Python/demos/py-d0-hello/)（D0）
+  - [py-d1-syntax](knowledge/Python/demos/py-d1-syntax/)（D1）
+  - [py-d2-collections](knowledge/Python/demos/py-d2-collections/)（D2）
+  - [py-d3-oop](knowledge/Python/demos/py-d3-oop/)（D3）
+  - [py-d4-module](knowledge/Python/demos/py-d4-module/)（D4）
+  - [py-d5-files](knowledge/Python/demos/py-d5-files/)（D5）
+- [PY-001 | Python](<knowledge/Python/PY-001 | Python.md>) — **仍待审查**
+  - [PY-001,1 | 语法差异](<knowledge/Python/PY-001,1 | 语法差异.md>) — **仍待审查**
+  - [PY-001,2 | 集合与推导式](<knowledge/Python/PY-001,2 | 集合与推导式.md>) — **仍待审查**
+  - [PY-001,3 | 类与dataclass](<knowledge/Python/PY-001,3 | 类与dataclass.md>) — **仍待审查**
+  - [PY-001,4 | with与异常](<knowledge/Python/PY-001,4 | with与异常.md>) — **仍待审查**
+  - [PY-001,5 | 模块与venv](<knowledge/Python/PY-001,5 | 模块与venv.md>) — **仍待审查**
+  - [PY-001,6 | 标准库入门](<knowledge/Python/PY-001,6 | 标准库入门.md>) — **仍待审查**
 
 ---
 
@@ -265,7 +329,6 @@
 
 ## memory · 未审核
 
-- [AI 学习计划 · 三个练习项目](.cursor/memory/AI学习计划.md) — **仍待审查**。笔记问答、订单客服、Docker。对得上技能词，对不上年限和真实用户上线
 - [react语法学习](.cursor/memory/react语法学习.md) → 摘抄，不整篇晋升；能默答的一句再拆进 `R-001`
 
 ## memory · 已吸收
